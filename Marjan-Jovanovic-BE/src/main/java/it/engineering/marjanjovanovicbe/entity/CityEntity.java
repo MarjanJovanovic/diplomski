@@ -1,5 +1,6 @@
 package it.engineering.marjanjovanovicbe.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,9 +11,12 @@ import javax.validation.constraints.NotNull;
 public class CityEntity {
 
     @Id
-    @NotNull
-    private String postalCode;
+    @Column(columnDefinition = "bigint(5)", nullable = false, unique = true)
+    private Long postalCode;
 
-    @NotNull
+    @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private String name;
+
+
+
 }

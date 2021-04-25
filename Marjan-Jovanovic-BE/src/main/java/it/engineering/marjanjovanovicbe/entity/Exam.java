@@ -1,9 +1,7 @@
 package it.engineering.marjanjovanovicbe.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,6 +9,7 @@ import java.util.Date;
 public class Exam {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -22,5 +21,5 @@ public class Exam {
     @ManyToOne
     private ProfessorEntity professor; //Professor has to be working on the selected subject
 
-    private Date date;
+    private LocalDate date;
 }

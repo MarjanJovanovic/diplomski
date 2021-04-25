@@ -11,10 +11,11 @@ public class TitleEntity {
 
 
     @Id
-    @NotNull
+    @Column(columnDefinition = "bigint(7)", nullable = false, unique = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private TitleName title;
 }

@@ -1,33 +1,20 @@
 package it.engineering.marjanjovanovicbe.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Data
 @Table(name = "student")
 public class StudentEntity extends PersonEntity implements Serializable {
 
-    @Id
-    @NotNull
+    @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexNumber;
 
-    @NotNull
-    private Long indexYear;
+    @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
+    private String indexYear;
 
-
-
-
-    @NotNull
+    @Column(columnDefinition = "bigint(7)", nullable = false, unique = false)
     private Long currentYearOfStudy;
 
 
