@@ -18,4 +18,54 @@ public class TitleEntity {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private TitleName title;
+
+    public TitleEntity() {
+    }
+
+    public TitleEntity(String id, TitleName title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public TitleName getTitle() {
+        return title;
+    }
+
+    public void setTitle(TitleName title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "TitleEntity{" +
+                "id='" + id + '\'' +
+                ", title=" + title +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TitleEntity)) return false;
+
+        TitleEntity that = (TitleEntity) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        return title == that.title;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
+    }
 }

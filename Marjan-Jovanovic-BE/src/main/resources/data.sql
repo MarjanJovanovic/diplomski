@@ -13,8 +13,8 @@ INSERT INTO title(title) VALUES ("Professor");
 
 -- Table initialization: Subject
 INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 1", "Description 1", 5, 1, "Summer");
-INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 2", "Description 2", 6, 1, "Summer");
-INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 3", "Description 3", 7, 2, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 2", "Description 2", 7, 1, "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 3", "Description 3", 6, 2, "Winter");
 INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 4", "Description 4", 8, 2, "Winter");
 
 -- Table initialization: Student

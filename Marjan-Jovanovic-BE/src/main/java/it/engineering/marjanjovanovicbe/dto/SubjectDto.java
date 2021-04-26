@@ -1,43 +1,25 @@
-package it.engineering.marjanjovanovicbe.entity;
+package it.engineering.marjanjovanovicbe.dto;
 
+import it.engineering.marjanjovanovicbe.entity.ProfessorEntity;
 import it.engineering.marjanjovanovicbe.util.Semester;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Entity
-@Table(name = "subject")
-public class SubjectEntity {
+public class SubjectDto implements MyDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String name;
-
-    @Column(columnDefinition = "varchar(200)", nullable = true, unique = false)
     private String description;
-
-    @Column(columnDefinition = "bigint(1)", nullable = false, unique = false)
     private Long noOfEsp;
-
-    @Column(columnDefinition = "bigint(1)", nullable = false, unique = false)
     private Long YearOfStudy;
-
-    @Enumerated (EnumType.STRING)
-    @Column(columnDefinition = "varchar(10)", nullable = false, unique = false)
     private Semester semester;
-
-    @ManyToMany
-    @JoinTable(name = "subject_professor", joinColumns = @JoinColumn(name = "subject_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
     private List<ProfessorEntity> professors;
 
-    public SubjectEntity() {
+    public SubjectDto() {
     }
 
-    public SubjectEntity(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester, List<ProfessorEntity> professors) {
+    public SubjectDto(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester, List<ProfessorEntity> professors) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -105,7 +87,7 @@ public class SubjectEntity {
 
     @Override
     public String toString() {
-        return "SubjectEntity{" +
+        return "SubjectDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -119,9 +101,9 @@ public class SubjectEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SubjectEntity)) return false;
+        if (!(o instanceof SubjectDto)) return false;
 
-        SubjectEntity that = (SubjectEntity) o;
+        SubjectDto that = (SubjectDto) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
