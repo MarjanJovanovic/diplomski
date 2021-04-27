@@ -2,19 +2,18 @@ package it.engineering.marjanjovanovicbe.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "exam")
-public class Exam {
+public class ExamEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private ExamPeriod examPeriod;
+    private ExamPeriodEntity examPeriodEntity;
 
     @ManyToOne
     private SubjectEntity subject;
@@ -28,12 +27,12 @@ public class Exam {
 
     private LocalDate date;
 
-    public Exam() {
+    public ExamEntity() {
     }
 
-    public Exam(Long id, ExamPeriod examPeriod, SubjectEntity subject, ProfessorEntity professor, List<StudentEntity> students, LocalDate date) {
+    public ExamEntity(Long id, ExamPeriodEntity examPeriodEntity, SubjectEntity subject, ProfessorEntity professor, List<StudentEntity> students, LocalDate date) {
         this.id = id;
-        this.examPeriod = examPeriod;
+        this.examPeriodEntity = examPeriodEntity;
         this.subject = subject;
         this.professor = professor;
         this.students = students;
@@ -48,12 +47,12 @@ public class Exam {
         this.id = id;
     }
 
-    public ExamPeriod getExamPeriod() {
-        return examPeriod;
+    public ExamPeriodEntity getExamPeriod() {
+        return examPeriodEntity;
     }
 
-    public void setExamPeriod(ExamPeriod examPeriod) {
-        this.examPeriod = examPeriod;
+    public void setExamPeriod(ExamPeriodEntity examPeriodEntity) {
+        this.examPeriodEntity = examPeriodEntity;
     }
 
     public SubjectEntity getSubject() {
@@ -90,9 +89,9 @@ public class Exam {
 
     @Override
     public String toString() {
-        return "Exam{" +
+        return "ExamEntity{" +
                 "id=" + id +
-                ", examPeriod=" + examPeriod +
+                ", examPeriodEntity=" + examPeriodEntity +
                 ", subject=" + subject +
                 ", professor=" + professor +
                 ", students=" + students +
@@ -103,22 +102,22 @@ public class Exam {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Exam)) return false;
+        if (!(o instanceof ExamEntity)) return false;
 
-        Exam exam = (Exam) o;
+        ExamEntity examEntity = (ExamEntity) o;
 
-        if (id != null ? !id.equals(exam.id) : exam.id != null) return false;
-        if (examPeriod != null ? !examPeriod.equals(exam.examPeriod) : exam.examPeriod != null) return false;
-        if (subject != null ? !subject.equals(exam.subject) : exam.subject != null) return false;
-        if (professor != null ? !professor.equals(exam.professor) : exam.professor != null) return false;
-        if (students != null ? !students.equals(exam.students) : exam.students != null) return false;
-        return date != null ? date.equals(exam.date) : exam.date == null;
+        if (id != null ? !id.equals(examEntity.id) : examEntity.id != null) return false;
+        if (examPeriodEntity != null ? !examPeriodEntity.equals(examEntity.examPeriodEntity) : examEntity.examPeriodEntity != null) return false;
+        if (subject != null ? !subject.equals(examEntity.subject) : examEntity.subject != null) return false;
+        if (professor != null ? !professor.equals(examEntity.professor) : examEntity.professor != null) return false;
+        if (students != null ? !students.equals(examEntity.students) : examEntity.students != null) return false;
+        return date != null ? date.equals(examEntity.date) : examEntity.date == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (examPeriod != null ? examPeriod.hashCode() : 0);
+        result = 31 * result + (examPeriodEntity != null ? examPeriodEntity.hashCode() : 0);
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (professor != null ? professor.hashCode() : 0);
         result = 31 * result + (students != null ? students.hashCode() : 0);

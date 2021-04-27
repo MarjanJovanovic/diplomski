@@ -1,41 +1,22 @@
-package it.engineering.marjanjovanovicbe.entity;
+package it.engineering.marjanjovanovicbe.dto;
+
+import it.engineering.marjanjovanovicbe.entity.CityEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-@MappedSuperclass
-public abstract class PersonEntity {
+public abstract class PersonDto implements MyDto{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Size(min = 3)
-    @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String firstName;
-
-    @Size(min = 3)
-    @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String lastName;
-
-    @Email
-    @Column(columnDefinition = "varchar(30)", nullable = true, unique = true)
     private String email;
-
-    @Size(min = 3)
-    @Column(columnDefinition = "varchar(50)", nullable = true, unique = false)
     private String address;
-
-    @ManyToOne
-    @JoinColumn(name = "postal_code")
     private CityEntity city;
 
-    public PersonEntity() {
+    public PersonDto() {
     }
 
-    public PersonEntity(Long id, String firstName, String lastName, String email, String address, it.engineering.marjanjovanovicbe.entity.CityEntity city) {
+    public PersonDto(Long id, String firstName, String lastName, String email, String address, CityEntity city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -84,17 +65,17 @@ public abstract class PersonEntity {
         this.address = address;
     }
 
-    public it.engineering.marjanjovanovicbe.entity.CityEntity getCity() {
+    public CityEntity getCity() {
         return city;
     }
 
-    public void setCity(it.engineering.marjanjovanovicbe.entity.CityEntity city) {
+    public void setCity(CityEntity city) {
         this.city = city;
     }
 
     @Override
     public String toString() {
-        return "PersonEntity{" +
+        return "PersonDto{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -107,16 +88,16 @@ public abstract class PersonEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonEntity)) return false;
+        if (!(o instanceof PersonDto)) return false;
 
-        PersonEntity that = (PersonEntity) o;
+        PersonDto personDto = (PersonDto) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        return city != null ? city.equals(that.city) : that.city == null;
+        if (id != null ? !id.equals(personDto.id) : personDto.id != null) return false;
+        if (firstName != null ? !firstName.equals(personDto.firstName) : personDto.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(personDto.lastName) : personDto.lastName != null) return false;
+        if (email != null ? !email.equals(personDto.email) : personDto.email != null) return false;
+        if (address != null ? !address.equals(personDto.address) : personDto.address != null) return false;
+        return city != null ? city.equals(personDto.city) : personDto.city == null;
     }
 
     @Override

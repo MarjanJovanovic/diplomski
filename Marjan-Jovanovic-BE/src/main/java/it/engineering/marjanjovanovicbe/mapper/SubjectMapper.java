@@ -8,6 +8,5 @@ import org.mapstruct.Mapper;
 public interface SubjectMapper {
 
     SubjectDto toDto(SubjectEntity entity);
-
     SubjectEntity toEntity(SubjectDto dto);
 }

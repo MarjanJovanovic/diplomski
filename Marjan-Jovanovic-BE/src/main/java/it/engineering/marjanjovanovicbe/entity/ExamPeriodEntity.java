@@ -2,11 +2,10 @@ package it.engineering.marjanjovanovicbe.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "exam_period")
-public class ExamPeriod {
+public class ExamPeriodEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +19,10 @@ public class ExamPeriod {
 
     private boolean isActive;
 
-    public ExamPeriod() {
+    public ExamPeriodEntity() {
     }
 
-    public ExamPeriod(Long id, String name, LocalDate startDate, LocalDate endDate, boolean isActive) {
+    public ExamPeriodEntity(Long id, String name, LocalDate startDate, LocalDate endDate, boolean isActive) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
@@ -73,7 +72,7 @@ public class ExamPeriod {
 
     @Override
     public String toString() {
-        return "ExamPeriod{" +
+        return "ExamPeriodEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", startDate=" + startDate +
@@ -85,9 +84,9 @@ public class ExamPeriod {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ExamPeriod)) return false;
+        if (!(o instanceof ExamPeriodEntity)) return false;
 
-        ExamPeriod that = (ExamPeriod) o;
+        ExamPeriodEntity that = (ExamPeriodEntity) o;
 
         if (isActive != that.isActive) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;

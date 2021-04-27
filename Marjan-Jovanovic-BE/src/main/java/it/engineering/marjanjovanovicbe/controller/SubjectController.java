@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,17 +41,17 @@ public class SubjectController {
     }
 
     @PostMapping("/save")
-    public @ResponseBody ResponseEntity<Object> save(@RequestBody SubjectDto subjectDto){
+    public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody SubjectDto subjectDto){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(subjectService.save(subjectDto));
-        }catch (MyEntityAlreadyExistsException | MyEntityInvalidParamException e){
+        }catch (MyEntityAlreadyExistsException e){
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error saving subject entity: " + subjectDto);
         }
     }
 
     @PutMapping("/update")
-    public @ResponseBody ResponseEntity<SubjectDto> update(@RequestBody SubjectDto subjectDto) throws MyEntityNotFoundException, MyEntityInvalidParamException {
+    public @ResponseBody ResponseEntity<SubjectDto> update(@Valid @RequestBody SubjectDto subjectDto) throws MyEntityNotFoundException{
         Optional<SubjectDto> subject = subjectService.update(subjectDto);
         if (subject.isPresent()){
             return ResponseEntity.status(HttpStatus.OK).body(subject.get());

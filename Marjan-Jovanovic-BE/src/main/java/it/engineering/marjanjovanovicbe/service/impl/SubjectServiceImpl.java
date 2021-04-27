@@ -3,13 +3,10 @@ package it.engineering.marjanjovanovicbe.service.impl;
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.entity.SubjectEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
-import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.mapper.SubjectMapper;
 import it.engineering.marjanjovanovicbe.repository.SubjectRepository;
 import it.engineering.marjanjovanovicbe.service.SubjectService;
-import it.engineering.marjanjovanovicbe.util.Semester;
-import org.apache.commons.lang3.EnumUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -48,30 +45,18 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public SubjectDto save(SubjectDto subjectDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException {
+    public SubjectDto save(SubjectDto subjectDto) throws MyEntityAlreadyExistsException {
         Optional<SubjectEntity> entity = subjectRepository.findById(subjectDto.getId());
         if (entity.isPresent()){
             throw new MyEntityAlreadyExistsException("Subject already exists: ", subjectMapper.toDto(entity.get()));
-        }
-        if (subjectDto.getName().length() < 3){
-            throw new MyEntityInvalidParamException("Name must have more than 2 characters");
-        }
-        if (!(EnumUtils.isValidEnum(Semester.class, subjectDto.getSemester().toString()))){
-            throw new MyEntityInvalidParamException("Name must be: " + Arrays.toString(Semester.values()));
         }
         SubjectEntity subjectEntity = subjectRepository.save(subjectMapper.toEntity(subjectDto));
         return subjectMapper.toDto(subjectEntity);
     }
 
     @Override
-    public Optional<SubjectDto> update(SubjectDto subjectDto) throws MyEntityNotFoundException, MyEntityInvalidParamException {
+    public Optional<SubjectDto> update(SubjectDto subjectDto) throws MyEntityNotFoundException{
         Optional<SubjectEntity> entity = subjectRepository.findById(subjectDto.getId());
-        if (subjectDto.getName().length() < 3){
-            throw new MyEntityInvalidParamException("Name must have more than 2 characters");
-        }
-        if (!(EnumUtils.isValidEnum(Semester.class, subjectDto.getSemester().toString()))){
-            throw new MyEntityInvalidParamException("Name must be: " + Arrays.toString(Semester.values()));
-        }
         if (entity.isPresent()){
             SubjectEntity subjectEntity = subjectRepository.save(subjectMapper.toEntity(subjectDto));
             return Optional.of(subjectMapper.toDto(subjectEntity));

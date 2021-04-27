@@ -1,36 +1,23 @@
-package it.engineering.marjanjovanovicbe.entity;
+package it.engineering.marjanjovanovicbe.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
+import it.engineering.marjanjovanovicbe.entity.CityEntity;
+import it.engineering.marjanjovanovicbe.entity.SubjectEntity;
+import it.engineering.marjanjovanovicbe.entity.TitleEntity;
+
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "professor")
-public class ProfessorEntity extends PersonEntity implements Serializable {
+public class ProfessorDto extends PersonDto{
 
-    @Size(min = 9)
-    @Column(columnDefinition = "varchar(15)", nullable = false, unique = false)
     private String phone;
-
-    @Column(columnDefinition = "date", nullable = false, unique = false)
     private LocalDate reelectionDate;
-
-    @ManyToOne
-    @JoinColumn(name = "title_id")
     private TitleEntity title;
-
-    @ManyToMany
-    @JoinTable(name = "subject_professor", joinColumns = @JoinColumn(name = "professor_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private List<SubjectEntity> subjects;
 
-    public ProfessorEntity() {
+    public ProfessorDto() {
     }
 
-    public ProfessorEntity(Long id, String firstName, String lastName, String email, String address, CityEntity city, String phone, LocalDate reelectionDate, TitleEntity title, List<SubjectEntity> subjects) {
+    public ProfessorDto(Long id, String firstName, String lastName, String email, String address, CityEntity city, String phone, LocalDate reelectionDate, TitleEntity title, List<SubjectEntity> subjects) {
         super(id, firstName, lastName, email, address, city);
         this.phone = phone;
         this.reelectionDate = reelectionDate;
@@ -72,7 +59,7 @@ public class ProfessorEntity extends PersonEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ProfessorEntity{" +
+        return "ProfessorDto{" +
                 "phone='" + phone + '\'' +
                 ", reelectionDate=" + reelectionDate +
                 ", title=" + title +
@@ -83,10 +70,10 @@ public class ProfessorEntity extends PersonEntity implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProfessorEntity)) return false;
+        if (!(o instanceof ProfessorDto)) return false;
         if (!super.equals(o)) return false;
 
-        ProfessorEntity that = (ProfessorEntity) o;
+        ProfessorDto that = (ProfessorDto) o;
 
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (reelectionDate != null ? !reelectionDate.equals(that.reelectionDate) : that.reelectionDate != null)

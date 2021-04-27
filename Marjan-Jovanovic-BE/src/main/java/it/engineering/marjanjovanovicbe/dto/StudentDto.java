@@ -1,34 +1,22 @@
-package it.engineering.marjanjovanovicbe.entity;
+package it.engineering.marjanjovanovicbe.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
+import it.engineering.marjanjovanovicbe.entity.CityEntity;
+import it.engineering.marjanjovanovicbe.entity.ExamEntity;
+import it.engineering.marjanjovanovicbe.entity.StudentEntity;
+
 import java.util.List;
 
-@Entity
-@Table(name = "student")
-public class StudentEntity extends PersonEntity implements Serializable {
+public class StudentDto extends PersonDto{
 
-    @Size(min = 4, max = 4)
-    @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexNumber;
-
-    @Size(min = 2000, max = 2100)
-    @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexYear;
-
-    @Column(columnDefinition = "bigint(7)", nullable = false, unique = false)
     private Long currentYearOfStudy;
+    private List<ExamDto> exams;
 
-    @ManyToMany
-    @JoinTable(name = "student_exam", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<ExamEntity> exams;
-
-    public StudentEntity() {
+    public StudentDto() {
     }
 
-    public StudentEntity(Long id, String firstName, String lastName, String email, String address, CityEntity city, String indexNumber, String indexYear, Long currentYearOfStudy, List<ExamEntity> exams) {
+    public StudentDto(Long id, String firstName, String lastName, String email, String address, CityEntity city, String indexNumber, String indexYear, Long currentYearOfStudy, List<ExamDto> exams) {
         super(id, firstName, lastName, email, address, city);
         this.indexNumber = indexNumber;
         this.indexYear = indexYear;
@@ -60,17 +48,17 @@ public class StudentEntity extends PersonEntity implements Serializable {
         this.currentYearOfStudy = currentYearOfStudy;
     }
 
-    public List<ExamEntity> getExams() {
+    public List<ExamDto> getExams() {
         return exams;
     }
 
-    public void setExams(List<ExamEntity> exams) {
+    public void setExams(List<ExamDto> exams) {
         this.exams = exams;
     }
 
     @Override
     public String toString() {
-        return "StudentEntity{" +
+        return "StudentDto{" +
                 "indexNumber='" + indexNumber + '\'' +
                 ", indexYear='" + indexYear + '\'' +
                 ", currentYearOfStudy=" + currentYearOfStudy +
@@ -81,10 +69,10 @@ public class StudentEntity extends PersonEntity implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StudentEntity)) return false;
+        if (!(o instanceof StudentDto)) return false;
         if (!super.equals(o)) return false;
 
-        StudentEntity that = (StudentEntity) o;
+        StudentDto that = (StudentDto) o;
 
         if (indexNumber != null ? !indexNumber.equals(that.indexNumber) : that.indexNumber != null) return false;
         if (indexYear != null ? !indexYear.equals(that.indexYear) : that.indexYear != null) return false;

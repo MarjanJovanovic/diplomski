@@ -32,9 +32,9 @@ INSERT INTO student(first_name, last_name, email, address, postal_code, index_nu
 -- Table initialization: Professor-Subject
 
 
--- Table initialization: Exam Period
+-- Table initialization: ExamEntity Period
 
--- Table initialization: Exam
+-- Table initialization: ExamEntity
 
 
 

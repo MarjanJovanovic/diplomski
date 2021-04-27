@@ -4,6 +4,7 @@ import it.engineering.marjanjovanovicbe.util.Semester;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,7 @@ public class SubjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 3)
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String name;
 

@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public interface SubjectService {
     Optional<SubjectDto> findById(Long subjectId);
-    SubjectDto save(SubjectDto subjectDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException;
-    Optional<SubjectDto> update(SubjectDto subjectDto) throws MyEntityNotFoundException, MyEntityInvalidParamException;
+    SubjectDto save(SubjectDto subjectDto) throws MyEntityAlreadyExistsException;
+    Optional<SubjectDto> update(SubjectDto subjectDto) throws MyEntityNotFoundException;
     void delete(Long subjectId) throws MyEntityNotFoundException;
     List<SubjectDto> getAll();
     List<SubjectDto> getAll(int pageNo, int pageSize, String sortBy);
