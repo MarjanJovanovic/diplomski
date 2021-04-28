@@ -20,5 +20,4 @@ export class SubjectService {
     return this.httpClient.get<Page<Subject[]>>(`${environment.baseHttpURL}/${this.controllerPrefix}/page?page=${page}&size=${size}`)
   }
 
-
 }

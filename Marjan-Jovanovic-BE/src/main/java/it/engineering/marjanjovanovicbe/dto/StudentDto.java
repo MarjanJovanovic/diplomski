@@ -1,8 +1,6 @@
 package it.engineering.marjanjovanovicbe.dto;
 
 import it.engineering.marjanjovanovicbe.entity.CityEntity;
-import it.engineering.marjanjovanovicbe.entity.ExamEntity;
-import it.engineering.marjanjovanovicbe.entity.StudentEntity;
 
 import java.util.List;
 

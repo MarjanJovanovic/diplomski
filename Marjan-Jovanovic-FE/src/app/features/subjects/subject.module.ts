@@ -9,11 +9,17 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
+import { SubjectAddComponent } from './subject-add/subject-add.component';
+import { SubjectEditComponent } from './subject-edit/subject-edit.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    SubjectListComponent
+    SubjectListComponent,
+    SubjectAddComponent,
+    SubjectEditComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatFormFieldModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
+
 })
 export class SubjectModule { }
