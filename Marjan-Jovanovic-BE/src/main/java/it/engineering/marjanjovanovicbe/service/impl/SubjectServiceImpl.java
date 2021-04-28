@@ -63,7 +63,6 @@ public class SubjectServiceImpl implements SubjectService {
         }else{
             throw new MyEntityNotFoundException("Subject doesn't exist!");
         }
-
     }
 
     @Override
@@ -82,7 +81,6 @@ public class SubjectServiceImpl implements SubjectService {
         return entities.stream().map(entity -> {
             return subjectMapper.toDto(entity);
         }).collect(Collectors.toList());
-
     }
 
     @Override
@@ -98,6 +96,5 @@ public class SubjectServiceImpl implements SubjectService {
             }).collect(Collectors.toList());
         }
         return new ArrayList<SubjectDto>();
-
     }
 }

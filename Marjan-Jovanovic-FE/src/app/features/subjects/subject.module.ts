@@ -13,6 +13,8 @@ import { SubjectAddComponent } from './subject-add/subject-add.component';
 import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSortModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}

@@ -17,6 +17,7 @@ public class ExamPeriodEntity {
 
     private LocalDate endDate;
 
+    @Column(columnDefinition = "tinyInt(1) default 1")
     private boolean isActive;
 
     public ExamPeriodEntity() {

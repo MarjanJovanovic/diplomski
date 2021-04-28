@@ -7,6 +7,10 @@ table {
   width: 100%;
 }
 
+.list-container {
+  margin: 2%;
+}
+
 td,
 th {
   width: 25%;

@@ -1,9 +1,9 @@
 package it.engineering.marjanjovanovicbe.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.engineering.marjanjovanovicbe.entity.ProfessorEntity;
 import it.engineering.marjanjovanovicbe.util.Semester;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class SubjectDto implements MyDto {
@@ -14,6 +14,7 @@ public class SubjectDto implements MyDto {
     private Long noOfEsp;
     private Long YearOfStudy;
     private Semester semester;
+    @JsonIgnore
     private List<ProfessorEntity> professors;
 
     public SubjectDto() {

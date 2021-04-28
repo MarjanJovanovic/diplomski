@@ -2,7 +2,6 @@ package it.engineering.marjanjovanovicbe.service;
 
 import it.engineering.marjanjovanovicbe.dto.StudentDto;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
-import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 
 import java.util.List;
