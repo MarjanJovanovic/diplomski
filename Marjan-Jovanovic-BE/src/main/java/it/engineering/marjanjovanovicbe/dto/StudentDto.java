@@ -1,5 +1,6 @@
 package it.engineering.marjanjovanovicbe.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.engineering.marjanjovanovicbe.entity.CityEntity;
 
 import java.util.List;
@@ -9,12 +10,13 @@ public class StudentDto extends PersonDto{
     private String indexNumber;
     private String indexYear;
     private Long currentYearOfStudy;
+    @JsonIgnore
     private List<ExamDto> exams;
 
     public StudentDto() {
     }
 
-    public StudentDto(Long id, String firstName, String lastName, String email, String address, CityEntity city, String indexNumber, String indexYear, Long currentYearOfStudy, List<ExamDto> exams) {
+    public StudentDto(Long id, String firstName, String lastName, String email, String address, CityDto city, String indexNumber, String indexYear, Long currentYearOfStudy, List<ExamDto> exams) {
         super(id, firstName, lastName, email, address, city);
         this.indexNumber = indexNumber;
         this.indexYear = indexYear;

@@ -11,18 +11,18 @@ import java.util.List;
 public class ExamDto implements MyDto{
 
     private Long id;
-    private ExamPeriodEntity examPeriodEntity;
-    private SubjectEntity subject;
-    private ProfessorEntity professor;
-    private List<StudentEntity> students;
+    private ExamPeriodDto examPeriodDto;
+    private SubjectDto subject;
+    private ProfessorDto professor;
+    private List<StudentDto> students;
     private LocalDate date;
 
     public ExamDto() {
     }
 
-    public ExamDto(Long id, ExamPeriodEntity examPeriodEntity, SubjectEntity subject, ProfessorEntity professor, List<StudentEntity> students, LocalDate date) {
+    public ExamDto(Long id, ExamPeriodDto examPeriodDto, SubjectDto subject, ProfessorDto professor, List<StudentDto> students, LocalDate date) {
         this.id = id;
-        this.examPeriodEntity = examPeriodEntity;
+        this.examPeriodDto = examPeriodDto;
         this.subject = subject;
         this.professor = professor;
         this.students = students;
@@ -37,35 +37,35 @@ public class ExamDto implements MyDto{
         this.id = id;
     }
 
-    public ExamPeriodEntity getExamPeriodEntity() {
-        return examPeriodEntity;
+    public ExamPeriodDto getExamPeriodDto() {
+        return examPeriodDto;
     }
 
-    public void setExamPeriodEntity(ExamPeriodEntity examPeriodEntity) {
-        this.examPeriodEntity = examPeriodEntity;
+    public void setExamPeriodDto(ExamPeriodDto examPeriodDto) {
+        this.examPeriodDto = examPeriodDto;
     }
 
-    public SubjectEntity getSubject() {
+    public SubjectDto getSubject() {
         return subject;
     }
 
-    public void setSubject(SubjectEntity subject) {
+    public void setSubject(SubjectDto subject) {
         this.subject = subject;
     }
 
-    public ProfessorEntity getProfessor() {
+    public ProfessorDto getProfessor() {
         return professor;
     }
 
-    public void setProfessor(ProfessorEntity professor) {
+    public void setProfessor(ProfessorDto professor) {
         this.professor = professor;
     }
 
-    public List<StudentEntity> getStudents() {
+    public List<StudentDto> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StudentEntity> students) {
+    public void setStudents(List<StudentDto> students) {
         this.students = students;
     }
 
@@ -81,7 +81,7 @@ public class ExamDto implements MyDto{
     public String toString() {
         return "ExamDto{" +
                 "id=" + id +
-                ", examPeriodEntity=" + examPeriodEntity +
+                ", examPeriodDto=" + examPeriodDto +
                 ", subject=" + subject +
                 ", professor=" + professor +
                 ", students=" + students +
@@ -97,7 +97,7 @@ public class ExamDto implements MyDto{
         ExamDto examDto = (ExamDto) o;
 
         if (id != null ? !id.equals(examDto.id) : examDto.id != null) return false;
-        if (examPeriodEntity != null ? !examPeriodEntity.equals(examDto.examPeriodEntity) : examDto.examPeriodEntity != null)
+        if (examPeriodDto != null ? !examPeriodDto.equals(examDto.examPeriodDto) : examDto.examPeriodDto != null)
             return false;
         if (subject != null ? !subject.equals(examDto.subject) : examDto.subject != null) return false;
         if (professor != null ? !professor.equals(examDto.professor) : examDto.professor != null) return false;
@@ -108,7 +108,7 @@ public class ExamDto implements MyDto{
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (examPeriodEntity != null ? examPeriodEntity.hashCode() : 0);
+        result = 31 * result + (examPeriodDto != null ? examPeriodDto.hashCode() : 0);
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (professor != null ? professor.hashCode() : 0);
         result = 31 * result + (students != null ? students.hashCode() : 0);

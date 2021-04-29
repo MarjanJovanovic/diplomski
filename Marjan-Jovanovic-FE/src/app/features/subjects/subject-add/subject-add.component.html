@@ -1,65 +1,62 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Id (disabled)</mat-label>
-    <input matInput disabled value="Id">
-  </mat-form-field>
-
+<form class="example-form" [formGroup]="subjectAddForm">
   <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
+    <tr class="stretched-row">
+      <td colspan="3">
         <mat-form-field class="example-full-width">
-          <mat-label>Name:</mat-label>
-          <input matInput>
+          <mat-label>Id (disabled)</mat-label>
+          <input matInput disabled value="Id" type="number">
         </mat-form-field>
       </td>
-      <!-- <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Long Last Name That Will Be Truncated</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </td> -->
     </tr>
-  </table>
-
-  <p>
-    <mat-form-field class="example-full-width">
-      <mat-label>Description</mat-label>
-      <textarea matInput placeholder=""></textarea>
-    </mat-form-field>
-    <!-- <mat-form-field class="example-full-width">
-      <mat-label>Address 2</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field> -->
-  </p>
-
-  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td colspan="3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name:</mat-label>
+          <input matInput formControlName="name" type="text" [maxLength]="30">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="" formControlName="description"></textarea>
+          </mat-form-field>
+        </p>
+      </td>
+    </tr>
     <tr>
       <td>
         <mat-form-field class="example-full-width">
           <mat-label>Year of study</mat-label>
-          <input matInput placeholder="Eg. 1, 2, 3...">
+          <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
         </mat-form-field>
       </td>
       <td>
         <mat-form-field class="example-full-width">
           <mat-label>Number of ESP</mat-label>
-          <input matInput placeholder="Eg. 1 - 9">
+          <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="fill">
           <mat-label>Choose one</mat-label>
-          <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
-            <mat-option>Clear</mat-option>
-            <mat-option value="valid">Valid option</mat-option>
-            <mat-option value="invalid">Invalid option</mat-option>
+          <mat-select formControlName="semester" [errorStateMatcher]="matcher">
+            <mat-option value="Summer">Summer</mat-option>
+            <mat-option value="Winter">Winter</mat-option>
           </mat-select>
-          <mat-hint>Errors appear instantly!</mat-hint>
-          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
-          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+          <mat-hint>Select a semester</mat-hint>
+          <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
             Your selection is invalid
           </mat-error>
         </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary">Save</button>
       </td>
     </tr>
   </table>

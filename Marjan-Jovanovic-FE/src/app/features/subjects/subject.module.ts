@@ -14,6 +14,7 @@ import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -32,7 +33,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSortModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}

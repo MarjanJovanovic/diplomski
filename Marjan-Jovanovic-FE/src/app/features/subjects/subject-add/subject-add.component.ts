@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 
@@ -17,31 +17,46 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SubjectAddComponent implements OnInit {
 
-  selected = new FormControl('valid', [
+  public subjectAddForm: FormGroup;
+
+  public name = new FormControl( [
+    Validators.required,
+  ]);
+
+  public semester = new FormControl('', [
+    Validators.required,
+  ]);
+
+  public selectFormControl = new FormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
 
-  selectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new FormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
 
-  nativeSelectFormControl = new FormControl('valid', [
-    Validators.required,
-    Validators.pattern('valid'),
-  ]);
-
-  emailFormControl = new FormControl('', [
+  public emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.subjectAddForm = this.formBuilder.group({
+      id: '',
+      name: '',
+      description: '',
+      noOfEsp: '',
+      yearOfStudy: '',
+      semester: ''
+    })
+
+    this.subjectAddForm.valueChanges.subscribe(console.log);
   }
 
 }

@@ -11,12 +11,12 @@ public abstract class PersonDto implements MyDto{
     private String lastName;
     private String email;
     private String address;
-    private CityEntity city;
+    private CityDto city;
 
     public PersonDto() {
     }
 
-    public PersonDto(Long id, String firstName, String lastName, String email, String address, CityEntity city) {
+    public PersonDto(Long id, String firstName, String lastName, String email, String address, CityDto city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,11 +65,11 @@ public abstract class PersonDto implements MyDto{
         this.address = address;
     }
 
-    public CityEntity getCity() {
+    public CityDto getCity() {
         return city;
     }
 
-    public void setCity(CityEntity city) {
+    public void setCity(CityDto city) {
         this.city = city;
     }
 

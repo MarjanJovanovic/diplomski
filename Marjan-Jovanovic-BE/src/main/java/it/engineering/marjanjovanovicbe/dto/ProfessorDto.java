@@ -1,8 +1,5 @@
 package it.engineering.marjanjovanovicbe.dto;
 
-import it.engineering.marjanjovanovicbe.entity.CityEntity;
-import it.engineering.marjanjovanovicbe.entity.SubjectEntity;
-import it.engineering.marjanjovanovicbe.entity.TitleEntity;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,13 +8,13 @@ public class ProfessorDto extends PersonDto{
 
     private String phone;
     private LocalDate reelectionDate;
-    private TitleEntity title;
-    private List<SubjectEntity> subjects;
+    private TitleDto title;
+    private List<SubjectDto> subjects;
 
     public ProfessorDto() {
     }
 
-    public ProfessorDto(Long id, String firstName, String lastName, String email, String address, CityEntity city, String phone, LocalDate reelectionDate, TitleEntity title, List<SubjectEntity> subjects) {
+    public ProfessorDto(Long id, String firstName, String lastName, String email, String address, CityDto city, String phone, LocalDate reelectionDate, TitleDto title, List<SubjectDto> subjects) {
         super(id, firstName, lastName, email, address, city);
         this.phone = phone;
         this.reelectionDate = reelectionDate;
@@ -41,19 +38,19 @@ public class ProfessorDto extends PersonDto{
         this.reelectionDate = reelectionDate;
     }
 
-    public TitleEntity getTitle() {
+    public TitleDto getTitle() {
         return title;
     }
 
-    public void setTitle(TitleEntity title) {
+    public void setTitle(TitleDto title) {
         this.title = title;
     }
 
-    public List<SubjectEntity> getSubjects() {
+    public List<SubjectDto> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(List<SubjectEntity> subjects) {
+    public void setSubjects(List<SubjectDto> subjects) {
         this.subjects = subjects;
     }
 

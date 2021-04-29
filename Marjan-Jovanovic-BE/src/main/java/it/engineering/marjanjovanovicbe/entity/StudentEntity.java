@@ -1,6 +1,8 @@
 package it.engineering.marjanjovanovicbe.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -14,7 +16,8 @@ public class StudentEntity extends PersonEntity implements Serializable {
     @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexNumber;
 
-    @Size(min = 2000, max = 2100)
+    @Min(2000)
+    @Max(2100)
     @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexYear;
 

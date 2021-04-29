@@ -1,7 +1,6 @@
 package it.engineering.marjanjovanovicbe.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.engineering.marjanjovanovicbe.entity.ProfessorEntity;
 import it.engineering.marjanjovanovicbe.util.Semester;
 
 import java.util.List;
@@ -12,20 +11,20 @@ public class SubjectDto implements MyDto {
     private String name;
     private String description;
     private Long noOfEsp;
-    private Long YearOfStudy;
+    private Long yearOfStudy;
     private Semester semester;
     @JsonIgnore
-    private List<ProfessorEntity> professors;
+    private List<ProfessorDto> professors;
 
     public SubjectDto() {
     }
 
-    public SubjectDto(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester, List<ProfessorEntity> professors) {
+    public SubjectDto(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester, List<ProfessorDto> professors) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.noOfEsp = noOfEsp;
-        YearOfStudy = yearOfStudy;
+        this.yearOfStudy = yearOfStudy;
         this.semester = semester;
         this.professors = professors;
     }
@@ -63,11 +62,11 @@ public class SubjectDto implements MyDto {
     }
 
     public Long getYearOfStudy() {
-        return YearOfStudy;
+        return yearOfStudy;
     }
 
     public void setYearOfStudy(Long yearOfStudy) {
-        YearOfStudy = yearOfStudy;
+        this.yearOfStudy = yearOfStudy;
     }
 
     public Semester getSemester() {
@@ -78,11 +77,11 @@ public class SubjectDto implements MyDto {
         this.semester = semester;
     }
 
-    public List<ProfessorEntity> getProfessors() {
+    public List<ProfessorDto> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(List<ProfessorEntity> professors) {
+    public void setProfessors(List<ProfessorDto> professors) {
         this.professors = professors;
     }
 
@@ -93,7 +92,7 @@ public class SubjectDto implements MyDto {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", noOfEsp=" + noOfEsp +
-                ", YearOfStudy=" + YearOfStudy +
+                ", YearOfStudy=" + yearOfStudy +
                 ", semester=" + semester +
                 ", professors=" + professors +
                 '}';
@@ -110,7 +109,7 @@ public class SubjectDto implements MyDto {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (noOfEsp != null ? !noOfEsp.equals(that.noOfEsp) : that.noOfEsp != null) return false;
-        if (YearOfStudy != null ? !YearOfStudy.equals(that.YearOfStudy) : that.YearOfStudy != null) return false;
+        if (yearOfStudy != null ? !yearOfStudy.equals(that.yearOfStudy) : that.yearOfStudy != null) return false;
         if (semester != that.semester) return false;
         return professors != null ? professors.equals(that.professors) : that.professors == null;
     }
@@ -121,7 +120,7 @@ public class SubjectDto implements MyDto {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (noOfEsp != null ? noOfEsp.hashCode() : 0);
-        result = 31 * result + (YearOfStudy != null ? YearOfStudy.hashCode() : 0);
+        result = 31 * result + (yearOfStudy != null ? yearOfStudy.hashCode() : 0);
         result = 31 * result + (semester != null ? semester.hashCode() : 0);
         result = 31 * result + (professors != null ? professors.hashCode() : 0);
         return result;
