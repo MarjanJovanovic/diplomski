@@ -1,6 +1,6 @@
 import { Professor } from "./professor.model";
 
-export interface Subject{
+export interface SubjectDto{
   id: number;
   name: string;
   description: string;

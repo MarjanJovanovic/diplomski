@@ -13,20 +13,18 @@ public class SubjectDto implements MyDto {
     private Long noOfEsp;
     private Long yearOfStudy;
     private Semester semester;
-    @JsonIgnore
-    private List<ProfessorDto> professors;
+
 
     public SubjectDto() {
     }
 
-    public SubjectDto(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester, List<ProfessorDto> professors) {
+    public SubjectDto(Long id, String name, String description, Long noOfEsp, Long yearOfStudy, Semester semester) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.noOfEsp = noOfEsp;
         this.yearOfStudy = yearOfStudy;
         this.semester = semester;
-        this.professors = professors;
     }
 
     public Long getId() {
@@ -77,13 +75,6 @@ public class SubjectDto implements MyDto {
         this.semester = semester;
     }
 
-    public List<ProfessorDto> getProfessors() {
-        return professors;
-    }
-
-    public void setProfessors(List<ProfessorDto> professors) {
-        this.professors = professors;
-    }
 
     @Override
     public String toString() {
@@ -94,35 +85,7 @@ public class SubjectDto implements MyDto {
                 ", noOfEsp=" + noOfEsp +
                 ", YearOfStudy=" + yearOfStudy +
                 ", semester=" + semester +
-                ", professors=" + professors +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SubjectDto)) return false;
-
-        SubjectDto that = (SubjectDto) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (noOfEsp != null ? !noOfEsp.equals(that.noOfEsp) : that.noOfEsp != null) return false;
-        if (yearOfStudy != null ? !yearOfStudy.equals(that.yearOfStudy) : that.yearOfStudy != null) return false;
-        if (semester != that.semester) return false;
-        return professors != null ? professors.equals(that.professors) : that.professors == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (noOfEsp != null ? noOfEsp.hashCode() : 0);
-        result = 31 * result + (yearOfStudy != null ? yearOfStudy.hashCode() : 0);
-        result = 31 * result + (semester != null ? semester.hashCode() : 0);
-        result = 31 * result + (professors != null ? professors.hashCode() : 0);
-        return result;
-    }
 }

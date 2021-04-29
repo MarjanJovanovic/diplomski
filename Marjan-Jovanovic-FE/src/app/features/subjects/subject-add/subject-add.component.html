@@ -1,63 +1,65 @@
-<form class="example-form" [formGroup]="subjectAddForm">
-  <table class="example-full-width" cellspacing="0">
-    <tr class="stretched-row">
-      <td colspan="3">
-        <mat-form-field class="example-full-width">
-          <mat-label>Id (disabled)</mat-label>
-          <input matInput disabled value="Id" type="number">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        <mat-form-field class="example-full-width">
-          <mat-label>Name:</mat-label>
-          <input matInput formControlName="name" type="text" [maxLength]="30">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        <p>
+<mat-dialog-content>
+  <form class="example-form" [formGroup]="subjectAddForm" (ngSubmit)="onSubmit()">
+    <table class="example-full-width" cellspacing="0">
+      <tr class="stretched-row">
+        <td colspan="3">
           <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="" formControlName="description"></textarea>
+            <mat-label>Id (disabled)</mat-label>
+            <input matInput disabled value="Id" type="number">
           </mat-form-field>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Year of study</mat-label>
-          <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Number of ESP</mat-label>
-          <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field appearance="fill">
-          <mat-label>Choose one</mat-label>
-          <mat-select formControlName="semester" [errorStateMatcher]="matcher">
-            <mat-option value="Summer">Summer</mat-option>
-            <mat-option value="Winter">Winter</mat-option>
-          </mat-select>
-          <mat-hint>Select a semester</mat-hint>
-          <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
-          <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
-            Your selection is invalid
-          </mat-error>
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button mat-raised-button color="primary">Save</button>
-      </td>
-    </tr>
-  </table>
-</form>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Name:</mat-label>
+            <input matInput formControlName="name" type="text" [maxLength]="30">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="" formControlName="description"></textarea>
+            </mat-form-field>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Year of study</mat-label>
+            <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Number of ESP</mat-label>
+            <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose one</mat-label>
+            <mat-select formControlName="semester" [errorStateMatcher]="matcher">
+              <mat-option value="Summer">Summer</mat-option>
+              <mat-option value="Winter">Winter</mat-option>
+            </mat-select>
+            <mat-hint>Select a semester</mat-hint>
+            <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" (click)='this.saveSubject()'>Save</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</mat-dialog-content>
