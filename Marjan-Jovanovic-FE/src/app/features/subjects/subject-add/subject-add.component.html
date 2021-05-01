@@ -1,19 +1,15 @@
 <mat-dialog-content>
-  <form class="example-form" [formGroup]="subjectAddForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{ this.title }}</h2>
+  <form class="subject-add" [formGroup]="subjectAddForm" (ngSubmit)="saveSubject()">
     <table class="example-full-width" cellspacing="0">
-      <tr class="stretched-row">
-        <td colspan="3">
-          <mat-form-field class="example-full-width">
-            <mat-label>Id (disabled)</mat-label>
-            <input matInput disabled value="Id" type="number">
-          </mat-form-field>
-        </td>
-      </tr>
       <tr>
         <td colspan="3">
           <mat-form-field class="example-full-width">
             <mat-label>Name:</mat-label>
-            <input matInput formControlName="name" type="text" [maxLength]="30">
+            <input matInput formControlName="name" type="text">
+            <mat-error *ngIf="name.invalid &&  name.touched">
+              Name is required
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -22,26 +18,26 @@
           <p>
             <mat-form-field class="example-full-width">
               <mat-label>Description</mat-label>
-              <textarea matInput placeholder="" formControlName="description"></textarea>
+              <textarea matInput placeholder="" w="description"></textarea>
             </mat-form-field>
           </p>
         </td>
       </tr>
       <tr>
         <td>
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="subject-add__year">
             <mat-label>Year of study</mat-label>
             <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="subject-add__esp">
             <mat-label>Number of ESP</mat-label>
             <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="standard" class="subject-add__semester">
             <mat-label>Choose one</mat-label>
             <mat-select formControlName="semester" [errorStateMatcher]="matcher">
               <mat-option value="Summer">Summer</mat-option>
@@ -55,11 +51,12 @@
           </mat-form-field>
         </td>
       </tr>
-      <tr>
-        <td>
-          <button mat-raised-button color="primary" (click)='this.saveSubject()'>Save</button>
-        </td>
-      </tr>
+
+
+
     </table>
+    <span class="subject-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
+        (click)='this.saveSubject()' [disabled]="subjectAddForm.invalid">Save</button>
+    </span>
   </form>
 </mat-dialog-content>

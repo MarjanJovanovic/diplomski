@@ -1,11 +1,13 @@
 package it.engineering.marjanjovanovicbe.controller;
 
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
+import it.engineering.marjanjovanovicbe.dto.SubjectDtoWithoutId;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
-import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,17 +33,23 @@ public class SubjectController {
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
+//    @GetMapping("/getAllFiltered")
+//    public ResponseEntity<List<SubjectDto>> getAll(
+//            @RequestParam(defaultValue = "0") int pageNo,
+//            @RequestParam(defaultValue = "2") int pageSize,
+//            @RequestParam(defaultValue = "name") String sortBy){
+//        List<SubjectDto> listSubjects = subjectService.getAll(pageNo, pageSize, sortBy);
+//        return ResponseEntity.status(HttpStatus.OK).body(listSubjects);
+//    }
+
     @GetMapping("/getAllFiltered")
-    public ResponseEntity<List<SubjectDto>> getAll(
-            @RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "2") int pageSize,
-            @RequestParam(defaultValue = "name") String sortBy){
-        List<SubjectDto> listSubjects = subjectService.getAll(pageNo, pageSize, sortBy);
-        return ResponseEntity.status(HttpStatus.OK).body(listSubjects);
+    public @ResponseBody ResponseEntity<Page<SubjectDto>> getByPage(Pageable pageable) {
+        System.out.println(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(subjectService.getAll(pageable));
     }
 
     @PostMapping("/save")
-    public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody SubjectDto subjectDto){
+    public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody SubjectDtoWithoutId subjectDto){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(subjectService.save(subjectDto));
         }catch (MyEntityAlreadyExistsException e){

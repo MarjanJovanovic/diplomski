@@ -3,7 +3,6 @@ package it.engineering.marjanjovanovicbe.entity;
 import it.engineering.marjanjovanovicbe.util.Semester;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class SubjectEntity {
     private Long noOfEsp;
 
     @Column(columnDefinition = "bigint(1)", nullable = false, unique = false)
-    private Long YearOfStudy;
+    private Long yearOfStudy;
 
     @Enumerated (EnumType.STRING)
     @Column(columnDefinition = "varchar(10)", nullable = false, unique = false)
@@ -44,7 +43,7 @@ public class SubjectEntity {
         this.name = name;
         this.description = description;
         this.noOfEsp = noOfEsp;
-        YearOfStudy = yearOfStudy;
+        this.yearOfStudy = yearOfStudy;
         this.semester = semester;
         this.professors = professors;
     }
@@ -82,11 +81,11 @@ public class SubjectEntity {
     }
 
     public Long getYearOfStudy() {
-        return YearOfStudy;
+        return yearOfStudy;
     }
 
     public void setYearOfStudy(Long yearOfStudy) {
-        YearOfStudy = yearOfStudy;
+        this.yearOfStudy = yearOfStudy;
     }
 
     public Semester getSemester() {
@@ -112,7 +111,7 @@ public class SubjectEntity {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", noOfEsp=" + noOfEsp +
-                ", YearOfStudy=" + YearOfStudy +
+                ", YearOfStudy=" + yearOfStudy +
                 ", semester=" + semester +
                 ", professors=" + professors +
                 '}';
@@ -129,7 +128,7 @@ public class SubjectEntity {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (noOfEsp != null ? !noOfEsp.equals(that.noOfEsp) : that.noOfEsp != null) return false;
-        if (YearOfStudy != null ? !YearOfStudy.equals(that.YearOfStudy) : that.YearOfStudy != null) return false;
+        if (yearOfStudy != null ? !yearOfStudy.equals(that.yearOfStudy) : that.yearOfStudy != null) return false;
         if (semester != that.semester) return false;
         return professors != null ? professors.equals(that.professors) : that.professors == null;
     }
@@ -140,7 +139,7 @@ public class SubjectEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (noOfEsp != null ? noOfEsp.hashCode() : 0);
-        result = 31 * result + (YearOfStudy != null ? YearOfStudy.hashCode() : 0);
+        result = 31 * result + (yearOfStudy != null ? yearOfStudy.hashCode() : 0);
         result = 31 * result + (semester != null ? semester.hashCode() : 0);
         result = 31 * result + (professors != null ? professors.hashCode() : 0);
         return result;

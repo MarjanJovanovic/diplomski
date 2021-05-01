@@ -11,6 +11,15 @@ table {
   margin: 2%;
 }
 
+.list-container__btn-add {
+  margin: 10px 0;
+  margin-left: auto;
+}
+
+.list-container__search {
+  width: 88%;
+}
+
 td,
 th {
   width: 25%;

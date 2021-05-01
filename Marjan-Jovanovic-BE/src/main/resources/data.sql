@@ -16,6 +16,24 @@ INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUE
 INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 2", "Description 2", 7, 1, "Summer");
 INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 3", "Description 3", 6, 2, "Winter");
 INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 4", "Description 4", 8, 2, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 5", "Description 5", 5, 4, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 6", "Description 6", 3, 2, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 7", "Description 7", 9, 8, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 8", "Description 8", 5, 7, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 9", "Description 9", 1, 9, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 10", "Description 10", 3,8 , "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 11", "Description 11", 8, 6, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 12", "Description 12", 6, 4, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 13", "Description 13", 5, 1, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 14", "Description 14", 8, 2, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 15", "Description 15", 9, 3, "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 16", "Description 16", 1, 1, "Winter");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 17", "Description 17", 2, 5, "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 18", "Description 18", 2, 7, "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 19", "Description 19", 3, 0, "Summer");
+INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUES ("Subject 20", "Description 20", 4, 5, "Winter");
+
+
 
 -- Table initialization: Student
 INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 1", "Studentkovic 1", "student1@student.com", "Student address 1", 11000, "1001", "2001", 1);

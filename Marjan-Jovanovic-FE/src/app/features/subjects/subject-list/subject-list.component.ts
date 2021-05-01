@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SubjectDto } from 'src/app/core/models/subject.model';
@@ -10,7 +10,6 @@ import { SubjectAddComponent } from '../subject-add/subject-add.component';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-
 export interface UserData {
   id: string;
   name: string;
@@ -18,47 +17,60 @@ export interface UserData {
   color: string;
 }
 
+const DISPLAYED_COLUMNS = [
+  'id',
+  'name',
+  'description',
+  'noOfEsp',
+  'yearOfStudy',
+  'semester',
+  'professors',
+  'editButton',
+  'deleteButton',
+];
+
 @Component({
   selector: 'app-subject-list',
   templateUrl: './subject-list.component.html',
-  styleUrls: ['./subject-list.component.css']
+  styleUrls: ['./subject-list.component.css'],
 })
 export class SubjectListComponent implements AfterViewInit {
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
 
-  subjects: SubjectDto[];
+  public pageNumber: number;
+  public pageSize: number;
+  public totalItems: number;
 
-  public displayedColumns: string[] = ['id', 'name', 'description', 'noOfEsp', 'yearOfStudy', 'semester', 'professors' , 'editButton', 'deleteButton'];
   public dataSource: MatTableDataSource<SubjectDto>;
+  public displayedColumns: string[] = DISPLAYED_COLUMNS;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  public destroy$: Subject<boolean> = new Subject();
 
-  destroy$: Subject<boolean> = new Subject();
-
-  constructor(private subjectService: SubjectService, public dialog: MatDialog) {
-
-
-  }
+  constructor(
+    private readonly subjectService: SubjectService,
+    public readonly dialog: MatDialog
+  ) {}
 
   ngAfterViewInit() {
-    // this.dataSource.sort = this.sort;
     this.fetchTableElements();
-
   }
 
-  fetchTableElements(){
-    this.subjectService.getAll()
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((res) => {
-      console.log(res);
-      this.subjects = res;
-      this.dataSource = new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource);
-    })
+  ngOnDestroy() {
+    this.destroy$.next(true);
   }
 
-  applyFilter(event: Event) {
+  public fetchTableElements(pageNumber: number = 0, pageSize = 5): void {
+    this.subjectService
+      .getByPage(pageNumber, pageSize)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this.totalItems = res.totalElements;
+        this.dataSource = new MatTableDataSource(res.content);
+      });
+  }
+
+  public applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -67,22 +79,65 @@ export class SubjectListComponent implements AfterViewInit {
     }
   }
 
-  openEditModel(subject: SubjectDto){
-    this.dialog.open(SubjectAddComponent, {
-      data: {
-        subject: subject,
-        // height: '400px',
-        // width: '1600px',
-      }
-    });
+  public openEditModel(subject: SubjectDto): void {
+    this.dialog
+      .open(SubjectAddComponent, {
+        data: {
+          subject: subject,
+          isEditMode: true,
+        },
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+          this.subjectService
+            .update(res.subject)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+              this.fetchTableElements();
+            });
+        }
+      });
   }
 
-  deleteSubject(subject: SubjectDto){
-    this.subjectService.delete(subject).subscribe((res)=>{console.log(res);
-    });
-    console.log('deleting...', subject);
-    this.fetchTableElements();
+  public deleteSubject(subject: SubjectDto): void {
+    this.subjectService
+      .delete(subject)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.fetchTableElements();
+      });
   }
 
+  public addSubject(): void {
+    this.dialog
+      .open(SubjectAddComponent, {
+        data: {
+          isEditModal: false,
+          subject: {
+            name: undefined,
+            description: null,
+            noOfEsp: null,
+            yearOfStudy: null,
+            semester: null,
+          },
+        },
+      })
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        if (res) {
+          this.subjectService.save(res.subject).subscribe(() => {
+            this.fetchTableElements();
+          });
+        }
+      });
+  }
+
+  public onPageChange(pageChangeEvent: PageEvent): void {
+    this.fetchTableElements(
+      pageChangeEvent.pageIndex,
+      pageChangeEvent.pageSize
+    );
+  }
 }
-

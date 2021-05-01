@@ -1,8 +1,12 @@
 <div class="list-container">
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
+  <div fxLayout="row">
+    <mat-form-field class="list-container__search">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="list-container__btn-add" (click)="this.addSubject()">+Add
+      Subject</button>
+  </div>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -70,6 +74,8 @@
       </tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageIndex]="this.pageNumber" [pageSize]="pageSize"
+      [length]="this.totalItems" (page)="this.onPageChange($event)">
+    </mat-paginator>
   </div>
 </div>

@@ -1,6 +1,6 @@
 package it.engineering.marjanjovanovicbe.dto;
 
-public class CityDto {
+public class CityDto implements MyDto{
 
     private Long postalCode;
     private String name;

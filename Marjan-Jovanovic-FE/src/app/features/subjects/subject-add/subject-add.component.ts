@@ -1,39 +1,56 @@
-import { Component, OnInit, Inject} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { SubjectService } from 'src/app/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { SubjectDto } from 'src/app/core/models/subject.model';
 
+interface SubjectModalData {
+  subject: SubjectDto;
+  isEditMode: Boolean;
+}
 
+const EDIT_TITLE = 'Edit Subject';
+const CREATE_TITLE = 'Add Subject';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }
 
 @Component({
   selector: 'app-subject-add',
   templateUrl: './subject-add.component.html',
-  styleUrls: ['./subject-add.component.css']
+  styleUrls: ['./subject-add.component.css'],
 })
 export class SubjectAddComponent implements OnInit {
-
-  destroy$: Subject<boolean> = new Subject();
-
+  public semester = new FormControl('', [Validators.required]);
+  public title: string;
 
   public subjectAddForm: FormGroup;
-
-  public name = new FormControl( [
-    Validators.required,
-  ]);
-
-  public semester = new FormControl('', [
-    Validators.required,
-  ]);
+  public destroy$: Subject<boolean> = new Subject();
 
   public selectFormControl = new FormControl('valid', [
     Validators.required,
@@ -52,54 +69,46 @@ export class SubjectAddComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private subjectService: SubjectService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: SubjectModalData
+  ) {}
 
   ngOnInit(): void {
-    this.subjectAddForm = this.formBuilder.group({
-      id: '0',
-      name: '',
-      description: '',
-      noOfEsp: '',
-      yearOfStudy: '',
-      semester: ''
-
-    })
     console.log(this.data);
 
-    this.subjectAddForm.valueChanges.subscribe(console.log);
+    this.title = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
+    this.subjectAddForm = this.formBuilder.group({
+      id: this.data.subject.id,
+      name: [
+        this.data.subject.name,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      description: this.data.subject.description,
+      noOfEsp: this.data.subject.noOfEsp,
+      yearOfStudy: this.data.subject.yearOfStudy,
+      semester: this.data.subject.semester,
+    });
+
+    console.log(this.name);
+  }
+
+  get name() {
+    return this.subjectAddForm.get('name');
   }
 
   ngOnDestroy() {
     this.destroy$.next(true);
   }
 
-  public saveSubject(){
-    console.log("saveSubject()");
-
-    try{
-      return this.subjectService.save(this.subjectAddForm.value);
-    }catch(error){
-      console.error(error);
-    }
+  public saveSubject() {
+    this.dialogRef.close({
+      subject: this.subjectAddForm.value,
+    });
   }
-
-  onSubmit() {
-    this.saveSubject()
-    .pipe(
-      takeUntil(this.destroy$)
-    )
-    .subscribe(
-      city => {
-        // this.toastService.show('City saved!', {header:'Saving city', classname: 'bg-success text-light'});
-        // this.router.navigate(['/subject/subject-list'])
-      },
-      error => {
-        // this.toastService.show('Subject is not saved: ' + (typeof error.error === 'string'? error.error : error.mesage ) , {header:'Saving subject', classname: 'bg-danger text-light'});
-      }
-
-    );
-  }
-
-
-
 }

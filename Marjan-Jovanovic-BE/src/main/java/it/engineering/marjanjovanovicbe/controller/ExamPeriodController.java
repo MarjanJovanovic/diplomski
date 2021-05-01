@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/examPeriod")
+@RequestMapping(path = "/exam-period")
 public class ExamPeriodController {
     private final ExamPeriodService examPeriodService;
 

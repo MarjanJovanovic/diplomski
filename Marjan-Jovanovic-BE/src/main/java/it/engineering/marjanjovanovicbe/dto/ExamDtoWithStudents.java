@@ -2,24 +2,27 @@ package it.engineering.marjanjovanovicbe.dto;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class ExamDto implements MyDto{
+public class ExamDtoWithStudents implements MyDto{
 
     private Long id;
     private ExamPeriodDto examPeriodDto;
     private SubjectDto subject;
     private ProfessorDto professor;
     private LocalDate date;
+    private List<StudentDto> students;
 
-    public ExamDto() {
+    public ExamDtoWithStudents() {
     }
 
-    public ExamDto(Long id, ExamPeriodDto examPeriodDto, SubjectDto subject, ProfessorDto professor, LocalDate date) {
+    public ExamDtoWithStudents(Long id, ExamPeriodDto examPeriodDto, SubjectDto subject, ProfessorDto professor, LocalDate date, List<StudentDto> students) {
         this.id = id;
         this.examPeriodDto = examPeriodDto;
         this.subject = subject;
         this.professor = professor;
         this.date = date;
+        this.students = students;
     }
 
     public Long getId() {
@@ -62,5 +65,11 @@ public class ExamDto implements MyDto{
         this.date = date;
     }
 
+    public List<StudentDto> getStudents() {
+        return students;
+    }
 
+    public void setStudents(List<StudentDto> students) {
+        this.students = students;
+    }
 }

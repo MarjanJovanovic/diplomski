@@ -1,23 +1,24 @@
 package it.engineering.marjanjovanovicbe.dto;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
-public class ProfessorDto extends PersonDto{
+public class ProfessorDtoWithSubjects extends PersonDto {
 
     private String phone;
     private LocalDate reelectionDate;
     private TitleDto title;
+    private List<SubjectDto> subjects;
 
-    public ProfessorDto() {
+    public ProfessorDtoWithSubjects() {
     }
 
-    public ProfessorDto(Long id, String firstName, String lastName, String email, String address, CityDto city, String phone, LocalDate reelectionDate, TitleDto title) {
+    public ProfessorDtoWithSubjects(Long id, String firstName, String lastName, String email, String address, CityDto city, String phone, LocalDate reelectionDate, TitleDto title, List<SubjectDto> subjects) {
         super(id, firstName, lastName, email, address, city);
         this.phone = phone;
         this.reelectionDate = reelectionDate;
         this.title = title;
+        this.subjects = subjects;
     }
 
     public String getPhone() {
@@ -42,5 +43,13 @@ public class ProfessorDto extends PersonDto{
 
     public void setTitle(TitleDto title) {
         this.title = title;
+    }
+
+    public List<SubjectDto> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<SubjectDto> subjects) {
+        this.subjects = subjects;
     }
 }
