@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.controller;
 
 import it.engineering.marjanjovanovicbe.dto.ProfessorDto;
+import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ProfessorService;
@@ -28,6 +29,15 @@ public class ProfessorController {
     ResponseEntity<List<ProfessorDto>> getAll() throws MyEntityNotFoundException {
         List<ProfessorDto> list = professorService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
+    @GetMapping("/findById{id}")
+    public @ResponseBody ResponseEntity<Object> get(@PathVariable Long id) {
+        Optional<ProfessorDto> professorDto = professorService.findById(id);
+        if (professorDto.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(professorDto.get());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid professor id!");
     }
 
     @GetMapping("/getAllFiltered")

@@ -18,4 +18,5 @@ public interface SubjectService {
     List<SubjectDto> getAll();
 //    List<SubjectDto> getAll(int pageNo, int pageSize, String sortBy);
     Page<SubjectDto> getAll(Pageable pageable);
+
 }

@@ -33,6 +33,15 @@ public class SubjectController {
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
+    @GetMapping("/findById{id}")
+    public @ResponseBody ResponseEntity<Object> get(@PathVariable Long id) {
+        Optional<SubjectDto> subjectDto = subjectService.findById(id);
+        if (subjectDto.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(subjectDto.get());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid subject id!");
+    }
+
 //    @GetMapping("/getAllFiltered")
 //    public ResponseEntity<List<SubjectDto>> getAll(
 //            @RequestParam(defaultValue = "0") int pageNo,
