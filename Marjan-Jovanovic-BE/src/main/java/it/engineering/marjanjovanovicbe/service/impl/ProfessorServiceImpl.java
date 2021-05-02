@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.service.impl;
 
 import it.engineering.marjanjovanovicbe.dto.ProfessorDto;
+import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.entity.ProfessorEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
@@ -83,17 +84,23 @@ public class ProfessorServiceImpl implements ProfessorService {
         }).collect(Collectors.toList());
     }
 
-    @Override
-    public List<ProfessorDto> getAll(int pageNo, int pageSize, String sortBy) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//    @Override
+//    public List<ProfessorDto> getAll(int pageNo, int pageSize, String sortBy) {
+//        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//
+//        Page<ProfessorEntity> pageResult = professorRepository.findAll(pageable);
+//        if (pageResult.hasContent()) {
+//            List<ProfessorEntity> professors = pageResult.getContent();
+//            return professors.stream().map(entity -> {
+//                return professorMapper.toDto(entity);
+//            }).collect(Collectors.toList());
+//        }
+//        return new ArrayList<ProfessorDto>();
+//    }
 
-        Page<ProfessorEntity> pageResult = professorRepository.findAll(pageable);
-        if (pageResult.hasContent()) {
-            List<ProfessorEntity> professors = pageResult.getContent();
-            return professors.stream().map(entity -> {
-                return professorMapper.toDto(entity);
-            }).collect(Collectors.toList());
-        }
-        return new ArrayList<ProfessorDto>();
+    @Override
+    public Page<ProfessorDto> getAll(Pageable pageable) {
+        Page<ProfessorDto> entites = professorRepository.findAll(pageable).map(professorMapper::toDto);
+        return entites;
     }
 }

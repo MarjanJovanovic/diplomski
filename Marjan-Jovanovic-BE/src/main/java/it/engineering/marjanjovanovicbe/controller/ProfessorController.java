@@ -6,6 +6,8 @@ import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +42,19 @@ public class ProfessorController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid professor id!");
     }
 
+//    @GetMapping("/getAllFiltered")
+//    public ResponseEntity<List<ProfessorDto>> getAll(
+//            @RequestParam(defaultValue = "0") int pageNo,
+//            @RequestParam(defaultValue = "2") int pageSize,
+//            @RequestParam(defaultValue = "firstName") String sortBy) {
+//        List<ProfessorDto> listProfessors = professorService.getAll(pageNo, pageSize, sortBy);
+//        return ResponseEntity.status(HttpStatus.OK).body(listProfessors);
+//    }
+
     @GetMapping("/getAllFiltered")
-    public ResponseEntity<List<ProfessorDto>> getAll(
-            @RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "2") int pageSize,
-            @RequestParam(defaultValue = "firstName") String sortBy) {
-        List<ProfessorDto> listProfessors = professorService.getAll(pageNo, pageSize, sortBy);
-        return ResponseEntity.status(HttpStatus.OK).body(listProfessors);
+    public @ResponseBody ResponseEntity<Page<ProfessorDto>> getByPage(Pageable pageable) {
+        System.out.println(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(professorService.getAll(pageable));
     }
 
     @PostMapping("/save")

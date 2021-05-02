@@ -3,45 +3,46 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SubjectDto } from 'src/app/core/models/subject.model';
-import { SubjectService } from 'src/app/core/service/subject.service';
 import { MatDialog } from '@angular/material/dialog';
-import { SubjectAddComponent } from '../subject-add/subject-add.component';
 import { takeUntil } from 'rxjs/operators';
+import { ProfessorDto } from 'src/app/core/models/professor.model';
 import { Subject } from 'rxjs';
-import { SubjectDetailsComponent } from '../subject-details/subject-details.component';
+import { ProfessorService } from 'src/app/core/service/professor.service';
+import { ProfessorDetailsComponent } from '../professor-details/professor-details.component';
+import { ProfessorAddComponent } from '../professor-add/professor-add.component';
 
 const DISPLAYED_COLUMNS = [
   'id',
-  'name',
-  'description',
-  'noOfEsp',
-  'yearOfStudy',
-  'semester',
-  'professors',
-  'infoButton',
-  'editButton',
-  'deleteButton',
+  'firstName',
+  'lastName',
+  'email',
+  'address',
+  'city',
+
+  'phone',
+  'reelectionDate',
+  'title',
+  'subjects',
 ];
 
 @Component({
-  selector: 'app-subject-list',
-  templateUrl: './subject-list.component.html',
-  styleUrls: ['./subject-list.component.css'],
+  selector: 'app-professor-list',
+  templateUrl: './professor-list.component.html',
+  styleUrls: ['./professor-list.component.css'],
 })
-export class SubjectListComponent implements AfterViewInit {
+export class ProfessorListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) public paginator: MatPaginator;
   @ViewChild(MatSort) public sort: MatSort;
 
   public totalItems: number;
 
-  public dataSource: MatTableDataSource<SubjectDto>;
+  public dataSource: MatTableDataSource<ProfessorDto>;
   public displayedColumns: string[] = DISPLAYED_COLUMNS;
 
   public destroy$: Subject<boolean> = new Subject();
 
   constructor(
-    private readonly subjectService: SubjectService,
+    private readonly professorService: ProfessorService,
     public readonly dialog: MatDialog
   ) {}
 
@@ -54,7 +55,7 @@ export class SubjectListComponent implements AfterViewInit {
   }
 
   public fetchTableElements(pageNumber: number = 0, pageSize = 5): void {
-    this.subjectService
+    this.professorService
       .getByPage(pageNumber, pageSize)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
@@ -72,27 +73,27 @@ export class SubjectListComponent implements AfterViewInit {
     }
   }
 
-  public openDetailsModal(subject: SubjectDto): void {
-    this.dialog.open(SubjectDetailsComponent, {
+  public openDetailsModal(professor: ProfessorDto): void {
+    this.dialog.open(ProfessorDetailsComponent, {
       data: {
-        subject: subject,
+        professor: professor,
       },
     });
   }
 
-  public openEditModel(subject: SubjectDto): void {
+  public openEditModel(professor: ProfessorDto): void {
     this.dialog
-      .open(SubjectAddComponent, {
+      .open(ProfessorAddComponent, {
         data: {
-          subject: subject,
+          professor: professor,
           isEditMode: true,
         },
       })
       .afterClosed()
       .subscribe((res) => {
         if (res) {
-          this.subjectService
-            .update(res.subject)
+          this.professorService
+            .update(res.professor)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
               this.fetchTableElements();
@@ -101,9 +102,9 @@ export class SubjectListComponent implements AfterViewInit {
       });
   }
 
-  public deleteSubject(subject: SubjectDto): void {
-    this.subjectService
-      .delete(subject)
+  public deleteSubject(professor: ProfessorDto): void {
+    this.professorService
+      .delete(professor)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.fetchTableElements(
@@ -115,15 +116,21 @@ export class SubjectListComponent implements AfterViewInit {
 
   public addSubject(): void {
     this.dialog
-      .open(SubjectAddComponent, {
+      .open(ProfessorAddComponent, {
         data: {
-          isEditModal: false,
-          subject: {
-            name: null,
-            description: null,
-            noOfEsp: null,
-            yearOfStudy: null,
-            semester: null,
+          isEditModal: false, //TODO
+          professor: {
+            id: 0,
+            firstName: null,
+            lastName: null,
+            email: null,
+            address: null,
+            city: null,
+
+            phone: null,
+            reelectionDate: null,
+            title: null,
+            subjects: null,
           },
         },
       })
@@ -131,7 +138,7 @@ export class SubjectListComponent implements AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         if (res) {
-          this.subjectService.save(res.subject).subscribe(() => {
+          this.professorService.save(res.professor).subscribe(() => {
             this.fetchTableElements();
           });
         }

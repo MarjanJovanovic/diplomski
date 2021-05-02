@@ -1,5 +1,3 @@
-import { Professor } from './professor.model';
-
 export interface SubjectDto {
   id: number;
   name: string;
