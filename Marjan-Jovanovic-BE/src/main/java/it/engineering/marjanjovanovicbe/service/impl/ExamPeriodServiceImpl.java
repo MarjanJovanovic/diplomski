@@ -103,16 +103,18 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
 
     }
 
+    //TODO: Cleanup
     @Override
     public boolean validateExamPeriodDates(ExamPeriodEntity examPeriodEntity){
         List<ExamPeriodEntity> timePeriod1 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
         System.out.println("findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual" + timePeriod1);
-        List<ExamPeriodEntity> timePeriod2 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByStartDateLessThanEqualAndEndDateLessThanEqual" + timePeriod2);
-        List<ExamPeriodEntity> timePeriod3 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByStartDateGreaterThanEqualAndEndDateGreaterThanEqual" + timePeriod3);
+        List<ExamPeriodEntity> timePeriod2 = examPeriodRepository.findAllByStartDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByStartDateBetween" + timePeriod2);
+        List<ExamPeriodEntity> timePeriod3 = examPeriodRepository.findAllByEndDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByEndDateBetween" + timePeriod3);
         List<ExamPeriodEntity> timePeriod4 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
         System.out.println("findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual" + timePeriod4);
-        return timePeriod1.isEmpty();
+        System.out.println((timePeriod1.isEmpty() && timePeriod2.isEmpty() && timePeriod3.isEmpty() && timePeriod4.isEmpty()));
+        return (timePeriod1.isEmpty() && timePeriod2.isEmpty() && timePeriod3.isEmpty() && timePeriod4.isEmpty());
     }
 }

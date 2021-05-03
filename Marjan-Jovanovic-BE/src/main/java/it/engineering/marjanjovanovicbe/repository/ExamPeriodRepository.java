@@ -11,20 +11,20 @@ import java.util.List;
 @Repository
 public interface ExamPeriodRepository extends JpaRepository<ExamPeriodEntity, Long> {
 
+    // between
     List<ExamPeriodEntity> findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(
             LocalDate examPeriodStart,
             LocalDate examPeriodEnd);
-    // between
-    List<ExamPeriodEntity> findAllByStartDateLessThanEqualAndEndDateLessThanEqual(
+    //first between, second after
+    List<ExamPeriodEntity> findAllByStartDateBetween(
             LocalDate examPeriodStart,
             LocalDate examPeriodEnd);
     //first before, second between
-    List<ExamPeriodEntity> findAllByStartDateGreaterThanEqualAndEndDateGreaterThanEqual(
-            LocalDate examPeriodStart,
-            LocalDate examPeriodEnd);
-    //first between, second after
-    List<ExamPeriodEntity> findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(
+    List<ExamPeriodEntity> findAllByEndDateBetween(
             LocalDate examPeriodStart,
             LocalDate examPeriodEnd);
     //around
+    List<ExamPeriodEntity> findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(
+            LocalDate examPeriodStart,
+            LocalDate examPeriodEnd);
 }
