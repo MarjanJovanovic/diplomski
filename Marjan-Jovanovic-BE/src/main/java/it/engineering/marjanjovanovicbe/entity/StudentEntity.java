@@ -13,14 +13,17 @@ import java.util.List;
 public class StudentEntity extends PersonEntity implements Serializable {
 
     @Size(min = 4, max = 4)
+    @NotNull
     @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexNumber;
 
     @Min(2000)
     @Max(2100)
+    @NotNull
     @Column(columnDefinition = "varchar(4)", nullable = false, unique = true)
     private String indexYear;
 
+    @NotNull
     @Column(columnDefinition = "bigint(7)", nullable = false, unique = false)
     private Long currentYearOfStudy;
 

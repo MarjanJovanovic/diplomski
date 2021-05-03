@@ -4,6 +4,7 @@ import it.engineering.marjanjovanovicbe.dto.ExamPeriodDto;
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.entity.ExamPeriodEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
+import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ExamPeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +55,14 @@ public class ExamPeriodController {
     public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody ExamPeriodDto examPeriodDto){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(examPeriodService.save(examPeriodDto));
-        }catch (MyEntityAlreadyExistsException e){
+        }catch (MyEntityAlreadyExistsException | MyEntityInvalidParamException e){
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error saving exam period entity: " + examPeriodDto);
         }
     }
 
     @PutMapping("/update")
-    public @ResponseBody ResponseEntity<ExamPeriodDto> update(@Valid @RequestBody ExamPeriodDto examPeriodDto) throws MyEntityNotFoundException{
+    public @ResponseBody ResponseEntity<ExamPeriodDto> update(@Valid @RequestBody ExamPeriodDto examPeriodDto) throws MyEntityNotFoundException, MyEntityInvalidParamException {
         Optional<ExamPeriodDto> examPeriod = examPeriodService.update(examPeriodDto);
         if (examPeriod.isPresent()){
             return ResponseEntity.status(HttpStatus.OK).body(examPeriod.get());

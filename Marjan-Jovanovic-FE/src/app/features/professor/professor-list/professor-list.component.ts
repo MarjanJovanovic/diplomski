@@ -114,7 +114,7 @@ export class ProfessorListComponent implements AfterViewInit {
       });
   }
 
-  public addSubject(): void {
+  public addProfessor(): void {
     this.dialog
       .open(ProfessorAddComponent, {
         data: {

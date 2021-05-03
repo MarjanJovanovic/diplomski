@@ -13,15 +13,19 @@ import java.util.List;
 public class ProfessorEntity extends PersonEntity implements Serializable {
 
     @Size(min = 9)
+    @NotNull
     @Column(columnDefinition = "varchar(15)", nullable = false, unique = false)
     private String phone;
 
+    @NotNull
     @Column(columnDefinition = "date", nullable = false, unique = false)
     private LocalDate reelectionDate;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "title_id")
     private TitleEntity title;
+
 
     @ManyToMany
     @JoinTable(name = "subject_professor", joinColumns = @JoinColumn(name = "professor_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))

@@ -13,10 +13,12 @@ public abstract class PersonEntity {
     private Long id;
 
     @Size(min = 3)
+    @NotNull
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String firstName;
 
     @Size(min = 3)
+    @NotNull
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String lastName;
 

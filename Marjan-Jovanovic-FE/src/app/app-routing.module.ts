@@ -9,7 +9,13 @@ import { SubjectModule } from './features/subjects/subject.module';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'subject', component: SubjectModule },
+  // { path: 'subject', component: SubjectModule },
+  {
+    path: 'subject',
+    loadChildren: () =>
+      import('./features/subjects/subject.module').then((m) => m.SubjectModule),
+  },
+  // { path: 'professor', component: ProfessorModule },
   {
     path: 'professor',
     loadChildren: () =>

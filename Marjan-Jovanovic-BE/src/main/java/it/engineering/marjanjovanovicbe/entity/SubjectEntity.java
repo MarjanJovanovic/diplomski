@@ -3,6 +3,7 @@ package it.engineering.marjanjovanovicbe.entity;
 import it.engineering.marjanjovanovicbe.util.Semester;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -15,18 +16,22 @@ public class SubjectEntity {
     private Long id;
 
     @Size(min = 3)
+    @NotNull
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = false)
     private String name;
 
     @Column(columnDefinition = "varchar(200)", nullable = true, unique = false)
     private String description;
 
+    @NotNull
     @Column(columnDefinition = "bigint(1)", nullable = false, unique = false)
     private Long noOfEsp;
 
+    @NotNull
     @Column(columnDefinition = "bigint(1)", nullable = false, unique = false)
     private Long yearOfStudy;
 
+    @NotNull
     @Enumerated (EnumType.STRING)
     @Column(columnDefinition = "varchar(10)", nullable = false, unique = false)
     private Semester semester;

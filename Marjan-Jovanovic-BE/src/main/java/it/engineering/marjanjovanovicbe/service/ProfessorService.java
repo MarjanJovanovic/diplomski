@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.service;
 
 import it.engineering.marjanjovanovicbe.dto.ProfessorDto;
+import it.engineering.marjanjovanovicbe.dto.ProfessorDtoWithSubjects;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,7 @@ import java.util.Optional;
 public interface ProfessorService {
     Optional<ProfessorDto> findById(Long professorId);
     ProfessorDto save(ProfessorDto professorDto) throws MyEntityAlreadyExistsException;
-    Optional<ProfessorDto> update(ProfessorDto professorDto) throws MyEntityNotFoundException;
+    Optional<ProfessorDtoWithSubjects> update(ProfessorDtoWithSubjects professorDto) throws MyEntityNotFoundException;
     void delete(Long professorId) throws MyEntityNotFoundException;
     List<ProfessorDto> getAll();
 //    List<ProfessorDto> getAll(int pageNo, int pageSize, String sortBy);

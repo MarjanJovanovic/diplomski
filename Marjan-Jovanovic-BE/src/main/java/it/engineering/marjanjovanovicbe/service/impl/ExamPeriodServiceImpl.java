@@ -3,6 +3,7 @@ package it.engineering.marjanjovanovicbe.service.impl;
 import it.engineering.marjanjovanovicbe.dto.ExamPeriodDto;
 import it.engineering.marjanjovanovicbe.entity.ExamPeriodEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
+import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.mapper.ExamPeriodMapper;
 import it.engineering.marjanjovanovicbe.repository.ExamPeriodRepository;
@@ -42,7 +43,11 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
     }
 
     @Override
-    public ExamPeriodDto save(ExamPeriodDto examPeriodDto) throws MyEntityAlreadyExistsException {
+    public ExamPeriodDto save(ExamPeriodDto examPeriodDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException {
+        System.out.println("Testing exam period" + examPeriodDto);
+        if (!(validateExamPeriodDates(examPeriodMapper.toEntity(examPeriodDto)))){
+            throw new MyEntityInvalidParamException("Exam period in the given time period already exists");
+        }
         Optional<ExamPeriodEntity> entity = examPeriodRepository.findById(examPeriodDto.getId());
         if (entity.isPresent()) {
             throw new MyEntityAlreadyExistsException("Exam period already exists: ", examPeriodMapper.toDto(entity.get()));
@@ -52,7 +57,10 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
     }
 
     @Override
-    public Optional<ExamPeriodDto> update(ExamPeriodDto examPeriodDto) throws MyEntityNotFoundException {
+    public Optional<ExamPeriodDto> update(ExamPeriodDto examPeriodDto) throws MyEntityNotFoundException, MyEntityInvalidParamException {
+        if (!(validateExamPeriodDates(examPeriodMapper.toEntity(examPeriodDto)))){
+            throw new MyEntityInvalidParamException("Exam period in the given time period already exists");
+        }
         Optional<ExamPeriodEntity> entity = examPeriodRepository.findById(examPeriodDto.getId());
         if (entity.isPresent()) {
             ExamPeriodEntity examPeriodEntity = examPeriodRepository.save(examPeriodMapper.toEntity(examPeriodDto));
@@ -93,5 +101,18 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
         }
         return new ArrayList<ExamPeriodDto>();
 
+    }
+
+    @Override
+    public boolean validateExamPeriodDates(ExamPeriodEntity examPeriodEntity){
+        List<ExamPeriodEntity> timePeriod1 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual" + timePeriod1);
+        List<ExamPeriodEntity> timePeriod2 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByStartDateLessThanEqualAndEndDateLessThanEqual" + timePeriod2);
+        List<ExamPeriodEntity> timePeriod3 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByStartDateGreaterThanEqualAndEndDateGreaterThanEqual" + timePeriod3);
+        List<ExamPeriodEntity> timePeriod4 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual" + timePeriod4);
+        return timePeriod1.isEmpty();
     }
 }

@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'professor-list', component: ProfessorListComponent },
   { path: 'professor-add', component: ProfessorAddComponent },
   { path: 'professor-details', component: ProfessorDetailsComponent },
+  { path: '', redirectTo: 'professor-list', pathMatch: 'full' },
 ];
 
 @NgModule({

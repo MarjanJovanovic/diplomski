@@ -11,9 +11,11 @@ import javax.validation.constraints.NotNull;
 public class CityEntity {
 
     @Id
+    @NotNull
     @Column(columnDefinition = "bigint(5)", nullable = false, unique = true)
     private Long postalCode;
 
+    @NotNull
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private String name;
 

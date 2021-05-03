@@ -18,7 +18,7 @@ const DISPLAYED_COLUMNS = [
   'noOfEsp',
   'yearOfStudy',
   'semester',
-  'professors',
+  // 'professors',
   'infoButton',
   'editButton',
   'deleteButton',

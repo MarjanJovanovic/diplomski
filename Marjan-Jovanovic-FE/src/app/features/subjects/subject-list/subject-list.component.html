@@ -1,5 +1,8 @@
 <div class="list-container">
   <div fxLayout="row">
+    <button class="back-button" mat-icon-button color="primary" routerLink="/home">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
     <mat-form-field class="list-container__search">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>

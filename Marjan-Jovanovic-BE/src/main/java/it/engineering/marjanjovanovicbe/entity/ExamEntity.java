@@ -1,6 +1,8 @@
 package it.engineering.marjanjovanovicbe.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,12 +14,15 @@ public class ExamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @ManyToOne
     private ExamPeriodEntity examPeriodEntity;
 
+    @NotNull
     @ManyToOne
     private SubjectEntity subject;
 
+    @NotNull
     @ManyToOne
     private ProfessorEntity professor; //Professor has to be working on the selected subject
 
@@ -25,6 +30,8 @@ public class ExamEntity {
     @JoinTable(name = "student_exam", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "exam_id"))
     private List<StudentEntity> students;
 
+    @NotNull
+    @FutureOrPresent
     private LocalDate date;
 
     public ExamEntity() {

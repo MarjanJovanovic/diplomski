@@ -1,11 +1,13 @@
 package it.engineering.marjanjovanovicbe.service.impl;
 
 import it.engineering.marjanjovanovicbe.dto.ProfessorDto;
+import it.engineering.marjanjovanovicbe.dto.ProfessorDtoWithSubjects;
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.entity.ProfessorEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.mapper.ProfessorMapper;
+import it.engineering.marjanjovanovicbe.mapper.ProfessorMapperWithSubjects;
 import it.engineering.marjanjovanovicbe.repository.ProfessorRepository;
 import it.engineering.marjanjovanovicbe.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,13 @@ import java.util.stream.Collectors;
 public class ProfessorServiceImpl implements ProfessorService {
     private ProfessorRepository professorRepository;
     private ProfessorMapper professorMapper;
+    private ProfessorMapperWithSubjects professorMapperWithSubjects;
 
     @Autowired
-    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper) {
+    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper, ProfessorMapperWithSubjects professorMapperWithSubjects) {
         this.professorRepository = professorRepository;
         this.professorMapper = professorMapper;
+        this.professorMapperWithSubjects = professorMapperWithSubjects;
     }
 
     @Override
@@ -54,11 +58,11 @@ public class ProfessorServiceImpl implements ProfessorService {
 
 
     @Override
-    public Optional<ProfessorDto> update(ProfessorDto professorDto) throws MyEntityNotFoundException {
+    public Optional<ProfessorDtoWithSubjects> update(ProfessorDtoWithSubjects professorDto) throws MyEntityNotFoundException {
         Optional<ProfessorEntity> entity = professorRepository.findById(professorDto.getId());
         if (entity.isPresent()) {
-            ProfessorEntity professorEntity = professorRepository.save(professorMapper.toEntity(professorDto));
-            return Optional.of(professorMapper.toDto(professorEntity));
+            ProfessorEntity professorEntity = professorRepository.save(professorMapperWithSubjects.toEntity(professorDto));
+            return Optional.of(professorMapperWithSubjects.toDto(professorEntity));
         } else {
             throw new MyEntityNotFoundException("Professor doesn't eexist!");
         }

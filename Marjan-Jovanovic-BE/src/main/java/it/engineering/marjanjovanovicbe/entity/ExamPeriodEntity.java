@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -11,12 +12,16 @@ public class ExamPeriodEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private LocalDate startDate;
 
+    @NotNull
     private LocalDate endDate;
 
+    @NotNull
     @Column(columnDefinition = "tinyInt(1) default 1")
     private boolean isActive;
 

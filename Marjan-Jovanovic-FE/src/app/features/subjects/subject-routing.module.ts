@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'subject-list', component: SubjectListComponent },
   { path: 'subject-add', component: SubjectAddComponent },
   { path: 'subject-details', component: SubjectDetailsComponent },
+  { path: '', redirectTo: 'subject-list', pathMatch: 'full' },
 ];
 
 @NgModule({

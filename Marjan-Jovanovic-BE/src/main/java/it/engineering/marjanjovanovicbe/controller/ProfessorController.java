@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.controller;
 
 import it.engineering.marjanjovanovicbe.dto.ProfessorDto;
+import it.engineering.marjanjovanovicbe.dto.ProfessorDtoWithSubjects;
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
@@ -70,8 +71,8 @@ public class ProfessorController {
 
     @PutMapping("/update")
     public @ResponseBody
-    ResponseEntity<ProfessorDto> update(@Valid @RequestBody ProfessorDto professorDto) throws MyEntityNotFoundException {
-        Optional<ProfessorDto> professor = professorService.update(professorDto);
+    ResponseEntity<ProfessorDtoWithSubjects> update(@Valid @RequestBody ProfessorDtoWithSubjects professorDto) throws MyEntityNotFoundException {
+        Optional<ProfessorDtoWithSubjects> professor = professorService.update(professorDto);
         if (professor.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(professor.get());
         } else {
