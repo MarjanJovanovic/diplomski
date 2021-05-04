@@ -1,8 +1,10 @@
 package it.engineering.marjanjovanovicbe.controller;
 
 import it.engineering.marjanjovanovicbe.dto.ExamDto;
+import it.engineering.marjanjovanovicbe.dto.ExamDtoSimple;
 import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
+import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +52,10 @@ public class ExamController {
     }
 
     @PostMapping("/save")
-    public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody ExamDto examDto){
+    public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody ExamDtoSimple examDto){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(examService.save(examDto));
-        }catch (MyEntityAlreadyExistsException e){
+        }catch (MyEntityAlreadyExistsException | MyEntityInvalidParamException e){
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error saving exam entity: " + examDto);
         }

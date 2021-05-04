@@ -27,4 +27,9 @@ public interface ExamPeriodRepository extends JpaRepository<ExamPeriodEntity, Lo
     List<ExamPeriodEntity> findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(
             LocalDate examPeriodStart,
             LocalDate examPeriodEnd);
+
+    //exams in exam period
+//    List<ExamPeriodEntity> findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(
+//            LocalDate date
+//    );
 }
