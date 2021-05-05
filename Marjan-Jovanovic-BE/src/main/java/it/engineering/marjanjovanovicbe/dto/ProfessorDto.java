@@ -1,8 +1,5 @@
 package it.engineering.marjanjovanovicbe.dto;
-
-
 import java.time.LocalDate;
-import java.util.List;
 
 public class ProfessorDto extends PersonDto{
 
@@ -42,5 +39,37 @@ public class ProfessorDto extends PersonDto{
 
     public void setTitle(TitleDto title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfessorDto{" +
+                "phone='" + phone + '\'' +
+                ", reelectionDate=" + reelectionDate +
+                ", title=" + title +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProfessorDto)) return false;
+        if (!super.equals(o)) return false;
+
+        ProfessorDto that = (ProfessorDto) o;
+
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+        if (reelectionDate != null ? !reelectionDate.equals(that.reelectionDate) : that.reelectionDate != null)
+            return false;
+        return title != null ? title.equals(that.title) : that.title == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (reelectionDate != null ? reelectionDate.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
     }
 }

@@ -62,5 +62,39 @@ public class ExamDto implements MyDto{
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "ExamDto{" +
+                "id=" + id +
+                ", examPeriodDto=" + examPeriodDto +
+                ", subject=" + subject +
+                ", professor=" + professor +
+                ", date=" + date +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ExamDto)) return false;
+
+        ExamDto examDto = (ExamDto) o;
+
+        if (id != null ? !id.equals(examDto.id) : examDto.id != null) return false;
+        if (examPeriodDto != null ? !examPeriodDto.equals(examDto.examPeriodDto) : examDto.examPeriodDto != null)
+            return false;
+        if (subject != null ? !subject.equals(examDto.subject) : examDto.subject != null) return false;
+        if (professor != null ? !professor.equals(examDto.professor) : examDto.professor != null) return false;
+        return date != null ? date.equals(examDto.date) : examDto.date == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (examPeriodDto != null ? examPeriodDto.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (professor != null ? professor.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        return result;
+    }
 }

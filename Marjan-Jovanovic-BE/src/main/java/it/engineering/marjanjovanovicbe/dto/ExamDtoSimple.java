@@ -72,4 +72,30 @@ public class ExamDtoSimple {
                 ", date=" + date +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ExamDtoSimple)) return false;
+
+
+        ExamDtoSimple that = (ExamDtoSimple) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (examPeriodDto != null ? !examPeriodDto.equals(that.examPeriodDto) : that.examPeriodDto != null)
+            return false;
+        if (subject != null ? !subject.equals(that.subject) : that.subject != null) return false;
+        if (professor != null ? !professor.equals(that.professor) : that.professor != null) return false;
+        return date != null ? date.equals(that.date) : that.date == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (examPeriodDto != null ? examPeriodDto.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (professor != null ? professor.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        return result;
+    }
 }

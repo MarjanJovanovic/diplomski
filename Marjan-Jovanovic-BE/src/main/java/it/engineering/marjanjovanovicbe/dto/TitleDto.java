@@ -5,22 +5,22 @@ import it.engineering.marjanjovanovicbe.util.TitleName;
 
 public class TitleDto {
 
-    private String id;
+    private Long id;
     private TitleName title;
 
     public TitleDto() {
     }
 
-    public TitleDto(String id, TitleName title) {
+    public TitleDto(Long id, TitleName title) {
         this.id = id;
         this.title = title;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,7 +35,7 @@ public class TitleDto {
     @Override
     public String toString() {
         return "TitleDto{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", title=" + title +
                 '}';
     }

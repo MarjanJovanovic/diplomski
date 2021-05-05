@@ -1,13 +1,12 @@
 package it.engineering.marjanjovanovicbe.dto;
 
-public class ProfessorDtoSimple {
-
+public class ExamDtoIdOnly implements MyDto{
     private Long id;
 
-    public ProfessorDtoSimple() {
+    public ExamDtoIdOnly() {
     }
 
-    public ProfessorDtoSimple(Long id) {
+    public ExamDtoIdOnly(Long id) {
         this.id = id;
     }
 
@@ -21,7 +20,7 @@ public class ProfessorDtoSimple {
 
     @Override
     public String toString() {
-        return "ProfessorDtoSimple{" +
+        return "ExamDtoIdOnly{" +
                 "id=" + id +
                 '}';
     }
@@ -29,9 +28,9 @@ public class ProfessorDtoSimple {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProfessorDtoSimple)) return false;
+        if (!(o instanceof ExamDtoIdOnly)) return false;
 
-        ProfessorDtoSimple that = (ProfessorDtoSimple) o;
+        ExamDtoIdOnly that = (ExamDtoIdOnly) o;
 
         return id != null ? id.equals(that.id) : that.id == null;
     }

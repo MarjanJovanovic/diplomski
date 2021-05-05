@@ -52,4 +52,39 @@ public class ProfessorDtoWithSubjects extends PersonDto {
     public void setSubjects(List<SubjectDto> subjects) {
         this.subjects = subjects;
     }
+
+    @Override
+    public String toString() {
+        return "ProfessorDtoWithSubjects{" +
+                "phone='" + phone + '\'' +
+                ", reelectionDate=" + reelectionDate +
+                ", title=" + title +
+                ", subjects=" + subjects +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProfessorDtoWithSubjects)) return false;
+        if (!super.equals(o)) return false;
+
+        ProfessorDtoWithSubjects that = (ProfessorDtoWithSubjects) o;
+
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+        if (reelectionDate != null ? !reelectionDate.equals(that.reelectionDate) : that.reelectionDate != null)
+            return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        return subjects != null ? subjects.equals(that.subjects) : that.subjects == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (reelectionDate != null ? reelectionDate.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (subjects != null ? subjects.hashCode() : 0);
+        return result;
+    }
 }

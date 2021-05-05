@@ -72,4 +72,45 @@ public class ExamDtoWithAll implements MyDto {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "ExamDtoWithAll{" +
+                "id=" + id +
+                ", examPeriodDto=" + examPeriodDto +
+                ", subject=" + subject +
+                ", professor=" + professor +
+                ", students=" + students +
+                ", date=" + date +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ExamDtoWithAll)) return false;
+
+        ExamDtoWithAll that = (ExamDtoWithAll) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (examPeriodDto != null ? !examPeriodDto.equals(that.examPeriodDto) : that.examPeriodDto != null)
+            return false;
+        if (subject != null ? !subject.equals(that.subject) : that.subject != null) return false;
+        if (professor != null ? !professor.equals(that.professor) : that.professor != null) return false;
+        if (students != null ? !students.equals(that.students) : that.students != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (examPeriodDto != null ? examPeriodDto.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (professor != null ? professor.hashCode() : 0);
+        result = 31 * result + (students != null ? students.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        return result;
+    }
 }

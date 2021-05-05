@@ -16,6 +16,10 @@ public abstract class PersonDto implements MyDto{
     public PersonDto() {
     }
 
+    public PersonDto(Long id){
+        this.id = id;
+    }
+
     public PersonDto(Long id, String firstName, String lastName, String email, String address, CityDto city) {
         this.id = id;
         this.firstName = firstName;

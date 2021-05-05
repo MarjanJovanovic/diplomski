@@ -13,7 +13,7 @@ public class TitleEntity {
     @Id
     @Column(columnDefinition = "bigint(7)", nullable = false, unique = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -23,16 +23,16 @@ public class TitleEntity {
     public TitleEntity() {
     }
 
-    public TitleEntity(String id, TitleName title) {
+    public TitleEntity(Long id, TitleName title) {
         this.id = id;
         this.title = title;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,7 +47,7 @@ public class TitleEntity {
     @Override
     public String toString() {
         return "TitleEntity{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", title=" + title +
                 '}';
     }

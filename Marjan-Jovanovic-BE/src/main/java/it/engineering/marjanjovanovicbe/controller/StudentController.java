@@ -1,7 +1,9 @@
 package it.engineering.marjanjovanovicbe.controller;
 
+import it.engineering.marjanjovanovicbe.dto.ExamDtoIdOnly;
+import it.engineering.marjanjovanovicbe.dto.ExamDtoSimple;
 import it.engineering.marjanjovanovicbe.dto.StudentDto;
-import it.engineering.marjanjovanovicbe.dto.SubjectDto;
+import it.engineering.marjanjovanovicbe.dto.StudentDtoWithExamRegistration;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.StudentService;
@@ -76,6 +78,17 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.OK).body("Deleted student with id: " + studentId);
         } catch (MyEntityNotFoundException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/registerExams")
+    public @ResponseBody ResponseEntity<Object> registerExam(@RequestBody StudentDtoWithExamRegistration studentDtoWithExamRegistration){
+        try{
+            System.out.println("trying to reg");
+            return ResponseEntity.status(HttpStatus.OK).body(studentService.registerExam(studentDtoWithExamRegistration));
+        }catch (MyEntityNotFoundException e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error saving student entity: " + studentDtoWithExamRegistration);
         }
     }
 

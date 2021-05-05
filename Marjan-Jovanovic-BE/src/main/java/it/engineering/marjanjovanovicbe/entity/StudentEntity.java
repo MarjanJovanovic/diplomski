@@ -28,7 +28,7 @@ public class StudentEntity extends PersonEntity implements Serializable {
     private Long currentYearOfStudy;
 
     @ManyToMany
-    @JoinTable(name = "student_exam", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @JoinTable(name = "student_exam", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "exam_id"))
     private List<ExamEntity> exams;
 
     public StudentEntity() {

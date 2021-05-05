@@ -44,4 +44,35 @@ public class StudentDto extends PersonDto{
     public void setCurrentYearOfStudy(Long currentYearOfStudy) {
         this.currentYearOfStudy = currentYearOfStudy;
     }
+
+    @Override
+    public String toString() {
+        return "StudentDto{" +
+                "indexNumber='" + indexNumber + '\'' +
+                ", indexYear='" + indexYear + '\'' +
+                ", currentYearOfStudy=" + currentYearOfStudy +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StudentDto)) return false;
+        if (!super.equals(o)) return false;
+
+        StudentDto that = (StudentDto) o;
+
+        if (indexNumber != null ? !indexNumber.equals(that.indexNumber) : that.indexNumber != null) return false;
+        if (indexYear != null ? !indexYear.equals(that.indexYear) : that.indexYear != null) return false;
+        return currentYearOfStudy != null ? currentYearOfStudy.equals(that.currentYearOfStudy) : that.currentYearOfStudy == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (indexNumber != null ? indexNumber.hashCode() : 0);
+        result = 31 * result + (indexYear != null ? indexYear.hashCode() : 0);
+        result = 31 * result + (currentYearOfStudy != null ? currentYearOfStudy.hashCode() : 0);
+        return result;
+    }
 }

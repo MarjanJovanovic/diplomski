@@ -59,7 +59,7 @@ public class ExamServiceImpl implements ExamService {
     @Override
     public ExamDto save(ExamDtoSimple examDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException {
         Optional<ExamEntity> entity = examRepository.findById(examDto.getId());
-        if (entity.isPresent()) { //TODO: check if exam already exists within examPeriod
+        if (entity.isPresent() || examPeriodRepository.findById(examDto.getExamPeriodDto().getId()).isPresent() ) { //TODO: check if exam already exists within examPeriod
             throw new MyEntityAlreadyExistsException("Exam already exists: ", examMapper.toDto(entity.get()));
         }
         if (!(validateExam(examDto))) {
