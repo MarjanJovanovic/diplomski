@@ -8,6 +8,8 @@ import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ExamPeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,13 +44,19 @@ public class ExamPeriodController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid exam period id!");
     }
 
+//    @GetMapping("/getAllFiltered")
+//    public ResponseEntity<List<ExamPeriodDto>> getAll(
+//            @RequestParam(defaultValue = "0") int pageNo,
+//            @RequestParam(defaultValue = "2") int pageSize,
+//            @RequestParam(defaultValue = "name") String sortBy){
+//        List<ExamPeriodDto> listExamPeriod = examPeriodService.getAll(pageNo, pageSize, sortBy);
+//        return ResponseEntity.status(HttpStatus.OK).body(listExamPeriod);
+//    }
+
     @GetMapping("/getAllFiltered")
-    public ResponseEntity<List<ExamPeriodDto>> getAll(
-            @RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "2") int pageSize,
-            @RequestParam(defaultValue = "name") String sortBy){
-        List<ExamPeriodDto> listExamPeriod = examPeriodService.getAll(pageNo, pageSize, sortBy);
-        return ResponseEntity.status(HttpStatus.OK).body(listExamPeriod);
+    public @ResponseBody ResponseEntity<Page<ExamPeriodDto>> getByPage(Pageable pageable) {
+        System.out.println(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(examPeriodService.getAll(pageable));
     }
 
     @PostMapping("/save")

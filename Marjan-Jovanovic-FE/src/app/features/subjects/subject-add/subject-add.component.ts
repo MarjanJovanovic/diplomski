@@ -90,9 +90,9 @@ export class SubjectAddComponent implements OnInit {
         ],
       ],
       description: this.data.subject.description,
-      noOfEsp: this.data.subject.noOfEsp,
-      yearOfStudy: this.data.subject.yearOfStudy,
-      semester: this.data.subject.semester,
+      noOfEsp: [this.data.subject.noOfEsp, [Validators.required]],
+      yearOfStudy: [this.data.subject.yearOfStudy, [Validators.required]],
+      semester: [this.data.subject.semester, [Validators.required]],
     });
 
     console.log(this.name);

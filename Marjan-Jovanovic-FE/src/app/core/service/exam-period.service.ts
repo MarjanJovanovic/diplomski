@@ -8,7 +8,7 @@ import { Page } from '../models/page.dto';
   providedIn: 'root',
 })
 export class ExamPeriodService {
-  controllerPrefix = 'examPeriod';
+  controllerPrefix = 'exam-period';
 
   constructor(private httpClient: HttpClient) {}
 

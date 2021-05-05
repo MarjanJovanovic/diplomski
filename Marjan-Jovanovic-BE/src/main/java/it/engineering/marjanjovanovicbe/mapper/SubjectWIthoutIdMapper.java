@@ -8,9 +8,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface SubjectWIthoutIdMapper {
 
-    //    @Mapping(target = "professors", ignore = true)
     SubjectDtoWithoutId toDto(SubjectEntity entity);
-
-    //    @Mapping(target = "professors", ignore = true)
     SubjectEntity toEntity(SubjectDtoWithoutId dto);
 }

@@ -81,7 +81,7 @@ export class ProfessorAddComponent implements OnInit {
     this.title = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
     this.professorAddForm = this.formBuilder.group({
       id: this.data.professor.id,
-      name: [
+      firstName: [
         this.data.professor.firstName,
         [
           Validators.required,
@@ -89,7 +89,14 @@ export class ProfessorAddComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      lastName: this.data.professor.lastName,
+      lastName: [
+        this.data.professor.lastName,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       email: this.data.professor.email,
       address: this.data.professor.address,
       city: this.data.professor.city,
@@ -99,11 +106,15 @@ export class ProfessorAddComponent implements OnInit {
       subjects: this.data.professor.subjects,
     });
 
-    console.log(this.name);
+    console.log(this.firstName);
   }
 
-  get name() {
+  get firstName() {
     return this.professorAddForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.professorAddForm.get('lastName');
   }
 
   ngOnDestroy() {

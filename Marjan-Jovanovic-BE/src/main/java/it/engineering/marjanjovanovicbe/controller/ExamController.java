@@ -8,6 +8,8 @@ import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityNotFoundException;
 import it.engineering.marjanjovanovicbe.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,13 +44,19 @@ public class ExamController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid exam id!");
     }
 
+//    @GetMapping("/getAllFiltered")
+//    public ResponseEntity<List<ExamDto>> getAll(
+//            @RequestParam(defaultValue = "0") int pageNo,
+//            @RequestParam(defaultValue = "2") int pageSize,
+//            @RequestParam(defaultValue = "name") String sortBy){
+//        List<ExamDto> exams = examService.getAll(pageNo, pageSize, sortBy);
+//        return ResponseEntity.status(HttpStatus.OK).body(exams);
+//    }
+
     @GetMapping("/getAllFiltered")
-    public ResponseEntity<List<ExamDto>> getAll(
-            @RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "2") int pageSize,
-            @RequestParam(defaultValue = "name") String sortBy){
-        List<ExamDto> exams = examService.getAll(pageNo, pageSize, sortBy);
-        return ResponseEntity.status(HttpStatus.OK).body(exams);
+    public @ResponseBody ResponseEntity<Page<ExamDto>> getByPage(Pageable pageable) {
+        System.out.println(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(examService.getAll(pageable));
     }
 
     @PostMapping("/save")

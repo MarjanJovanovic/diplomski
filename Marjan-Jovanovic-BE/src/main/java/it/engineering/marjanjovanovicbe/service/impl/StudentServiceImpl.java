@@ -1,9 +1,6 @@
 package it.engineering.marjanjovanovicbe.service.impl;
 
-import it.engineering.marjanjovanovicbe.dto.ExamDto;
-import it.engineering.marjanjovanovicbe.dto.ExamDtoIdOnly;
-import it.engineering.marjanjovanovicbe.dto.StudentDto;
-import it.engineering.marjanjovanovicbe.dto.StudentDtoWithExamRegistration;
+import it.engineering.marjanjovanovicbe.dto.*;
 import it.engineering.marjanjovanovicbe.entity.ExamEntity;
 import it.engineering.marjanjovanovicbe.entity.StudentEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
@@ -91,44 +88,44 @@ public class StudentServiceImpl implements StudentService {
         }).collect(Collectors.toList());
     }
 
-    @Override
-    public List<StudentDto> getAll(int pageNo, int pageSize, String sortBy) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//    @Override
+//    public List<StudentDto> getAll(int pageNo, int pageSize, String sortBy) {
+//        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//
+//        Page<StudentEntity> pageResult = studentRepository.findAll(pageable);
+//        if (pageResult.hasContent()) {
+//            List<StudentEntity> subjects = pageResult.getContent();
+//            return subjects.stream().map(entity -> {
+//                return studentMapper.toDto(entity);
+//            }).collect(Collectors.toList());
+//        }
+//        return new ArrayList<StudentDto>();
+//    }
 
-        Page<StudentEntity> pageResult = studentRepository.findAll(pageable);
-        if (pageResult.hasContent()) {
-            List<StudentEntity> subjects = pageResult.getContent();
-            return subjects.stream().map(entity -> {
-                return studentMapper.toDto(entity);
-            }).collect(Collectors.toList());
-        }
-        return new ArrayList<StudentDto>();
+    @Override
+    public Page<StudentDto> getAll(Pageable pageable) {
+        return studentRepository.findAll(pageable).map(studentMapper::toDto);
     }
 
     @Override
     public StudentDtoWithExamRegistration registerExam(StudentDtoWithExamRegistration studentDtoWithExamRegistration) throws MyEntityNotFoundException {
-//        StudentDtoWithExamRegistration studentDtoWithExamRegistration = new StudentDtoWithExamRegistration(0L, indexStudent, examDtoIdOnly);
-//        validateStudentExamRegistration(studentDto);
-        System.out.println("Dto:" + studentDtoWithExamRegistration);
+        validateStudentExamRegistration(studentDtoWithExamRegistration);
         StudentEntity studentEntity = studentRepository.findById(studentDtoWithExamRegistration.getId()).orElse(null);
-        System.out.println("Entity: " + studentEntity);
         studentEntity.setExams(studentDtoWithExamRegistrationMapper.toEntity(studentDtoWithExamRegistration).getExams());
-        System.out.println("Entity after saving" + studentEntity);
-//      StudentEntity studentEntity = studentRepository.save(studentDtoWithExamRegistrationMapper.toEntity(studentDtoWithExamRegistration));
         return studentDtoWithExamRegistrationMapper.toDto(studentEntity);
     }
 
-//    public boolean validateStudentExamRegistration(StudentDtoWithExamRegistration studentDto) throws MyEntityNotFoundException {
-//        Optional<StudentEntity> studentEntity = studentRepository.findById(studentDto.getId());
-//        if (!(studentEntity.isPresent())) {
-//            throw new MyEntityNotFoundException("Student doesn't exist!");
-//        }
-//        for (ExamDto element : studentDto.getExams()) {
-//            Optional<ExamEntity> entity = examRepository.findById(element.getId());
-//            if (!(entity.isPresent())) {
-//                throw new MyEntityNotFoundException("Exam doesn't exist!");
-//            }
-//        }
-//        return true;
-//    }
+    public boolean validateStudentExamRegistration(StudentDtoWithExamRegistration studentDto) throws MyEntityNotFoundException {
+        Optional<StudentEntity> studentEntity = studentRepository.findById(studentDto.getId());
+        if (!(studentEntity.isPresent())) {
+            throw new MyEntityNotFoundException("Student doesn't exist!");
+        }
+        for (ExamDtoIdOnly element : studentDto.getExams()) {
+            Optional<ExamEntity> entity = examRepository.findById(element.getId());
+            if (!(entity.isPresent())) {
+                throw new MyEntityNotFoundException("Exam doesn't exist!");
+            }
+        }
+        return true;
+    }
 }

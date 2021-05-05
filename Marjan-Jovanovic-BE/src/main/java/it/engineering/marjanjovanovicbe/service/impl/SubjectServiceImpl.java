@@ -44,10 +44,6 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public SubjectDto save(SubjectDtoWithoutId subjectDto) throws MyEntityAlreadyExistsException {
-//        Optional<SubjectEntity> entity = subjectRepository.findById(subjectDto.getId());
-//        if (entity.isPresent()){
-//            throw new MyEntityAlreadyExistsException("Subject already exists: ", subjectMapper.toDto(entity.get()));
-//        }
         SubjectEntity subjectEntity = subjectRepository.save(subjectWIthoutIdMapper.toEntity(subjectDto));
         return subjectMapper.toDto(subjectEntity);
     }
@@ -97,7 +93,6 @@ public class SubjectServiceImpl implements SubjectService {
 //    }
     @Override
     public Page<SubjectDto> getAll(Pageable pageable) {
-        Page<SubjectDto> entites = subjectRepository.findAll(pageable).map(subjectMapper::toDto);
-        return entites;
+        return subjectRepository.findAll(pageable).map(subjectMapper::toDto);
     }
 }

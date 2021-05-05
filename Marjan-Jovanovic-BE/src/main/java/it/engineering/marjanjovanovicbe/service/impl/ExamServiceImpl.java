@@ -100,18 +100,23 @@ public class ExamServiceImpl implements ExamService {
         }).collect(Collectors.toList());
     }
 
-    @Override
-    public List<ExamDto> getAll(int pageNo, int pageSize, String sortBy) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//    @Override
+//    public List<ExamDto> getAll(int pageNo, int pageSize, String sortBy) {
+//        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//
+//        Page<ExamEntity> pageResult = examRepository.findAll(pageable);
+//        if (pageResult.hasContent()) {
+//            List<ExamEntity> exams = pageResult.getContent();
+//            return exams.stream().map(entity -> {
+//                return examMapper.toDto(entity);
+//            }).collect(Collectors.toList());
+//        }
+//        return new ArrayList<ExamDto>();
+//    }
 
-        Page<ExamEntity> pageResult = examRepository.findAll(pageable);
-        if (pageResult.hasContent()) {
-            List<ExamEntity> exams = pageResult.getContent();
-            return exams.stream().map(entity -> {
-                return examMapper.toDto(entity);
-            }).collect(Collectors.toList());
-        }
-        return new ArrayList<ExamDto>();
+    @Override
+    public Page<ExamDto> getAll(Pageable pageable) {
+        return examRepository.findAll(pageable).map(examMapper::toDto);
     }
 
     //

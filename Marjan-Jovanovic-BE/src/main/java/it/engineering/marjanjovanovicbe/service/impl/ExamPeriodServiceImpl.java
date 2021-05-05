@@ -1,6 +1,7 @@
 package it.engineering.marjanjovanovicbe.service.impl;
 
 import it.engineering.marjanjovanovicbe.dto.ExamPeriodDto;
+import it.engineering.marjanjovanovicbe.dto.SubjectDto;
 import it.engineering.marjanjovanovicbe.entity.ExamPeriodEntity;
 import it.engineering.marjanjovanovicbe.exception.MyEntityAlreadyExistsException;
 import it.engineering.marjanjovanovicbe.exception.MyEntityInvalidParamException;
@@ -88,33 +89,32 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
         }).collect(Collectors.toList());
     }
 
+//    @Override
+//    public List<ExamPeriodDto> getAll(int pageNo, int pageSize, String sortBy) {
+//        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//
+//        Page<ExamPeriodEntity> pageResult = examPeriodRepository.findAll(pageable);
+//        if (pageResult.hasContent()) {
+//            List<ExamPeriodEntity> examPeriods = pageResult.getContent();
+//            return examPeriods.stream().map(entity -> {
+//                return examPeriodMapper.toDto(entity);
+//            }).collect(Collectors.toList());
+//        }
+//        return new ArrayList<ExamPeriodDto>();
+//    }
+
     @Override
-    public List<ExamPeriodDto> getAll(int pageNo, int pageSize, String sortBy) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-
-        Page<ExamPeriodEntity> pageResult = examPeriodRepository.findAll(pageable);
-        if (pageResult.hasContent()) {
-            List<ExamPeriodEntity> examPeriods = pageResult.getContent();
-            return examPeriods.stream().map(entity -> {
-                return examPeriodMapper.toDto(entity);
-            }).collect(Collectors.toList());
-        }
-        return new ArrayList<ExamPeriodDto>();
-
+    public Page<ExamPeriodDto> getAll(Pageable pageable) {
+        return examPeriodRepository.findAll(pageable).map(examPeriodMapper::toDto);
     }
 
     //TODO: Cleanup
     @Override
     public boolean validateExamPeriodDates(ExamPeriodEntity examPeriodEntity){
         List<ExamPeriodEntity> timePeriod1 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual" + timePeriod1);
         List<ExamPeriodEntity> timePeriod2 = examPeriodRepository.findAllByStartDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByStartDateBetween" + timePeriod2);
         List<ExamPeriodEntity> timePeriod3 = examPeriodRepository.findAllByEndDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByEndDateBetween" + timePeriod3);
         List<ExamPeriodEntity> timePeriod4 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
-        System.out.println("findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual" + timePeriod4);
-        System.out.println((timePeriod1.isEmpty() && timePeriod2.isEmpty() && timePeriod3.isEmpty() && timePeriod4.isEmpty()));
         return (timePeriod1.isEmpty() && timePeriod2.isEmpty() && timePeriod3.isEmpty() && timePeriod4.isEmpty());
     }
 }

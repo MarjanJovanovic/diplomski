@@ -3,7 +3,7 @@ package it.engineering.marjanjovanovicbe.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ExamDtoSimple {
+public class ExamDtoSimple implements MyDto{
 
     private Long id;
     private ExamPeriodDtoSimple examPeriodDto;

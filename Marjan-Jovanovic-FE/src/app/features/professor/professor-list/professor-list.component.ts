@@ -23,6 +23,9 @@ const DISPLAYED_COLUMNS = [
   'reelectionDate',
   'title',
   'subjects',
+  'infoButton',
+  'editButton',
+  'deleteButton',
 ];
 
 @Component({

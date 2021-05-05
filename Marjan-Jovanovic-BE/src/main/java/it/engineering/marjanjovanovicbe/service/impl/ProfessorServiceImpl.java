@@ -104,7 +104,6 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public Page<ProfessorDto> getAll(Pageable pageable) {
-        Page<ProfessorDto> entites = professorRepository.findAll(pageable).map(professorMapper::toDto);
-        return entites;
+        return professorRepository.findAll(pageable).map(professorMapper::toDto);
     }
 }

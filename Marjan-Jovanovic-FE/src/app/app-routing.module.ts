@@ -23,6 +23,23 @@ const routes: Routes = [
         (m) => m.ProfessorModule
       ),
   },
+  {
+    path: 'student',
+    loadChildren: () =>
+      import('./features/student/student.module').then((m) => m.StudentModule),
+  },
+  {
+    path: 'exam-period',
+    loadChildren: () =>
+      import('./features/exam-period/exam-period.module').then(
+        (m) => m.ExamPeriodModule
+      ),
+  },
+  {
+    path: 'exam',
+    loadChildren: () =>
+      import('./features/exam/exam.module').then((m) => m.ExamModule),
+  },
 
   // {path: 'subject-list', component: SubjectListComponent},
   // {path: 'subject-add', component: SubjectAddComponent},

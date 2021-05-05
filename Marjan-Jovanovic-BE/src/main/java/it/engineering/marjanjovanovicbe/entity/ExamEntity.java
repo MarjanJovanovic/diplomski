@@ -24,7 +24,7 @@ public class ExamEntity {
 
     @NotNull
     @ManyToOne
-    private ProfessorEntity professor; //Professor has to be working on the selected subject
+    private ProfessorEntity professor;
 
     @ManyToMany
     @JoinTable(name = "student_exam", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))

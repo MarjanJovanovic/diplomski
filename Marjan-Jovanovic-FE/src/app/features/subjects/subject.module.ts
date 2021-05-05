@@ -9,7 +9,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
-import { SubjectEditComponent } from './subject-edit/subject-edit.component';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -40,7 +39,6 @@ const MATERIAL_MODULES = [
   declarations: [
     SubjectListComponent,
     SubjectAddComponent,
-    SubjectEditComponent,
     SubjectDetailsComponent,
   ],
   imports: [CommonModule, SubjectRoutingModule, MATERIAL_MODULES],

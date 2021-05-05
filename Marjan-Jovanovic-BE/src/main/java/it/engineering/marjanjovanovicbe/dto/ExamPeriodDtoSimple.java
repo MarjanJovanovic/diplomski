@@ -1,6 +1,6 @@
 package it.engineering.marjanjovanovicbe.dto;
 
-public class ExamPeriodDtoSimple {
+public class ExamPeriodDtoSimple implements MyDto{
 
     private Long id;
 

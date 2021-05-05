@@ -5,9 +5,9 @@
       <tr>
         <td colspan="3">
           <mat-form-field class="example-full-width">
-            <mat-label>Name:</mat-label>
-            <input matInput formControlName="name" type="text">
-            <mat-error *ngIf="name.invalid &&  name.touched">
+            <mat-label>First name:</mat-label>
+            <input matInput formControlName="firstName" type="text">
+            <mat-error *ngIf="firstName.invalid &&  firstName.touched">
               Name is required
             </mat-error>
           </mat-form-field>
@@ -17,8 +17,11 @@
         <td colspan="3">
           <p>
             <mat-form-field class="example-full-width">
-              <mat-label>Description</mat-label>
-              <textarea matInput formControlName="description" placeholder="" w="description"></textarea>
+              <mat-label>Last name</mat-label>
+              <textarea matInput formControlName="lastName" placeholder=""></textarea>
+              <mat-error *ngIf="lastName.invalid &&  lastName.touched">
+                Last name is required
+              </mat-error>
             </mat-form-field>
           </p>
         </td>
