@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
 import { SubjectDto } from 'src/app/core/models/subject.model';
 
 interface SubjectDetailsData {

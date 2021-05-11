@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProfessorDto } from 'src/app/core/models/professor.model';
-import { SubjectDetailsComponent } from '../../subjects/subject-details/subject-details.component';
 
 interface ProfessorDetailsData {
   professor: ProfessorDto;
@@ -15,7 +14,7 @@ interface ProfessorDetailsData {
 export class ProfessorDetailsComponent implements OnInit {
   public professor: ProfessorDto;
   constructor(
-    private readonly dialogRef: MatDialogRef<SubjectDetailsComponent>,
+    private readonly dialogRef: MatDialogRef<ProfessorDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProfessorDetailsData
   ) {}
 
