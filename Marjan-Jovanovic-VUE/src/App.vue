@@ -2,7 +2,14 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/subject">Subject</router-link>
+    <router-link to="/subject">Subject</router-link> |
+    <router-link to="/city">City</router-link> |
+    <router-link to="/student">Student</router-link> |
+    <router-link to="/professor">Professor</router-link> |
+    <router-link to="/exam-period">Exam-period</router-link> |
+    <router-link to="/exam">exam</router-link> |
+
+
   </div>
   <router-view />
 </template>

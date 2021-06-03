@@ -1,9 +1,11 @@
+
+
+
 <template>
   <div class="home">
     <img alt="ESL logo" src="../assets/logo.png" />
+    <dialog></dialog>
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
-
   </div>
 </template>
 
