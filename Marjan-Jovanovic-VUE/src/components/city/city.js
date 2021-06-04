@@ -1,29 +1,31 @@
 import {createApp} from 'vue';
 import App from './index.vue';
 import PrimeVue from 'primevue/config';
-import Dialog from 'primevue/dialog';
 
-// import DataTable from 'primevue/datatable';
-// import Column from 'primevue/column';
-// import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
+import { ref, onMounted } from "vue";
+import CityService from "../services/CityService";
 
-// import axios from 'axios'
 
 const app = createApp(App);
-
+// app.mount('#app') // ?
 app.use(PrimeVue);
 
-app.component('Dialog', Dialog);
-
 export default {
+  setup() {
+    onMounted(() => {
+      console.log("onMounted function");
+      cityService.value.getAll().then((data) => (cities.value = data));
+    });
+
+    const cities = ref();
+    const cityService = ref(new CityService());
+
+    return { cities, cityService };
+  },
   name: 'city',
   components: {},
   props: [],
-  data () {
-    return {
 
-    }
-  },
   computed: {
 
   },

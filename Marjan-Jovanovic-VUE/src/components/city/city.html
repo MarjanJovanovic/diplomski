@@ -1,4 +1,7 @@
-<section class="city">
-  <h1>city Component</h1>
-  <dialog>Asd</dialog>
-</section>
+<h1>City list:</h1>
+<div>
+  <DataTable :value="cities" responsiveLayout="scroll">
+    <Column field="code" header="Code"></Column>
+    <Column field="name" header="Name"></Column>
+  </DataTable>
+</div>

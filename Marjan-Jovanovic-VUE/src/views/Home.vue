@@ -1,10 +1,6 @@
-
-
-
 <template>
   <div class="home">
     <img alt="ESL logo" src="../assets/logo.png" />
-    <dialog></dialog>
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
