@@ -66,7 +66,7 @@ public class CityController {
         }
     }
 
-    @DeleteMapping("/{cityCode}")
+    @DeleteMapping("/delete{cityCode}")
     public @ResponseBody ResponseEntity<String> delete(@PathVariable(name = "cityCode") Long cityCode){
         try{
             cityService.delete(cityCode);

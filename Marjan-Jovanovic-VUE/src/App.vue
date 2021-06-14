@@ -7,9 +7,7 @@
     <router-link to="/student">Student</router-link> |
     <router-link to="/professor">Professor</router-link> |
     <router-link to="/exam-period">Exam-period</router-link> |
-    <router-link to="/exam">exam</router-link> |
-
-
+    <router-link to="/exam">Exam</router-link>
   </div>
   <router-view />
 </template>
@@ -33,6 +31,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #c61a54;
 }
 </style>

@@ -1,10 +1,25 @@
-import {createApp} from 'vue';
-import App from './index.vue';
-import PrimeVue from 'primevue/config';
+// import CityService from "../services/CityService";
+
+// export default {
+//     data() {
+//         return {
+//             cities: null
+//         }
+//     },
+//     cityService: null,
+//     created() {
+//         this.cityService = new CityService();
+//     },
+//     mounted() {
+//         this.cityService.getAll().then(data => this.cities = data);
+//     }
+// }
+import { createApp } from "vue";
+import App from "./index.vue";
+import PrimeVue from "primevue/config";
 
 import { ref, onMounted } from "vue";
 import CityService from "../services/CityService";
-
 
 const app = createApp(App);
 // app.mount('#app') // ?
@@ -22,19 +37,17 @@ export default {
 
     return { cities, cityService };
   },
-  name: 'city',
-  components: {},
-  props: [],
+  // name: 'city',
+  // components: {},
+  // props: [],w
 
-  computed: {
+  // computed: {
 
-  },
-  mounted () {
+  // },
+  // mounted () {
 
-  },
-  methods: {
+  // },
+  // methods: {
 
-  }
-}
-
-
+  // }
+};
