@@ -5,7 +5,7 @@
     </button>
     <mat-form-field class="list-container__search">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Letters and numbers..." #input>
     </mat-form-field>
     <button mat-raised-button color="primary" class="list-container__btn-add" (click)="this.addProfessor()">+Add
       Professor</button>
@@ -59,10 +59,10 @@
         <td mat-cell *matCellDef="let row"> {{row.title.title}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="subjects">
+      <!-- <ng-container matColumnDef="subjects">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Subjects </th>
         <td mat-cell *matCellDef="let row"> {{row.subjects}} </td>
-      </ng-container>
+      </ng-container> -->
 
       <ng-container matColumnDef="infoButton">
         <th mat-header-cell *matHeaderCellDef></th>

@@ -22,7 +22,7 @@ const DISPLAYED_COLUMNS = [
   'phone',
   'reelectionDate',
   'title',
-  'subjects',
+  // 'subjects',
   'infoButton',
   'editButton',
   'deleteButton',

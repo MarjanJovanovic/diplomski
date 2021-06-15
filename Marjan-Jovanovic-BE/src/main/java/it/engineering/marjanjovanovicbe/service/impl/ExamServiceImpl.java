@@ -119,7 +119,6 @@ public class ExamServiceImpl implements ExamService {
         return examRepository.findAll(pageable).map(examMapper::toDto);
     }
 
-    //
     public boolean validateExam(ExamDtoSimple examDtoSimple) {
         System.out.println(examPeriodRepository.findById(examDtoSimple.getExamPeriodDto().getId()).isPresent());
         System.out.println(subjectRepository.findById(examDtoSimple.getSubject().getId()).isPresent());
