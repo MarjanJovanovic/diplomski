@@ -17,6 +17,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { SubjectDto } from 'src/app/core/models/subject.model';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+
 
 interface SubjectModalData {
   subject: SubjectDto;
@@ -72,7 +74,8 @@ export class SubjectAddComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SubjectModalData
+    private snackbar: SnackbarComponent,
+    @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
   ) {}
 
   ngOnInit(): void {
@@ -110,5 +113,8 @@ export class SubjectAddComponent implements OnInit {
     this.dialogRef.close({
       subject: this.subjectAddForm.value,
     });
+    this.snackbar.openTimedSnackBar('asd', 'dsa', 5);
+    // this.snackbar.openSnackBarWithButton('asd', 'dsa');
+    console.log("snackbar");
   }
 }

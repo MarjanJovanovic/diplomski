@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SubjectDetailsComponent } from './subject-details/subject-details.component';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 
 const MATERIAL_MODULES = [
   MatTableModule,
@@ -40,8 +41,9 @@ const MATERIAL_MODULES = [
     SubjectListComponent,
     SubjectAddComponent,
     SubjectDetailsComponent,
+    SnackbarComponent
   ],
-  imports: [CommonModule, SubjectRoutingModule, MATERIAL_MODULES],
+  imports: [CommonModule, SubjectRoutingModule, MATERIAL_MODULES, ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
   ],
