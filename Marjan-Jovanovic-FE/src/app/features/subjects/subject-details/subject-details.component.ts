@@ -22,4 +22,9 @@ export class SubjectDetailsComponent implements OnInit {
     this.subject = this.data.subject;
     console.log(this.subject);
   }
+
+  public closeDetails() {
+    this.dialogRef.close({
+    });
+  }
 }

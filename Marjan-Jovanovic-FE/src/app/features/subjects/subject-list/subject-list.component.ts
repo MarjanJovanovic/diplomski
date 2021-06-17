@@ -10,6 +10,7 @@ import { SubjectAddComponent } from '../subject-add/subject-add.component';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SubjectDetailsComponent } from '../subject-details/subject-details.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const DISPLAYED_COLUMNS = [
   'id',
@@ -42,7 +43,8 @@ export class SubjectListComponent implements AfterViewInit {
 
   constructor(
     private readonly subjectService: SubjectService,
-    public readonly dialog: MatDialog
+    public readonly dialog: MatDialog,
+    private _snackBar: MatSnackBar,
   ) {}
 
   ngAfterViewInit() {
@@ -110,7 +112,13 @@ export class SubjectListComponent implements AfterViewInit {
           this.paginator.pageIndex,
           this.paginator.pageSize
         );
-      });
+      },err => {
+        console.log(err);
+        
+        this._snackBar.open('Error deleting a subject!' + err, '', {duration: 5000});
+      }
+      );
+      this._snackBar.open('Subject saved!', '', {duration: 5000});
   }
 
   public addSubject(): void {

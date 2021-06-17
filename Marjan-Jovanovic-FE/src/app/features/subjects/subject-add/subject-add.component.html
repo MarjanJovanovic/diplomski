@@ -1,5 +1,10 @@
 <mat-dialog-content>
-  <h2 mat-dialog-title>{{ this.title }}</h2>
+  <div class="dialogHeader">
+    <h2 mat-dialog-title style="display: inline-block;">{{ this.title }}</h2>
+    <button mat-icon-button style="display: inline-block; float: right;" color="primary" (click)='this.closePopup()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <form class="subject-add" [formGroup]="subjectAddForm" (ngSubmit)="saveSubject()">
     <table class="example-full-width" cellspacing="0">
       <tr>
@@ -53,8 +58,9 @@
       </tr>
     </table>
     <span class="subject-add__required">* Required</span>
-    <span class="subject-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
-        (click)='this.saveSubject()' [disabled]="subjectAddForm.invalid">Save</button>
+    <span style="display:inline-block" class="subject-add__btn-save" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)='this.saveSubject()'
+        [disabled]="subjectAddForm.invalid">Save</button>
     </span>
   </form>
 </mat-dialog-content>

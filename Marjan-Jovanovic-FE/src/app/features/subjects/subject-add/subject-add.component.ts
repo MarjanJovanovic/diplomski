@@ -74,7 +74,7 @@ export class SubjectAddComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -112,8 +112,10 @@ export class SubjectAddComponent implements OnInit {
     this.dialogRef.close({
       subject: this.subjectAddForm.value,
     });
-    this._snackBar.open('asd', 'dsa');
-    // this.snackbar.openSnackBarWithButton('asd', 'dsa');
-    console.log("snackbar");
+    this._snackBar.open('Subject saved!', '', {duration: 5000});
+  }
+  public closePopup() {
+    this.dialogRef.close({
+    });
   }
 }
