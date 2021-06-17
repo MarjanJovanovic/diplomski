@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+// import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
+// import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SubjectModule,
     HttpClientModule,
     MatDialogModule,
-    MatSnackBarModule,
+    // SnackbarComponent
+    // SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

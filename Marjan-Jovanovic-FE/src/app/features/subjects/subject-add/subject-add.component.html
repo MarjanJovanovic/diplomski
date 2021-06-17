@@ -5,7 +5,7 @@
       <tr>
         <td colspan="3">
           <mat-form-field class="example-full-width">
-            <mat-label>Name:</mat-label>
+            <mat-label>Name*:</mat-label>
             <input matInput formControlName="name" type="text">
             <mat-error *ngIf="name.invalid &&  name.touched">
               Name is required
@@ -26,13 +26,13 @@
       <tr>
         <td>
           <mat-form-field class="subject-add__year">
-            <mat-label>Year of study</mat-label>
+            <mat-label>Year of study*</mat-label>
             <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="subject-add__esp">
-            <mat-label>Number of ESP</mat-label>
+            <mat-label>Number of ESP*</mat-label>
             <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
           </mat-form-field>
         </td>
@@ -43,7 +43,7 @@
               <mat-option value="Summer">Summer</mat-option>
               <mat-option value="Winter">Winter</mat-option>
             </mat-select>
-            <mat-hint>Select a semester</mat-hint>
+            <mat-hint>Select a semester*</mat-hint>
             <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
             <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
               Your selection is invalid
@@ -51,10 +51,8 @@
           </mat-form-field>
         </td>
       </tr>
-
-
-
     </table>
+    <span class="subject-add__required">* Required</span>
     <span class="subject-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
         (click)='this.saveSubject()' [disabled]="subjectAddForm.invalid">Save</button>
     </span>

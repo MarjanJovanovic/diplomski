@@ -26,3 +26,7 @@
 .subject-add__btn-save {
   margin-top: 10px;
 }
+
+.subject-add__required {
+  color: red;
+}

@@ -12,12 +12,11 @@ import { SubjectService } from 'src/app/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {
-  MatDialogModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { SubjectDto } from 'src/app/core/models/subject.model';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface SubjectModalData {
@@ -74,8 +73,8 @@ export class SubjectAddComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
-    private snackbar: SnackbarComponent,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -113,7 +112,7 @@ export class SubjectAddComponent implements OnInit {
     this.dialogRef.close({
       subject: this.subjectAddForm.value,
     });
-    this.snackbar.openTimedSnackBar('asd', 'dsa', 5);
+    this._snackBar.open('asd', 'dsa');
     // this.snackbar.openSnackBarWithButton('asd', 'dsa');
     console.log("snackbar");
   }
