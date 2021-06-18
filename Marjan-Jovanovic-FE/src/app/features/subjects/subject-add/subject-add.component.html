@@ -33,12 +33,18 @@
           <mat-form-field class="subject-add__year">
             <mat-label>Year of study*</mat-label>
             <input matInput placeholder="Eg. 1, 2, 3..." formControlName="yearOfStudy" [maxLength]="1" pattern="\d*">
+            <mat-error *ngIf="yearOfStudy.invalid &&  yearOfStudy.touched">
+              Year of study is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="subject-add__esp">
             <mat-label>Number of ESP*</mat-label>
             <input matInput placeholder="Eg. 1 - 9" formControlName="noOfEsp" [maxLength]="1" pattern="\d*">
+            <mat-error *ngIf="noOfEsp.invalid &&  noOfEsp.touched">
+              Number of esp is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>

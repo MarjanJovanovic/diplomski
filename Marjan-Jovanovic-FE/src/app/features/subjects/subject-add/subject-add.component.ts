@@ -16,8 +16,6 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { SubjectDto } from 'src/app/core/models/subject.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 
 interface SubjectModalData {
   subject: SubjectDto;
@@ -55,12 +53,12 @@ export class SubjectAddComponent implements OnInit {
 
   public selectFormControl = new FormControl('valid', [
     Validators.required,
-    Validators.pattern('valid'),
+    // Validators.pattern('valid'),
   ]);
 
   public nativeSelectFormControl = new FormControl('valid', [
     Validators.required,
-    Validators.pattern('valid'),
+    // Validators.pattern('valid'),
   ]);
 
   public emailFormControl = new FormControl('', [
@@ -74,7 +72,6 @@ export class SubjectAddComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
-    private _snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -104,6 +101,14 @@ export class SubjectAddComponent implements OnInit {
     return this.subjectAddForm.get('name');
   }
 
+  get yearOfStudy(){
+    return this.subjectAddForm.get('yearOfStudy');
+  }
+
+  get noOfEsp(){
+    return this.subjectAddForm.get('noOfEsp');
+  }
+
   ngOnDestroy() {
     this.destroy$.next(true);
   }
@@ -112,10 +117,9 @@ export class SubjectAddComponent implements OnInit {
     this.dialogRef.close({
       subject: this.subjectAddForm.value,
     });
-    this._snackBar.open('Subject saved!', '', {duration: 5000});
   }
   public closePopup() {
     this.dialogRef.close({
-    });
+    }); 
   }
 }

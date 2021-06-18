@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CoreModule } from '../core';
 
 
 const MATERIAL_MODULES = [
@@ -38,7 +39,7 @@ const MATERIAL_MODULES = [
     SnackbarComponent
   ],
   imports: [
-    CommonModule, MATERIAL_MODULES
+    CommonModule, MATERIAL_MODULES, CoreModule
   ],
   exports: [
     SnackbarComponent, MATERIAL_MODULES, CommonModule

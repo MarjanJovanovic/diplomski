@@ -115,10 +115,10 @@ export class SubjectListComponent implements AfterViewInit {
       },err => {
         console.log(err);
         
-        this._snackBar.open('Error deleting a subject!' + err, '', {duration: 5000});
+        // this._snackBar.open('Error deleting a subject!' + err, '', {duration: 5000});
       }
       );
-      this._snackBar.open('Subject saved!', '', {duration: 5000});
+      // this._snackBar.open('Subject saved!', '', {duration: 5000});
   }
 
   public addSubject(): void {

@@ -8,8 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { SubjectService } from 'src/app/core';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {
   MatDialogModule,
@@ -17,6 +16,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ProfessorDto } from 'src/app/core/models/professor.model';
+import { CityService } from 'src/app/core/service/city.service';
+import { TitleService } from 'src/app/core/service/title.service';
 
 interface SubjectModalData {
   professor: ProfessorDto;
@@ -69,10 +70,15 @@ export class ProfessorAddComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
+  cityList = [];
+  titleList = [];
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly dialogRef: MatDialogRef<ProfessorAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SubjectModalData
+    @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
+    private readonly cityService: CityService,
+    private readonly titleService: TitleService,
   ) {}
 
   ngOnInit(): void {
@@ -105,8 +111,28 @@ export class ProfessorAddComponent implements OnInit {
       title: this.data.professor.title,
       subjects: this.data.professor.subjects,
     });
-
     console.log(this.firstName);
+  }
+
+  ngAfterViewInit() {
+    this.fetchCities();
+    this.fetchTitles();
+  }
+
+  public fetchCities(): void {
+    this.cityService
+      .getAll()
+      .subscribe(data => {
+        this.cityList = data;
+      })
+  }
+
+  public fetchTitles(): void {
+    this.titleService
+      .getAll()
+      .subscribe(data => {
+        this.titleList = data;
+      })
   }
 
   get firstName() {
