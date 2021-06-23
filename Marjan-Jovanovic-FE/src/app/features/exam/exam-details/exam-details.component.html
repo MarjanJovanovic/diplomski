@@ -1,4 +1,4 @@
-<h1>Subject Details</h1>
+<h1>Exam Details</h1>
 <div class="detail-element">Id: </div>
 <div>{{ this.exam.id }}</div>
 <div class="detail-element">Date: </div>
@@ -6,6 +6,6 @@
 <div class="detail-element">Exam period: </div>
 <div>{{ this.exam.examPeriod }}</div>
 <div class="detail-element">Professor: </div>
-<div>{{ this.exam.professor }}</div>
+<div>{{ this.exam.professor.firstName }} {{ this.exam.professor.lastName }}</div>
 <div class="detail-element">Subject: </div>
-<div>{{ this.exam.subject }}</div>
+<div>{{ this.exam.subject.name }}</div>

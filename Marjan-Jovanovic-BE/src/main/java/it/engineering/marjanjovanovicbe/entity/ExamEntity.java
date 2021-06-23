@@ -5,6 +5,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "exam")
@@ -16,7 +17,7 @@ public class ExamEntity {
 
     @NotNull
     @ManyToOne
-    private ExamPeriodEntity examPeriodEntity;
+    private ExamPeriodEntity examPeriod;
 
     @NotNull
     @ManyToOne
@@ -37,9 +38,9 @@ public class ExamEntity {
     public ExamEntity() {
     }
 
-    public ExamEntity(Long id, ExamPeriodEntity examPeriodEntity, SubjectEntity subject, ProfessorEntity professor, List<StudentEntity> students, LocalDate date) {
+    public ExamEntity(Long id, ExamPeriodEntity examPeriod, SubjectEntity subject, ProfessorEntity professor, List<StudentEntity> students, LocalDate date) {
         this.id = id;
-        this.examPeriodEntity = examPeriodEntity;
+        this.examPeriod = examPeriod;
         this.subject = subject;
         this.professor = professor;
         this.students = students;
@@ -55,11 +56,11 @@ public class ExamEntity {
     }
 
     public ExamPeriodEntity getExamPeriod() {
-        return examPeriodEntity;
+        return examPeriod;
     }
 
-    public void setExamPeriod(ExamPeriodEntity examPeriodEntity) {
-        this.examPeriodEntity = examPeriodEntity;
+    public void setExamPeriod(ExamPeriodEntity examPeriod) {
+        this.examPeriod = examPeriod;
     }
 
     public SubjectEntity getSubject() {
@@ -95,40 +96,27 @@ public class ExamEntity {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExamEntity that = (ExamEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(examPeriod, that.examPeriod) && Objects.equals(subject, that.subject) && Objects.equals(professor, that.professor) && Objects.equals(students, that.students) && Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, examPeriod, subject, professor, students, date);
+    }
+
+    @Override
     public String toString() {
         return "ExamEntity{" +
                 "id=" + id +
-                ", examPeriodEntity=" + examPeriodEntity +
+                ", examPeriod=" + examPeriod +
                 ", subject=" + subject +
                 ", professor=" + professor +
                 ", students=" + students +
                 ", date=" + date +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ExamEntity)) return false;
-
-        ExamEntity examEntity = (ExamEntity) o;
-
-        if (id != null ? !id.equals(examEntity.id) : examEntity.id != null) return false;
-        if (examPeriodEntity != null ? !examPeriodEntity.equals(examEntity.examPeriodEntity) : examEntity.examPeriodEntity != null) return false;
-        if (subject != null ? !subject.equals(examEntity.subject) : examEntity.subject != null) return false;
-        if (professor != null ? !professor.equals(examEntity.professor) : examEntity.professor != null) return false;
-        if (students != null ? !students.equals(examEntity.students) : examEntity.students != null) return false;
-        return date != null ? date.equals(examEntity.date) : examEntity.date == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (examPeriodEntity != null ? examPeriodEntity.hashCode() : 0);
-        result = 31 * result + (subject != null ? subject.hashCode() : 0);
-        result = 31 * result + (professor != null ? professor.hashCode() : 0);
-        result = 31 * result + (students != null ? students.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        return result;
     }
 }

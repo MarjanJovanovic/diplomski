@@ -13,7 +13,7 @@
             <mat-label>Name*:</mat-label>
             <input matInput formControlName="name" type="text">
             <mat-error *ngIf="name.invalid &&  name.touched">
-              Name is required
+              Name is required (3 to 30 characters)
             </mat-error>
           </mat-form-field>
         </td>

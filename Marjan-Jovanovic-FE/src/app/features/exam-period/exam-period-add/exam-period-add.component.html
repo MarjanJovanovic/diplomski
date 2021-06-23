@@ -1,1 +1,55 @@
-<p>exam-period-add works!</p>
+<mat-dialog-content>
+    <div class="dialogHeader">
+        <h2 mat-dialog-title style="display: inline-block;">{{ this.title }}</h2>
+        <button mat-icon-button style="display: inline-block; float: right;" color="primary"
+            (click)='this.closePopup()'>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <form class="exam__period-add" [formGroup]="examPeriodAddForm" (ngSubmit)="saveExamPeriod()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td colspan="3">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Name*:</mat-label>
+                        <input matInput formControlName="name" type="text">
+                        <mat-error *ngIf="name.invalid &&  name.touched">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1">
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Start date:</mat-label>
+                            <textarea matInput formControlName="startDate" placeholder="" w="startDate"></textarea>
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td colspan="1">
+                    <p>
+                        <mat-form-field>
+                            <mat-label>End date:</mat-label>
+                            <textarea matInput formControlName="endDate" placeholder="" w="endDate"></textarea>
+                        </mat-form-field>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        <mat-checkbox class="example-margin" formControlName="isActive">Active exam period
+                        </mat-checkbox>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <span class="examPeriod-add__required">* Required</span>
+        <span style="display:inline-block" class="examPeriod-add__btn-save" fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" (click)='this.saveExamPeriod()'
+                [disabled]="examPeriodAddForm.invalid">Save</button>
+        </span>
+    </form>
+</mat-dialog-content>

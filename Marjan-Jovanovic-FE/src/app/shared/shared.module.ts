@@ -14,7 +14,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CoreModule } from '../core';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 const MATERIAL_MODULES = [
@@ -29,7 +34,12 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatDialogModule,
   FlexLayoutModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  // MatMomentDateModule,
+  MatCardModule,
 ];
 
 

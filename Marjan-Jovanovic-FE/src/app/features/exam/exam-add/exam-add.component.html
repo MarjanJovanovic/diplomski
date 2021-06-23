@@ -1,1 +1,67 @@
-<p>exam-add works!</p>
+<mat-dialog-content>
+    <h2 mat-dialog-title>{{ this.title }}</h2>
+    <form class="exam-add" [formGroup]="examAddForm" (ngSubmit)="saveExam()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Choose one</mat-label>
+                        <mat-select formControlName="examPeriod" [errorStateMatcher]="matcher">
+                            <mat-option *ngFor="let examPeriod of examPeriodList" [value]="examPeriod">
+                                {{examPeriod.name}}</mat-option>
+                        </mat-select>
+                        <mat-hint>Select an exam period*</mat-hint>
+                        <!-- <mat-error *ngIf="examPeriod.hasError('required')">You must make a selection</mat-error>
+                  <mat-error *ngIf="examPeriod.hasError('pattern') && !examPeriod.hasError('required')">
+                    Your selection is invalid
+                  </mat-error> -->
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Choose one</mat-label>
+                        <mat-select formControlName="subject" [errorStateMatcher]="matcher">
+                            <mat-option *ngFor="let subject of subjectList" [value]="subject">{{subject.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-hint>Select a subject*</mat-hint>
+                        <!-- <mat-error *ngIf="subject.hasError('required')">You must make a selection</mat-error>
+                        <mat-error *ngIf="subject.hasError('pattern') && !subject.hasError('required')">
+                            Your selection is invalid
+                        </mat-error> -->
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Choose one</mat-label>
+                        <mat-select formControlName="professor" [errorStateMatcher]="matcher">
+                            <mat-option *ngFor="let professor of professorList" [value]="professor">
+                                {{professor.firstName}} {{professor.lastName}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-hint>Select a professor*</mat-hint>
+                        <!-- <mat-error *ngIf="professor.hasError('required')">You must make a selection</mat-error>
+                        <mat-error *ngIf="professor.hasError('pattern') && !professor.hasError('required')">
+                            Your selection is invalid
+                        </mat-error> -->
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" class="date__picker">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date*</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </td>
+            </tr>
+
+        </table>
+        <span class="exam-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
+                (click)='this.saveExam()' [disabled]="examAddForm.invalid">Save</button>
+        </span>
+    </form>
+</mat-dialog-content>

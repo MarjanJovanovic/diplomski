@@ -1,6 +1,52 @@
 .home-title {
   margin: 1%;
+  text-align: center;
 }
 .btn-primary {
   margin: 10px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.flex-wrapper {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.example-card {
+}
+
+.mat-card-avatar {
+  border-radius: 0%;
+}
+
+.subject-header-image {
+  background-image: url("src\assets\Icons\734paperclip_100198.png");
+  background-size: cover;
+}
+
+.professor-header-image {
+  background-image: url("src\assets\Icons\154manofficeworker2_100459.png");
+  background-size: cover;
+}
+
+.student-header-image {
+  background-image: url("src\assets\Icons\132womanstudent2_100407.png");
+  background-size: cover;
+}
+
+.exam-period-header-image {
+  background-image: url("src\assets\Icons\731calendar_100366.png");
+  background-size: cover;
+}
+
+.exam-header-image {
+  background-image: url("src\assets\Icons\713openbook_100531.png");
+  background-size: cover;
+}
+
+mat-card {
+  margin: 1%;
 }

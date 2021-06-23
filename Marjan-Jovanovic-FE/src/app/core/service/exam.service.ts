@@ -28,7 +28,7 @@ export class ExamService {
     console.log(exam);
 
     const params = {
-      id: exam.id,
+      // id: exam.id,
       date: exam.date,
       examPeriod: exam.examPeriod,
       professor: exam.professor,

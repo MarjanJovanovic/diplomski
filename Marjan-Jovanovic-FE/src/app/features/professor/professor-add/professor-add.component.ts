@@ -47,8 +47,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./professor-add.component.css'],
 })
 export class ProfessorAddComponent implements OnInit {
-  public semester = new FormControl('', [Validators.required]);
-  public title: string;
+  public title = new FormControl('', [Validators.required]);
+  public city = new FormControl('', [Validators.required]);
+  public componentTitle: string;
 
   public professorAddForm: FormGroup;
   public destroy$: Subject<boolean> = new Subject();
@@ -63,10 +64,10 @@ export class ProfessorAddComponent implements OnInit {
     Validators.pattern('valid'),
   ]);
 
-  public emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  // public emailFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
 
   matcher = new MyErrorStateMatcher();
 
@@ -78,13 +79,13 @@ export class ProfessorAddComponent implements OnInit {
     private readonly dialogRef: MatDialogRef<ProfessorAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
     private readonly cityService: CityService,
-    private readonly titleService: TitleService,
-  ) {}
+    private readonly titleService: TitleService
+  ) { }
 
   ngOnInit(): void {
     console.log(this.data);
 
-    this.title = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
+    this.componentTitle = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
     this.professorAddForm = this.formBuilder.group({
       id: this.data.professor.id,
       firstName: [
@@ -103,15 +104,24 @@ export class ProfessorAddComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      email: this.data.professor.email,
-      address: this.data.professor.address,
+      email: [
+        this.data.professor.email,
+        [Validators.email, Validators.maxLength(30)],
+      ],
+      address: [this.data.professor.address, [Validators.maxLength(30)]],
       city: this.data.professor.city,
-      phone: this.data.professor.phone,
-      reelectionDate: this.data.professor.reelectionDate,
-      title: this.data.professor.title,
+      phone: [
+        this.data.professor.phone,
+        [
+          Validators.minLength(9),
+          Validators.maxLength(15),
+          Validators.required,
+        ],
+      ],
+      reelectionDate: [this.data.professor.reelectionDate, [Validators.required]],
+      title: [this.data.professor.title,[Validators.required]],
       subjects: this.data.professor.subjects,
     });
-    console.log(this.firstName);
   }
 
   ngAfterViewInit() {
@@ -120,19 +130,15 @@ export class ProfessorAddComponent implements OnInit {
   }
 
   public fetchCities(): void {
-    this.cityService
-      .getAll()
-      .subscribe(data => {
-        this.cityList = data;
-      })
+    this.cityService.getAll().subscribe((data) => {
+      this.cityList = data;
+    });
   }
 
   public fetchTitles(): void {
-    this.titleService
-      .getAll()
-      .subscribe(data => {
-        this.titleList = data;
-      })
+    this.titleService.getAll().subscribe((data) => {
+      this.titleList = data;
+    });
   }
 
   get firstName() {
@@ -141,6 +147,10 @@ export class ProfessorAddComponent implements OnInit {
 
   get lastName() {
     return this.professorAddForm.get('lastName');
+  }
+
+  get email(){
+    return this.professorAddForm.get('email');
   }
 
   ngOnDestroy() {

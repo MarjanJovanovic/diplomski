@@ -1,6 +1,6 @@
 <mat-dialog-content>
-  <h2 mat-dialog-title>{{ this.title }}</h2>
-  <form class="subject-add" [formGroup]="professorAddForm" (ngSubmit)="saveProfessor()">
+  <h2 mat-dialog-title>{{ this.componentTitle }}</h2>
+  <form class="professor-add" [formGroup]="professorAddForm" (ngSubmit)="saveProfessor()">
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td colspan="1">
@@ -28,7 +28,10 @@
         <td>
           <mat-form-field class="professor-email">
             <mat-label>Email:</mat-label>
-            <input matInput placeholder="example@example.com" formControlName="email" pattern="email">
+            <input matInput placeholder="example@example.com" formControlName="email">
+            <mat-error *ngIf="email.invalid && email.touched">
+              Email is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
@@ -38,14 +41,14 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field appearance="standard" class="subject-add__semester">
+          <mat-form-field appearance="standard" class="professor-city">
             <mat-label>Choose one</mat-label>
             <mat-select formControlName="city" [errorStateMatcher]="matcher">
               <mat-option *ngFor="let city of cityList" [value]="city">{{city.name}}</mat-option>
             </mat-select>
             <mat-hint>Select a city</mat-hint>
-            <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
-            <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
+            <mat-error *ngIf="city.hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="city.hasError('pattern') && !city.hasError('required')">
               Your selection is invalid
             </mat-error>
           </mat-form-field>
@@ -65,14 +68,14 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field appearance="standard" class="subject-add__semester">
+          <mat-form-field appearance="standard" class="professor-title">
             <mat-label>Choose one</mat-label>
             <mat-select formControlName="title" [errorStateMatcher]="matcher">
               <mat-option *ngFor="let title of titleList" [value]="title">{{title}}</mat-option>
             </mat-select>
             <mat-hint>Select a title</mat-hint>
-            <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
-            <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
+            <mat-error *ngIf="title.hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="title.hasError('pattern') && !title.hasError('required')">
               Your selection is invalid
             </mat-error>
           </mat-form-field>
@@ -82,7 +85,7 @@
 
 
     </table>
-    <span class="subject-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
+    <span class="professor-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
         (click)='this.saveProfessor()' [disabled]="professorAddForm.invalid">Save</button>
     </span>
   </form>

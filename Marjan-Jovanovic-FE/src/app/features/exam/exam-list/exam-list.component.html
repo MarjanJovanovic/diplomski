@@ -26,7 +26,7 @@
 
       <ng-container matColumnDef="examPeriod">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Exam period </th>
-        <td mat-cell *matCellDef="let row"> {{row.examPeriod}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.examPeriod.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="professor">

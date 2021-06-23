@@ -19,18 +19,9 @@ import java.util.List;
 @RequestMapping(path = "/title")
 public class TitleController {
 
-//    private final TitleService titleService;
-//
-//    @Autowired
-//    public TitleController(TitleService titleService) {
-//        this.titleService = titleService;
-//    }
-
     @GetMapping("/getAll")
     public @ResponseBody
     TitleName[] getAll() throws MyEntityNotFoundException {
-//        List<TitleDto> list = titleService.getAll();
-//        return ResponseEntity.status(HttpStatus.OK).body(list);
         return TitleName.values();
     }
 }

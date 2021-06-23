@@ -98,6 +98,7 @@ export class ExamListComponent implements AfterViewInit {
             });
         }
       });
+    console.log(this.dataSource);
   }
 
   public deleteExam(exam: ExamDto): void {

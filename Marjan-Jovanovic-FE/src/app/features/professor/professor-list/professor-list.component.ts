@@ -85,6 +85,7 @@ export class ProfessorListComponent implements AfterViewInit {
   }
 
   public openEditModel(professor: ProfessorDto): void {
+    console.log(professor);
     this.dialog
       .open(ProfessorAddComponent, {
         data: {

@@ -14,15 +14,15 @@
   margin-right: 8px;
 }
 
-.subject-add__semester {
+.professor-add__semester {
   position: relative;
   bottom: 6px;
 }
 
-.subject-add__esp {
+.professor-add__esp {
   margin: 0 15px;
 }
 
-.subject-add__btn-save {
+.professor-add__btn-save {
   margin-top: 10px;
 }

@@ -1,0 +1,40 @@
+.example-form {
+  /* min-width: 150px; */
+  /* max-width: 500px; */
+  /* width: 800px !important; */
+  margin: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.subject-add__semester {
+  position: relative;
+  bottom: 6px;
+}
+
+.subject-add__esp {
+  margin: 0 15px;
+}
+
+.subject-add__btn-save {
+  margin-top: 10px;
+}
+
+.subject-add__required {
+  color: red;
+}
+
+.date__picker {
+  margin: 5% !important;
+}
+
+tr {
+  margin: 10% !important;
+}

@@ -2,11 +2,12 @@ package it.engineering.marjanjovanovicbe.dto;
 
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class ExamDto implements MyDto{
 
     private Long id;
-    private ExamPeriodDto examPeriodDto;
+    private ExamPeriodDto examPeriod;
     private SubjectDto subject;
     private ProfessorDto professor;
     private LocalDate date;
@@ -14,9 +15,9 @@ public class ExamDto implements MyDto{
     public ExamDto() {
     }
 
-    public ExamDto(Long id, ExamPeriodDto examPeriodDto, SubjectDto subject, ProfessorDto professor, LocalDate date) {
+    public ExamDto(Long id, ExamPeriodDto examPeriod, SubjectDto subject, ProfessorDto professor, LocalDate date) {
         this.id = id;
-        this.examPeriodDto = examPeriodDto;
+        this.examPeriod = examPeriod;
         this.subject = subject;
         this.professor = professor;
         this.date = date;
@@ -30,12 +31,12 @@ public class ExamDto implements MyDto{
         this.id = id;
     }
 
-    public ExamPeriodDto getExamPeriodDto() {
-        return examPeriodDto;
+    public ExamPeriodDto getExamPeriod() {
+        return examPeriod;
     }
 
-    public void setExamPeriodDto(ExamPeriodDto examPeriodDto) {
-        this.examPeriodDto = examPeriodDto;
+    public void setExamPeriod(ExamPeriodDto examPeriod) {
+        this.examPeriod = examPeriod;
     }
 
     public SubjectDto getSubject() {
@@ -63,38 +64,26 @@ public class ExamDto implements MyDto{
     }
 
     @Override
-    public String toString() {
-        return "ExamDto{" +
-                "id=" + id +
-                ", examPeriodDto=" + examPeriodDto +
-                ", subject=" + subject +
-                ", professor=" + professor +
-                ", date=" + date +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ExamDto)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         ExamDto examDto = (ExamDto) o;
-
-        if (id != null ? !id.equals(examDto.id) : examDto.id != null) return false;
-        if (examPeriodDto != null ? !examPeriodDto.equals(examDto.examPeriodDto) : examDto.examPeriodDto != null)
-            return false;
-        if (subject != null ? !subject.equals(examDto.subject) : examDto.subject != null) return false;
-        if (professor != null ? !professor.equals(examDto.professor) : examDto.professor != null) return false;
-        return date != null ? date.equals(examDto.date) : examDto.date == null;
+        return Objects.equals(id, examDto.id) && Objects.equals(examPeriod, examDto.examPeriod) && Objects.equals(subject, examDto.subject) && Objects.equals(professor, examDto.professor) && Objects.equals(date, examDto.date);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (examPeriodDto != null ? examPeriodDto.hashCode() : 0);
-        result = 31 * result + (subject != null ? subject.hashCode() : 0);
-        result = 31 * result + (professor != null ? professor.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        return result;
+        return Objects.hash(id, examPeriod, subject, professor, date);
+    }
+
+    @Override
+    public String toString() {
+        return "ExamDto{" +
+                "id=" + id +
+                ", examPeriod=" + examPeriod +
+                ", subject=" + subject +
+                ", professor=" + professor +
+                ", date=" + date +
+                '}';
     }
 }

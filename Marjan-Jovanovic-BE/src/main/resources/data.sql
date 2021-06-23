@@ -60,8 +60,8 @@ INSERT INTO exam_period(name, start_date, end_date, is_active) VALUES ("Aprilski
 INSERT INTO exam_period(name, start_date, end_date, is_active) VALUES ("Junski", "2021-06-01", "2021-06-20", 0);
 
 -- Table initialization: ExamEntity
-INSERT INTO exam(exam_period_entity_id, date, professor_id, subject_id) VALUES (1, "2021-01-05", 2, 4);
-INSERT INTO exam(exam_period_entity_id, date, professor_id, subject_id) VALUES (1, "2021-01-07", 1, 4);
+INSERT INTO exam(exam_period_id, date, professor_id, subject_id) VALUES (1, "2021-01-05", 2, 4);
+INSERT INTO exam(exam_period_id, date, professor_id, subject_id) VALUES (1, "2021-01-07", 1, 4);
 
 -- Table initialization: Student_Exam
 INSERT INTO student_exam(exam_id, student_id) VALUES (1, 1);
