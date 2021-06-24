@@ -101,6 +101,8 @@
       </tr>
     </table>
 
+    <app-spinner *ngIf="totalItems == undefined"></app-spinner>
+
     <mat-paginator [pageSizeOptions]="[5,10,25,100]" [length]="this.totalItems" (page)="this.onPageChange($event)">
     </mat-paginator>
   </div>

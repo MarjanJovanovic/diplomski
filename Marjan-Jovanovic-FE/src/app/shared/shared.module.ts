@@ -18,7 +18,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CoreModule } from '../core';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 
@@ -40,19 +42,21 @@ const MATERIAL_MODULES = [
   MatNativeDateModule,
   // MatMomentDateModule,
   MatCardModule,
+  MatProgressSpinnerModule,
 ];
 
 
 @NgModule({
   declarations: [
     InputFieldComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule, MATERIAL_MODULES, CoreModule
   ],
   exports: [
-    SnackbarComponent, MATERIAL_MODULES, CommonModule
+    SnackbarComponent, MATERIAL_MODULES, CommonModule, SpinnerComponent
   ]
 })
 export class SharedModule { }
