@@ -1,0 +1,28 @@
+.example-form {
+  /* min-width: 150px; */
+  /* max-width: 500px; */
+  /* width: 800px !important; */
+  margin: 20px;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.student-add__semester {
+  position: relative;
+  bottom: 6px;
+}
+
+.student-add__esp {
+  margin: 0 15px;
+}
+
+.student-add__btn-save {
+  margin-top: 10px;
+}
+
+.student-add__required {
+  color: red;
+}

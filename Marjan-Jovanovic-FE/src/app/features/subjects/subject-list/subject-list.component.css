@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.list-container {
+  margin: 2%;
+}
+
+.list-container__btn-add {
+  margin: 10px 0;
+  margin-left: 10px;
+}
+
+.list-container__search {
+  width: 88%;
+}
+
+td,
+th {
+  width: 20%;
+}
+.back-button {
+  margin-right: 10px;
+}
