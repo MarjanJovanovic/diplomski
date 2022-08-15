@@ -1,0 +1,80 @@
+<mat-dialog-content>
+    <h2 mat-dialog-title>{{ this.title }}</h2>
+    <form class="subject-add" [formGroup]="studentAddForm" (ngSubmit)="saveStudent()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="student-first__name">
+                        <mat-label>First name:*</mat-label>
+                        <input matInput formControlName="firstName" type="text">
+                        <mat-error *ngIf="firstName.invalid &&  firstName.touched">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <p>
+                        <mat-form-field class="student-last__name">
+                            <mat-label>Last name:*</mat-label>
+                            <input matInput formControlName="lastName" type="text">
+                            <mat-error *ngIf="lastName.invalid &&  lastName.touched">
+                                Last name is required
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="student-email">
+                        <mat-label>Email:</mat-label>
+                        <input matInput placeholder="example@example.com" formControlName="email">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="student-address">
+                        <mat-label>Address:</mat-label>
+                        <input matInput formControlName="address">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="standard" class="subject-add__semester">
+                        <mat-label>Choose one</mat-label>
+                        <mat-select formControlName="city" [errorStateMatcher]="matcher">
+                            <mat-option *ngFor="let city of cityList" [value]="city">{{city.name}}</mat-option>
+                        </mat-select>
+                        <mat-hint>Select a city</mat-hint>
+                        <mat-error *ngIf="semester.hasError('required')">You must make a selection</mat-error>
+                        <mat-error *ngIf="semester.hasError('pattern') && !semester.hasError('required')">
+                            Your selection is invalid
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="student-indexNumber">
+                        <mat-label>Index number:</mat-label>
+                        <input matInput formControlName="indexNumber">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="student-currentYearOfStudy">
+                        <mat-label>Current year of study:</mat-label>
+                        <input matInput formControlName="currentYearOfStudy">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="student-indexYear">
+                        <mat-label>Index year:</mat-label>
+                        <input matInput formControlName="indexYear">
+                    </mat-form-field>
+                </td>
+            </tr>
+
+        </table>
+        <span class="subject-add__btn-save" fxLayoutAlign="end center"> <button mat-raised-button color="primary"
+                (click)='this.saveStudent()' [disabled]="studentAddForm.invalid">Save</button>
+        </span>
+    </form>
+</mat-dialog-content>

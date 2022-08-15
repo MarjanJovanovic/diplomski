@@ -1,0 +1,10 @@
+.mat-spinner {
+  left: 45%;
+  width: 100%;
+  display: block;
+}
+
+.mat-cell {
+  display: block;
+  padding: 5%;
+}

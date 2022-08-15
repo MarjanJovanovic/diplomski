@@ -1,0 +1,55 @@
+2021-06-22 10:58:23.863  WARN 14172 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 10:58:23.925 DEBUG 14172 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 10:58:24.012 DEBUG 14172 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 10:58:24.295 DEBUG 14172 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 10:58:24.311 DEBUG 14172 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:01:11.015  WARN 1824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:01:11.077 DEBUG 1824 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:01:11.161 DEBUG 1824 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:01:11.446 DEBUG 1824 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:01:11.446 DEBUG 1824 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:02:55.238  WARN 5996 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:02:55.307 DEBUG 5996 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:02:55.407 DEBUG 5996 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:02:55.723 DEBUG 5996 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:02:55.739 DEBUG 5996 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:04:10.409  WARN 18512 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:04:10.483 DEBUG 18512 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:04:10.562 DEBUG 18512 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:04:10.898 DEBUG 18512 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:04:10.914 DEBUG 18512 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:07:35.530  WARN 16548 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:07:35.638 DEBUG 16548 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:07:35.820 DEBUG 16548 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:07:36.269 DEBUG 16548 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:07:36.269 DEBUG 16548 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:08:03.764  WARN 18208 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:08:03.841 DEBUG 18208 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:08:03.915 DEBUG 18208 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:08:04.205 DEBUG 18208 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:08:04.205 DEBUG 18208 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:08:31.398  WARN 14176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:08:31.476 DEBUG 14176 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:08:31.587 DEBUG 14176 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:08:31.954 DEBUG 14176 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:08:31.970 DEBUG 14176 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:09:30.936  WARN 11100 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:09:31.016 DEBUG 11100 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:09:31.121 DEBUG 11100 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:09:31.516 DEBUG 11100 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:09:31.527 DEBUG 11100 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:10:23.700  WARN 5324 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:10:23.770 DEBUG 5324 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:10:23.854 DEBUG 5324 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:10:24.155 DEBUG 5324 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:10:24.173 DEBUG 5324 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:10:39.562  WARN 10620 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:10:39.627 DEBUG 10620 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:10:39.712 DEBUG 10620 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:10:40.014 DEBUG 10620 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:10:40.014 DEBUG 10620 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-06-22 11:11:55.081  WARN 2084 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-22 11:11:55.148 DEBUG 2084 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-06-22 11:11:55.236 DEBUG 2084 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 44 mappings in 'requestMappingHandlerMapping'
+2021-06-22 11:11:55.538 DEBUG 2084 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/swagger-ui/**, /webjars/**, /**] in 'resourceHandlerMapping'
+2021-06-22 11:11:55.538 DEBUG 2084 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
