@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -18,7 +18,7 @@ const CREATE_TITLE = 'Add Exam';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -36,26 +36,26 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./exam-add.component.css']
 })
 export class ExamAddComponent implements OnInit {
-  public examPeriod = new FormControl('', [Validators.required]);
-  public subject = new FormControl('', [Validators.required]);
-  public professor = new FormControl('', [Validators.required]);
+  public examPeriod = new UntypedFormControl('', [Validators.required]);
+  public subject = new UntypedFormControl('', [Validators.required]);
+  public professor = new UntypedFormControl('', [Validators.required]);
 
   public title: string;
 
-  public examAddForm: FormGroup;
+  public examAddForm: UntypedFormGroup;
   public destroy$: Subject<boolean> = new Subject();
 
-  public selectFormControl = new FormControl('valid', [
+  public selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public nativeSelectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public emailFormControl = new FormControl('', [
+  public emailFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email,
   ]);
@@ -67,7 +67,7 @@ export class ExamAddComponent implements OnInit {
   professorList = [];
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<ExamAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ExamModalData,
     private readonly examPeriodService: ExamPeriodService,

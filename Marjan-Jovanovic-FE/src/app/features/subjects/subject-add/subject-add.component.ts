@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   FormGroupDirective,
   NgForm,
   Validators,
@@ -27,7 +27,7 @@ const CREATE_TITLE = 'Add Subject';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -45,23 +45,23 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./subject-add.component.css'],
 })
 export class SubjectAddComponent implements OnInit {
-  public semester = new FormControl('', [Validators.required]);
+  public semester = new UntypedFormControl('', [Validators.required]);
   public title: string;
 
-  public subjectAddForm: FormGroup;
+  public subjectAddForm: UntypedFormGroup;
   public destroy$: Subject<boolean> = new Subject();
 
-  public selectFormControl = new FormControl('valid', [
+  public selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public nativeSelectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public emailFormControl = new FormControl('', [
+  public emailFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email,
   ]);
@@ -69,7 +69,7 @@ export class SubjectAddComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<SubjectAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
   ) {}

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -15,7 +15,7 @@ const CREATE_TITLE = 'Add Exam Period';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -32,23 +32,23 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./exam-period-add.component.css']
 })
 export class ExamPeriodAddComponent implements OnInit {
-  public semester = new FormControl('', [Validators.required]);
+  public semester = new UntypedFormControl('', [Validators.required]);
   public title: string;
 
-  public examPeriodAddForm: FormGroup;
+  public examPeriodAddForm: UntypedFormGroup;
   public destroy$: Subject<boolean> = new Subject();
 
-  public selectFormControl = new FormControl('valid', [
+  public selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public nativeSelectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     // Validators.pattern('valid'),
   ]);
 
-  public emailFormControl = new FormControl('', [
+  public emailFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email,
   ]);
@@ -56,7 +56,7 @@ export class ExamPeriodAddComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<ExamPeriodAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ExamPeriodModalData,
   ) {}

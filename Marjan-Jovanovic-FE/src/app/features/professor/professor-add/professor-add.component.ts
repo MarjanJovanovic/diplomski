@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   FormGroupDirective,
   NgForm,
   Validators,
@@ -29,7 +29,7 @@ const CREATE_TITLE = 'Add Professor';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -47,19 +47,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./professor-add.component.css'],
 })
 export class ProfessorAddComponent implements OnInit {
-  public title = new FormControl('', [Validators.required]);
-  public city = new FormControl('', [Validators.required]);
+  public title = new UntypedFormControl('', [Validators.required]);
+  public city = new UntypedFormControl('', [Validators.required]);
   public componentTitle: string;
 
-  public professorAddForm: FormGroup;
+  public professorAddForm: UntypedFormGroup;
   public destroy$: Subject<boolean> = new Subject();
 
-  public selectFormControl = new FormControl('valid', [
+  public selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
 
-  public nativeSelectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
@@ -75,7 +75,7 @@ export class ProfessorAddComponent implements OnInit {
   titleList = [];
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<ProfessorAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
     private readonly cityService: CityService,

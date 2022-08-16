@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { StudentDto } from 'src/app/core/models/student.model';
@@ -22,23 +22,23 @@ const CREATE_TITLE = 'Add Student';
 })
 export class StudentAddComponent implements OnInit {
 
-  public semester = new FormControl('', [Validators.required]);
+  public semester = new UntypedFormControl('', [Validators.required]);
   public title: string;
 
-  public studentAddForm: FormGroup;
+  public studentAddForm: UntypedFormGroup;
   public destroy$: Subject<boolean> = new Subject();
 
-  public selectFormControl = new FormControl('valid', [
+  public selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
 
-  public nativeSelectFormControl = new FormControl('valid', [
+  public nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
   ]);
 
-  public emailFormControl = new FormControl('', [
+  public emailFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email,
   ]);
@@ -49,7 +49,7 @@ export class StudentAddComponent implements OnInit {
   titleList = [];
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<StudentAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SubjectModalData,
     private readonly cityService: CityService,
