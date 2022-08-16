@@ -12,22 +12,20 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.1.2",
-    "@angular/cdk": "^13.3.9",
+    "@angular/cdk": "^14.1.2",
     "@angular/common": "^14.1.2",
     "@angular/compiler": "^14.1.2",
     "@angular/core": "^14.1.2",
-    "@angular/flex-layout": "^11.0.0-beta.33",
+    "@angular/flex-layout": "^14.0.0-beta.40",
     "@angular/forms": "^14.1.2",
-    "@angular/material": "^13.3.9",
+    "@angular/material": "^14.1.2",
     "@angular/platform-browser": "^14.1.2",
     "@angular/platform-browser-dynamic": "^14.1.2",
     "@angular/router": "^14.1.2",
     "@material/snackbar": "^11.0.0",
     "keycloak-angular": "^12.0.0",
-    "keycloak-js": "^19.0.1",
     "material-design-icons": "^3.0.1",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -36,7 +34,7 @@
     "@angular/compiler-cli": "^14.1.2",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
-    "codelyzer": "^0.0.28",
+    "codelyzer": "^6.0.2",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.0",
@@ -46,6 +44,7 @@
     "karma-jasmine-html-reporter": "^1.7.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
+    "tslib": "^2.4.0",
     "tslint": "~6.1.0",
     "typescript": "~4.6.4"
   }

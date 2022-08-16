@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/auth/auth.guard';
+import { AccessDeniedComponent } from './features/access-denied/access-denied.component';
+import { AdminComponent } from './features/admin/admin.component';
 import { HomeComponent } from './features/home/pages/home/home.component';
+import { ManagerComponent } from './features/manager/manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,6 +39,23 @@ const routes: Routes = [
     path: 'exam',
     loadChildren: () =>
       import('./features/exam/exam.module').then((m) => m.ExamModule),
+  },
+  {
+    path: 'access-denied',
+    component: AccessDeniedComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] },
+  },
+  {
+    path: 'manager',
+    component: ManagerComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_MANAGER'] },
   },
 
   // {path: 'subject-list', component: SubjectListComponent},
