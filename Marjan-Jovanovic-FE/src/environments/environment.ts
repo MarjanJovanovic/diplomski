@@ -3,8 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseHttpURL: 'http://localhost:8090/eng-marjan-jovanovic',
-  production: false
+  // baseHttpURL: 'http://localhost:8090/eng-marjan-jovanovic', //TODO:REMOVE
+  production: false,
+  serverUrl: '/api',
+  keycloak: {
+    // Url of the Identity Provider
+    issuer: 'http://localhost:8080/auth/',
+    // Realm
+    realm: 'demo-realm',
+    clientId: 'demo-angular',
+  },
 };
 
 /*
