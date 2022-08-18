@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get(`${environment.serverUrl}/demo`).subscribe((data: any) => {
+    this.http.get(`${environment.serverUrl}/admin`).subscribe((data: any) => {
       this.message = data.message;
     });
   }

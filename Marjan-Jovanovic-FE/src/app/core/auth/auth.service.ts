@@ -14,6 +14,7 @@ export class AuthService {
     this.keycloakService.logout();
   }
   getLoggedUser(): any {
+    console.log("getting logged user...");
     return this.keycloakService.getKeycloakInstance().idTokenParsed;
   }
 }

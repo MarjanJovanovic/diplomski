@@ -5,13 +5,13 @@
 export const environment = {
   baseHttpURL: 'http://localhost:8090/eng-marjan-jovanovic', //TODO:REMOVE
   production: false,
-  serverUrl: '/api',
+  serverUrl: 'http://localhost:8090/eng-marjan-jovanovic/api',
   keycloak: {
     // Url of the Identity Provider
-    issuer: 'http://localhost:8080/auth/',
+    issuer: 'http://localhost:8080/',
     // Realm
-    realm: 'demo-realm',
-    clientId: 'demo-angular',
+    realm: 'studentski-servis-realm',
+    clientId: 'studentski-servis',
   },
 };
 
