@@ -11,6 +11,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializer } from './shared/utils/app-init';
 // import { SharedModule } from './shared/shared.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -26,7 +33,16 @@ import { initializer } from './shared/utils/app-init';
     HttpClientModule,
     MatDialogModule,
     // SharedModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+
+    FormsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
