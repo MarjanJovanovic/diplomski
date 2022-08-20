@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/auth/auth.guard';
+import { Roles } from './core/enums/roles';
 import { AccessDeniedComponent } from './features/access-denied/access-denied.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { HomeComponent } from './features/home/pages/home/home.component';
@@ -49,13 +50,13 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_ADMIN'] },
+    data: { roles: [Roles.ADMIN] },
   },
   {
     path: 'professor',
     component: ManagerComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PROFESSOR'] },
+    data: { roles: [Roles.PROFESSOR] },
   },
 
   // {path: 'subject-list', component: SubjectListComponent},

@@ -1,3 +1,4 @@
+<div class="example-container" > 
 <mat-toolbar color="primary" class="example-toolbar">
     <div class="left-navbar">
         <button mat-icon-button (click)="isExpanded = !isExpanded">
@@ -9,11 +10,12 @@
         <button mat-button routerLink="student">Student Page</button>
         <button mat-button routerLink="professor">Professor Page</button>
         <button mat-button routerLink="admin">Admin Page</button>
+        <button mat-button (click)="login()">Login</button>
         <button mat-button (click)="logout()">Logout</button>
     </div>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container" autosize>
+<mat-sidenav-container >
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
         (mouseleave)="mouseleave()">
         <mat-nav-list>
@@ -37,7 +39,14 @@
                 </div>
             </div>
         </mat-nav-list>
-        <mat-nav-list>
+        <mat-nav-list *ngIf="isAdmin">
+            
+        </mat-nav-list>
+        <mat-nav-list *ngIf="isProfessor">
+            
+        </mat-nav-list>
+        <mat-nav-list *ngIf="isStudent">
+            
         </mat-nav-list>
     </mat-sidenav>
 
@@ -46,3 +55,4 @@
     <!-- </div> -->
 
 </mat-sidenav-container>
+</div>
