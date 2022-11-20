@@ -47,6 +47,11 @@
   background-size: cover;
 }
 
+.help-header-image {
+  background-image: url("src\assets\Icons\streamlinehq-man-raising-hand-2-smiley-people-250.png");
+  background-size: cover;
+}
+
 mat-card {
   margin: 1%;
 }

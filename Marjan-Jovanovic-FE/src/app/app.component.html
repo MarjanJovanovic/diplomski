@@ -19,6 +19,12 @@
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
         (mouseleave)="mouseleave()">
         <mat-nav-list>
+            <a mat-list-item href="/home">Home</a>
+            <a mat-list-item href="/student">Student</a>
+            <a mat-list-item href="/professor">Professor</a>
+            <a mat-list-item href="/exam-period">Exam periods</a>
+            <a mat-list-item href="/exam">Exams</a>
+
             <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
                 <span class="full-width" *ngIf="isExpanded || isShowing">Parent Menu</span>
                 <mat-icon mat-list-icon>home</mat-icon>
