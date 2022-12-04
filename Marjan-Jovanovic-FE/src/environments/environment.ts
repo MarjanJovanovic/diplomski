@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseHttpURL: 'http://localhost:8090/eng-marjan-jovanovic', //TODO:REMOVE
+  baseHttpURL: 'http://localhost:8090/marjan-jovanovic-be/api', 
   production: false,
-  serverUrl: 'http://localhost:8090/eng-marjan-jovanovic/api',
+  serverUrl: 'http://localhost:8090/marjan-jovanovic-be/api',
   keycloak: {
     // Url of the Identity Provider
     issuer: 'http://localhost:8080/',

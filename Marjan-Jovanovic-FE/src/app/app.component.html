@@ -7,11 +7,12 @@
         <h1 class="example-app-name">Studentski servis app</h1>
     </div>
     <div class="right-navbar">
-        <button mat-button routerLink="student">Student Page</button>
+        <!-- <button mat-button routerLink="student">Student Page</button>
         <button mat-button routerLink="professor">Professor Page</button>
-        <button mat-button routerLink="admin">Admin Page</button>
-        <button mat-button (click)="login()">Login</button>
-        <button mat-button (click)="logout()">Logout</button>
+        <button mat-button routerLink="admin">Admin Page</button> -->
+        <h4 *ngIf="isLoggedIn" class="example-app-name">{{userProfile.firstName}} {{userProfile.lastName}}</h4>
+        <button mat-button *ngIf="!isLoggedIn" (click)="login()">Login</button>
+        <button mat-button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
     </div>
 </mat-toolbar>
 
@@ -25,7 +26,7 @@
             <a mat-list-item href="/exam-period">Exam periods</a>
             <a mat-list-item href="/exam">Exams</a>
 
-            <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+            <!-- <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
                 <span class="full-width" *ngIf="isExpanded || isShowing">Parent Menu</span>
                 <mat-icon mat-list-icon>home</mat-icon>
                 <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">
@@ -43,7 +44,7 @@
                     <mat-list-item>SubSubmenu Item 1</mat-list-item>
                     <mat-list-item>SubSubmenu Item 2</mat-list-item>
                 </div>
-            </div>
+            </div> -->
         </mat-nav-list>
         <mat-nav-list *ngIf="isAdmin">
             

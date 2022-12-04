@@ -66,12 +66,12 @@ export class AppComponent implements OnInit{
   showSubSubMenu: boolean = false;
 
   mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
-    console.log("mouse enter");
-    console.log("is admin?: ", this.keycloakService.isUserInRole("ROLE_ADMIN"));
-    console.log("is professor?: ", this.keycloakService.isUserInRole("ROLE_PROFESSOR"));
+    // if (!this.isExpanded) {
+    //   this.isShowing = true;
+    // }
+    // console.log("mouse enter");
+    // console.log("is admin?: ", this.keycloakService.isUserInRole("ROLE_ADMIN"));
+    // console.log("is professor?: ", this.keycloakService.isUserInRole("ROLE_PROFESSOR"));
   }
 
   mouseleave() {
