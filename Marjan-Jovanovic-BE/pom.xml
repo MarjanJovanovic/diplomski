@@ -115,5 +115,13 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
