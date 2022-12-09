@@ -1,6 +1,6 @@
 <h1 class="home-title">Student web portal app</h1>
 <div class="flex-wrapper">
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngIf="isAdmin || isProfessor">
     <mat-card-header>
       <div mat-card-avatar class="subject-header-image"></div>
       <mat-card-title>Subjects</mat-card-title>
@@ -18,7 +18,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngIf="isAdmin">
     <mat-card-header>
       <div mat-card-avatar class="professor-header-image"></div>
       <mat-card-title>Professors</mat-card-title>
@@ -36,10 +36,10 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngIf="isAdmin">
     <mat-card-header>
       <div mat-card-avatar class="student-header-image"></div>
-      <mat-card-title>Studens</mat-card-title>
+      <mat-card-title>Students</mat-card-title>
       <mat-card-subtitle>Manage students</mat-card-subtitle>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
@@ -54,7 +54,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngIf="isAdmin || isProfessor">
     <mat-card-header>
       <div mat-card-avatar class="exam-period-header-image"></div>
       <mat-card-title>Exam periods</mat-card-title>
@@ -74,7 +74,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" *ngIf="isAdmin || isStudent">
     <mat-card-header>
       <div mat-card-avatar class="exam-header-image"></div>
       <mat-card-title>Exams</mat-card-title>

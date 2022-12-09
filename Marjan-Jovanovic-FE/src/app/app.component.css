@@ -49,3 +49,13 @@
     margin-left: 8px;
     min-width: 120px;
   }
+
+  .noLoggedIn{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .underlinedLogin{
+    text-decoration: underline;
+  }

@@ -36,12 +36,12 @@ INSERT INTO subject(name, description, no_of_esp, year_of_study, semester) VALUE
 
 
 -- Table initialization: Student
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 1", "Studentkovic 1", "student1@student.com", "Student address 1", 11000, "1001", "2001", 1);
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 2", "Studentkovic 2", "student2@student.com", "Student address 2", 11000, "1002", "2002", 1);
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 3", "Studentkovic 3", "student3@student.com", "Student address 3", 18000, "1003", "2003", 1);
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 4", "Studentkovic 4", "student4@student.com", "Student address 4", 18000, "1004", "2004", 2);
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 5", "Studentkovic 5", "student5@student.com", "Student address 5", 16000, "1005", "2005", 2);
-INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Studentko 6", "Studentkovic 6", "student6@student.com", "Student address 6", 16000, "1006", "2006", 2);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 1", "Studentkovic 1", "student1@student.com", "Student address 1", 11000, "1001", "2001", 1);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 2", "Studentkovic 2", "student2@student.com", "Student address 2", 11000, "1002", "2002", 1);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 3", "Studentkovic 3", "student3@student.com", "Student address 3", 18000, "1003", "2003", 1);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 4", "Studentkovic 4", "student4@student.com", "Student address 4", 18000, "1004", "2004", 2);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 5", "Studentkovic 5", "student5@student.com", "Student address 5", 16000, "1005", "2005", 2);
+INSERT INTO student(first_name, last_name, email, address, postal_code, index_number, index_year, current_year_of_study) VALUES ("Student 6", "Studentkovic 6", "student6@student.com", "Student address 6", 16000, "1006", "2006", 2);
 
 -- Table initialization: Professor
 INSERT INTO professor(first_name, last_name, email, address, postal_code, phone, reelection_date, title_id) VALUES ("Profesor 1", "Profesorovic 1", "profesor1@profesor.com", "Profesor adresa 1", 11000, 123456789, CURDATE(), 1);
