@@ -1,3 +1,3 @@
-# Diplomski rad Marjan Jovanovic 3100
+# Implementacija sistema studentskog servisa - Marjan Jovanovic 3100
 
-Repozitorijum sadrzi front-end i back-end
+Repozitorijum je podeljen na front-end i back-end deo
