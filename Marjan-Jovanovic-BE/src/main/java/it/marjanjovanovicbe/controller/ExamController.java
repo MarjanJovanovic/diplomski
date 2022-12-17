@@ -60,6 +60,7 @@ public class ExamController {
 
     @PostMapping("/save")
     public @ResponseBody ResponseEntity<Object> save(@Valid @RequestBody ExamDtoSimple examDto){
+        System.out.println("Received examDto" + examDto);
         try{
             return ResponseEntity.status(HttpStatus.OK).body(examService.save(examDto));
         }catch (MyEntityAlreadyExistsException | MyEntityInvalidParamException e){

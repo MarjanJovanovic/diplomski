@@ -54,6 +54,7 @@ public class ExamPeriodController {
     @GetMapping("/getAllFiltered")
     public @ResponseBody ResponseEntity<Page<ExamPeriodDto>> getByPage(Pageable pageable) {
         System.out.println(pageable);
+        System.out.println("examPeriodService.getAll(pageable)" + examPeriodService.getAll(pageable));
         return ResponseEntity.status(HttpStatus.OK).body(examPeriodService.getAll(pageable));
     }
 

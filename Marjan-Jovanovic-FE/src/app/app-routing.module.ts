@@ -59,6 +59,12 @@ const routes: Routes = [
     data: { roles: [Roles.PROFESSOR] },
   },
 
+  {
+    path: 'faq',
+    loadChildren: () =>
+      import('./features/faq/faq.module').then((m) => m.FaqModule),
+  },
+
   // {path: 'subject-list', component: SubjectListComponent},
   // {path: 'subject-add', component: SubjectAddComponent},
 ];

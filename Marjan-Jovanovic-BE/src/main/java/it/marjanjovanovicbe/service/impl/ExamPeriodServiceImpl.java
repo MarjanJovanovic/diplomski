@@ -41,13 +41,15 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
 
     @Override
     public ExamPeriodDto save(ExamPeriodDto examPeriodDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException {
-        System.out.println("Testing exam period" + examPeriodDto);
         if (!(validateExamPeriodDates(examPeriodMapper.toEntity(examPeriodDto)))){
             throw new MyEntityInvalidParamException("Exam period in the given time period already exists");
         }
-        Optional<ExamPeriodEntity> entity = examPeriodRepository.findById(examPeriodDto.getId());
-        if (entity.isPresent()) {
-            throw new MyEntityAlreadyExistsException("Exam period already exists: ", examPeriodMapper.toDto(entity.get()));
+        if (examPeriodDto.getId()!= null){
+            Optional<ExamPeriodEntity> entity = examPeriodRepository.findById(examPeriodDto.getId());
+            if (entity.isPresent()) {
+                System.out.println("Present");
+                throw new MyEntityAlreadyExistsException("Exam period already exists: ", examPeriodMapper.toDto(entity.get()));
+            }
         }
         ExamPeriodEntity examPeriodEntity = examPeriodRepository.save(examPeriodMapper.toEntity(examPeriodDto));
         return examPeriodMapper.toDto(examPeriodEntity);
@@ -107,10 +109,12 @@ public class ExamPeriodServiceImpl implements ExamPeriodService {
     //TODO: Cleanup
     @Override
     public boolean validateExamPeriodDates(ExamPeriodEntity examPeriodEntity){
+        System.out.println("Validating exam period");
         List<ExamPeriodEntity> timePeriod1 = examPeriodRepository.findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
         List<ExamPeriodEntity> timePeriod2 = examPeriodRepository.findAllByStartDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
         List<ExamPeriodEntity> timePeriod3 = examPeriodRepository.findAllByEndDateBetween(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
         List<ExamPeriodEntity> timePeriod4 = examPeriodRepository.findAllByStartDateGreaterThanEqualAndEndDateLessThanEqual(examPeriodEntity.getStartDate(), examPeriodEntity.getEndDate());
+        System.out.println("Validated");
         return (timePeriod1.isEmpty() && timePeriod2.isEmpty() && timePeriod3.isEmpty() && timePeriod4.isEmpty());
     }
 }

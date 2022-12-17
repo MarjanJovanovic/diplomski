@@ -1,0 +1,297 @@
+<div class="main-content">
+    <h1>Uvod</h1>
+    <h4>
+        Kako je u vremenom rasla potražnja za elektronskim sistemima koji su
+        zamenili klasični način dokumentovanja na papir, tako je kod korisnika ovakvih
+        sistema rasla želja da oni budu moćniji i komplikovaniji. Međutim, obzirom da je
+        osnovni zahtev bila funksionalnost i bezbednost samog sistema, zapostavljen je
+        donekle korisnik i korisničko iskustvo. Iz ovog razloga je u današnje vreme popularan
+        jednostavniji dizajn koji bi privukao korisnika da bez mnogo razmišljanja i čitanje
+        dokumentacije pristupi nekoj aplikaciji, bilo da je to veb-sajt koji svega ima par
+        elemenata koji služe da jasno predstave korisniku svrhu korišćenja sajta ili aplikacija
+        koja je na prvi pogled izgleda stilizovano. Jasno je da korisnici nisu spremni da
+        izdvoje svoje vreme i pažnju već žele da završe neku radnju u najkraćem mogućem
+        vremenu.
+        Sa ovom idejom je kreiran sistem za studentski servis koji olakšava
+        studentima i profesorima korišćenje interfejsa koji je popularan i jednostavan za
+        korišćenje. Obzirom da je ovakav tip sistema početkom prethodne decenije postao
+        popularan u vidu statičnih veb stranica, neophodno je prilagoditi ih svim uređajima
+        koji su vremenom takođe postali popularni i koje većina ljudi koristi svakodnevno. Tu
+        spadaju mnoge vrste mobilnih uređaja, tablet i laptop računara pa čak i pametnih
+        satova ili različiti drugi tipovi pomoćnih uređaja.
+        Trenutno se pokazalo najjednostavnije kreirati veb-aplikaciju koja ima za cilj
+        da omogući korisnicima pristup dokle god imaju instaliran internet pretraživač.
+        Ukoliko korisnik ispunjava ovaj uslov, u nastavku je opisan detaljan sistem kroz
+        korišćene tehnologije, izgled korisničke aplikacije i funkcionalnosti koje to
+        omogućavaju korisniku.
+    </h4>
+    <h1>
+        Postojeća rešenja, analiza i diskusija
+    </h1>
+    <h4>
+        Kao što je u uvodu napomenuto, sa napretkom tehnologije razvijala su se
+        rešenja koja su omogućavala prelaz sa klasičnog načina dokumentovanja na papiru
+        na elektronski način čuvanja podataka. U početku su za to bile zadužene osobe koje
+        su jedine imale pristup sistemu unosile sve podatke direktno, dok je vremenom
+        omogućeno i drugima da pristupe ograničenom količinom podataka.
+        Što se tiče odabira tehnologija, ovde je moguće videti najviše varijacija
+        pogotovo zbog zavisnosti kada je u pitanju vreme kreiranja portala. Stariji studentski
+        portali su u početku pretežno bile statične stranice odbojnog karaktera koje su se kod
+        nas zadržale čak do početka 2010-ih godina iako su prevazidjene sa početkom Web
+        2.0-a još 2004. Razlog je bio jednostavan: prioritet razvojnih timova je oduvek bio na
+        bezbednosti podataka i jednostavnosti koja je bila poznata svima. Takođe je sama
+        funkcionalnost u početku bila ograničena na jednostavnu prijavu ispita gde student
+        može da odabere predmete koje prijavljuje u tekućem ispitnom roku ,dok profesor
+        može da unosi ocene. Iako mnogi smatraju da je ovo dovoljno, teško je zanemariti
+        mogućnosti modernih tehnologija i funkcionalnosti koje se mogu dodati. Tačan skup
+        tehnologija koji bilo koji sistem koristi je retko moguće tačno odrediti, ali svakako
+        poenta upoređivanja ovakvih rešenja na samom izgledu, funkcionalnosti koje pružaju
+        i korisničkom iskustvu.
+        Konkretan primer koji je služio kao ispiracija za ovaj projekat jeste Informacioni
+        Sistem Univerziteta Metropolitan. U pitanju je sistem koji grupiše više funkcionalnosti
+        kao što je pregled ispitnih obaveza, pregled dugovanja prema fakultetu i cenovnik,
+        prijava ispita i pregled položenih ispita, nastavni plan i biblioteka. Isum kombinuje sve
+        osnovne funkcionalnosti jednog studentskog portala sa modernim i intuitivnim
+        dizajnom koji privlači studente da ga koriste.
+        11
+        Još jedan zanimljiv primer koji je lako pronaći jeste eStudent koji koriste
+        nekoliko fakulteta i univerziteta: Elektrotehnički fakultet u Beogradu, Fakultet
+        organizacionih nauka, Tehnološko-metalurški fakultet, Stomatološki fakultet, Fakultet
+        muzičke umetnosti, Učiteljski fakultet, Farmaceutski fakultet, Fakultet sporta i fizičkog
+        vaspitanja, Fakultet za fizičku hemiju, Filološki fakultet, Fakultet bezbednosti, Fakultet
+        veterinarske medicine, Fizički fakultet, Integrisani univerzitet Singidunum, Integrisani
+        univerzitet Sinergija u Bijeljini i Univerzitet odbrane.
+        Razvojni tim ovog sistema tvrdi da je celokupan sistem koncipiran imajući na
+        umu sigurnost podataka, i tvrde da za šest godina rada nije postojao nijedan
+        sigurnosni problem.
+        12
+        Iako ovakvo rešenje deluje odlično, pre svega zbog toga što studentima
+        dostavlaj širok opseg funkcionalnosti kojima imaju pristup u bilo koje doba sa bilo
+        koje lokacije, teško je zanemariti zastareo izgled i jednostavnost ovakvog sistema.
+        Sa slika ekrana se može videti godina 2010, što otprilike i prati izgled samog
+        interfejsa i možemo predpostaviti da je u pitanju sistem koji često može da odbija
+        svoje korisnike, što svakako nije fokus kako oni navode. Za unapređenje ovakvog
+        sistema potrebno je izmeniti celokupnu dizajn logiku ili ukoliko je moguće promeniti
+        tehnologiju uz pomoć koje je sistem kreiran.
+    </h4>
+    <h1>Primena MVC arhitekture u sistemu sutentskog servisa</h1>
+    <h4>
+        Ključna stavka po pitanju uspeha razvoja softverskog projekta se često svodi
+        na odabrane tehnologije koje se koriste za razvoj. Različiti projekti sa sobom nose
+        različite faktore, stoga je bitno obratiti pažnju često na budžet za razvoj, potrebno
+        vreme dok softver ne izađe iz faze razvoja i kakve su potrebne performanse softvera.
+        Za manje timove i kompanije često te odluke donose i sami članovi tima koji predlažu
+        one tehnologije koje su im poznate i koje smatraju da se dobro uklapaju sa
+        zahtevima.
+        Odabrane tehnologije u sistemu studentskog servisa prate sličnu logiku.
+        Poštuju osnovne koncepte i podelu MVC arhitekture gde je ceo sloj pregleda Angular
+        aplikacija koja komunicira sa Kontrolerom, što predstavlja Spring Boot aplikaciju koja
+        dalje komunicira sa MySQL bazom koja predstavlja Model sloj. Iako postoje
+        tehnologije koje bi bolje ispratile MVC principe, kao na primer Spring MVC, lakše je i
+        brže razvijati rešenja uz pomoć Spring Boot-a bilo da je u pitanju MVC arhitektura,
+        mikroservisna arhitektura i druge.
+    </h4>
+    <h1>
+        Korišćene tehnologije
+    </h1>
+    <h4>
+        Kada je u pitanju sam odabir tehnologije neophodno je odabrati tehnologiju
+        koja pokriva sve zahteve koje diktira projekat. U konkretnom slučaju se ističu Spring i
+        Angular kao komponente koje sadrže najveći deo logike sistema. Spring Boot
+        predstavlja popularan izbor zbog visokih performansi i lake prenosivosti Jave, ali i
+        brzine razvoja koju donosi sam okvir. Angular je vrlo moderan okvir za razvoj
+        klijentskih veb aplikacija koji koristi TypeScript programski jezik čiji odabir prati slična
+        14
+        logika kao i ostale odabrane tehnologije, a to su pre svega performanse i brzine
+        razvoja koja je otežana tokom postavljanja projekta, ali je drastično bolja kada uz
+        pomoću „ng“ komande počnemo da generišemo komponente, interfejse, servise itd.
+        4.1.1 SPRING BOOT
+        Kao jedan od najpopularnijih okvira za pisanje web servisa u Java
+        programskom jeziku odabran je Spring Boot okvir. Spring boot olakšava kreiranje
+        samostalnih aplikacija spremnih za produkciju za koje je potrebno izuzetno malo
+        vremena. Spring Boot predstavlja modul Spring-a za pakovanje aplikacija na bazi
+        Spring-a sa osnovnim podrazumevanim vrednostima. Uz pomoć Spring Boot-a
+        moguće je podesiti kompletan back-end deo sistema, počevši od bezbednosne
+        konfiguracije koju takođe sadrži ukoliko želimo da je koristimo, preko kontrolera koje
+        nam pomaže da lako mapiramo sa eksternim aplikacijama do same logike koje
+        pišemo u Javi kako bi vršili obradu podataka i upisivanje podataka u bazi bilo da je u
+        pitanju relaciona baza, baza podataka dokumenata ili bilo koja druga.
+        Glavna karakteristika Spring Boot-a jeste Autokonfiguracija koja omogućava
+        da on automatski konfiguriše klase na osnovu zahteva. Na primer, ukoliko se MySQL
+        baza podataka nalazi u putanji klase, a nije prethodno konfigurisana veza sa bazom
+        podataka, Spring Boot će automatski konfigurisati sopstvenu bazu u memoriji
+        računara. Takođe je bitno napomenuti da je u Spring Boot-u automatski sve
+        konfigurisano i nije bitno ništa ručno podešavati, što dodatno ubrzava razvoj softvera.
+        4.1.2 ANGULAR
+        Angular predstavlja radni okvir otvorenog koda, napisan u Typescript
+        programskom jeziku koji je pogodan za razvoj web aplikacija. Održava ga Google i
+        primarna namena mu je razvoj jednostranih aplikacija. Glavna prednost mu je što
+        pruža standardizovanu strukturu u kodu koja pomaže razvojnom timu po pitanju
+        čitkosti koda, ali i održivosti i skalabilnosti. Ovakav tip radnih okvira omogućava
+        razvojnom timu da radi na konkretnim problemima kako ne mora da se fokusira na
+        kreiranje strukture iz početka.
+        15
+        Iako je Javascript najkorišćeniji skriptni jezik, nije idealan je za razvoj
+        jednostranih aplikacija koje zahtevaju modularnost, mogućnost za testiranje i
+        poboljšavanje produktivnosti razvojnog tima. Sa ciljem da reši date probleme kreiran
+        je prvo Angular 1, drugačije poznat kao AngularJS. Angular koristi DOM (Document
+        Object Model – Objektni Model Dokumenta) i koristi Html ili Xml kod za strukturu
+        stranice.
+        Typescript pomaže u pisanju jasnijeg Javascript koda pomoću definisanih
+        tipova. Sav Typescript kod se kompajlira u Javascript koji može da radi na bilo kojoj
+        platformi, i kao takav je preporučen za razvoj Angular aplikacija zbog znatno bolje
+        sintaksne strukture i održivosti samog koda.
+        4.1.3 MATERIAL DESIGN
+        Material Design predstavlja dizajn sistem koji je kreirao Google sa ciljem da
+        elemente koje korisnik vidi na ekranu predstavi na način koji je ljudima poznat i
+        prijatan za korišćenje. To su postigli uz pomoć 3d efekata, realističnim osvetljenjem, i
+        animacijama koje se dobro prenose na svim platformama. Material je kreiran sa
+        željom da se pobegne od monotonog izgleda statičkih interfejsa koji su bili u jednoj
+        ravni. Inicijalna ideja je bila da se predje na izgleda papira i mastila, gde je papir, iako
+        inicijalno dvodimenzionalni objekat, u stvarnom svetu trodimenzionalni objekat koji
+        ima svoju senku, šavove i nabore, i koji se može iseći da bi se promenila njegova
+        veličina u zavisnosti od naših potreba.
+        Cela svrha Material Design-a je da korisnika prirodno navodi kroz interfejs koji,
+        iako možda vidi prvi put, izgleda intuitivno i lako za korišćenje praćenjem svog
+        osećaja. Na taj način korisnici upravljaju interfejsom prirodno dodirom i pomeranjem
+        objekata kao što bi njima upravljali u stvarnom životu.
+        16
+        4.1.4 SPRING DATA JPA
+        Jedan od izuzetno korisnih alata koje nam nudi Spring, Spring Data Jpa, nam
+        omogućava da kreiramo repozitorijume po uzoru na Jpa (Java Persistence Api) u
+        okviru Spring aplikacije koja koristi tehnologije za pristup podacima. Spring Data Jpa
+        smanjuje potreban kod za koji je ranije trebalo dosta vremena čak i za jednostavne
+        upite nad bazom tako što od nas zahteva da definipemo interfejse sa
+        repozitorijumima i ručno pravljene metode, dok će se Spring postarati da nam
+        automatski dostavi gotovu implementaciju. Na taj način nam omogućava da sav svoj
+        fokus stavimo na biznis logiku samog sistema i da se ne bavimo nepotrebnim
+        pisanjem osnovnih upita nad bazom.
+        Spring Data Jpa predstavlja sloj nad već poznatom tehnologijom JPA, što
+        znači da sadrži sve funkcionalnosti koje nam pruža i JPA kao što je mapiranje
+        entiteta i relacija, upravljanje životnog ciklusa entiteta i izvršavanja upita, i da pritom
+        dodaje svoje funkcionalnosti kao što su implementacija repozitorijuma bez koda i
+        kreiranje upita nad bazom na osnovu imena metoda.
+        Kreiranje repozitorijuma bez koda je jedan od najpopularnijih šablona za
+        perzistenciju. Glavna funkcija mu je da od nas sakrije implementacioni deo koda
+        kako bi implementirali poslovnu logiku na višem nivou apstrakcije. Iako sama
+        imeplementacija ovog šablona nije komplikovana, štedi vreme programera od pisanja
+        koda koji se ponavlja.
+        Generisanje upita na osnovu metoda je još jedna pogodnost korišćenja Spring
+        Data Jpa. Dokle god sam upit nije previše kompleksan, sve što je potrebno je
+        definisati metodu u interfejsu repozitorijuma na adekvatan način. Spring zatim
+        prosleđuje ime metode i kreira upit.
+        17
+        4.1.5 MYSQL
+        Baziran na SQL-u (Structural Query Language – Strukturirani Jezik Upita)
+        MySQL predstavlja sistem za upravljanje relacionih baza podataka. Njegov razvoj
+        podržava kompanija Oracle ali je izvorni kod dostupan svima, i kao takav predstavlja
+        jedan od najpopularnijih sistema za upravljanje relacionim bazama.
+        Ovo predstavlja primarni razlog zbog čega je izuzetno popularan jer nije
+        potrebno ulagati novac, već ga svako može koristiti. U sebi sadrži veliki opseg
+        funkcionalnosti koje se obično nalaze u okviru većih sistema za upravljanjem bazama
+        podataka. Pored toga poseduje izuzetno dobre performanse čak i kada je u pitanju
+        rad sa većim skupovima podataka i moguće je prilagođavati njegov kod ukoliko je
+        potrebno raditi na posebnim okruženjima. Koristi svima poznat jezik za upravljanje
+        podacima SQL, i podržava mnoge operativne sisteme i velike baze podataka.
+        MySQL korisnicima pruža širok spektar funkcionalnosti i to:
+        • Izvršavanje operacija baze podataka nad tabelama, redovima,
+        kolonama i indeksima u bazi podataka
+        • Definisanje veza između tabela
+        • Održava referentni integritet između redova ili kolona različitih tabela,
+        što nam omogućava da definišemo veze između podataka preko više
+        tabela
+        • Automatski ažurira indekse tabela
+        • Koristi mnoge SQL upite i kombinuje korisne informacije između više
+        tabela kako bi dostavio skup podataka krajnjem korisniku
+        Sam MySQL sistem je baziran na Klijent-Server arhitekturi koji je dizajniran sa
+        fokusom na krajnjeg korisnika koji treba uz pomoć svog računara da dobije podatke
+        od strane centralnog računara. Klijent kreira zahtev kroz korisnički interfejs, dok
+        server ima za zadatak da mu dostavi adekvatne podatke čim se rezultat poklopi sa
+        korisničkim zahtevom. Sam MySQL server jeste glavna komponenta baze, i on
+        predstavlja poseban program koji obrađuje sve instrukcije i komande nad bazom
+        podataka.
+        18
+        4.1.6 LOMBOK
+        Jedna od glavnih mana Java programskog jezika jeste neophodno pisanje
+        „boilerplate“ koda, odnosno koda koji se šablonski ponavlja sa vrlo malo izmena.
+        Ovaj problem je često rezultat različitih biblioteka koje su tako dizajnirane, ali je
+        pogoršan ograničenjima koja nosi sam programski jezik. Projekat Lombok je kreiran
+        sa ciljem da reši ove probleme tako što deo koda koji nije neophodno ponovo pisati
+        generiše uz pomoć anotacija.
+        Iako su sa pojavom Jave 5 anotacije široko prihvaćene kao alat koji ukazuje
+        na neke dodatne informacije, implementaciju vezivanja i da generišu kod koji će da
+        koristi neki okvir, generalno se ne očekuje da generišu kod koji će sama aplikacija
+        direktno da koristi. Ovo je delom zbog toga što bi dodatno usporavale proces razvoja
+        same aplikacije. Ovo predstavlja glavnu funkcionalnost Lomboka koji, nakon što je
+        ubačen u razvojno okruženje ubacuje kod koji je odmah dostupan programeru.
+        Najčešće pisan šablonski kod u javi se generalno odnosi na upravljanje nad
+        podacima. Tu spadaju polja, getteri i setteri za ta polja, equals metode za poređenje
+        vrednosti kao i hashCode za generisanje heš vrednosti. Desetine linija ovakvog koda
+        mogu lako biti zamenjene Lombok anotacijom @Data koja automatski generiše
+        osnovnu implementaciju ovih metoda. Osnovne implementacije neće uvek biti
+        dovoljne programeru, ali zbog toga postoje i granularnije metode koje omogućavaju
+        podešavanje same strukture klase do detalja.
+        Neke od najpopularnijih anotacija su:
+        • @Getter i @Setter – služe za kreiranje getter i setter metoda koje služe
+        za čitanje i upis polja objekata
+        • @Nonnull – ukazuje na potrebu za proverom da li polje ima vrednost
+        • @ToString – implementira toString metodu koja prebacuje vrednost
+        polja u tekst
+        • @EqualsAndHashCode – anotacija koja generiše equals i hashCode
+        metode za upoređivanje vrednosti dva polja i kreiranje hash vrednosti
+        19
+        4.1.7 SWAGGER
+        Swagger predstavlja alat za kreiranje prikaza REST API-ja koji su potpuno
+        nezavisni od samog programskog jezika u kome je pisan API. Ovi prikazi se
+        automatski generišu i kao takvi su sa jedne strane pogodni za korišćenje razvojnog
+        tima koji kreira API, a sa druge su pogodni za najčešće frontend programere koji
+        prilagođavaju svoj deo sistema sa API-jem. Potrebno je samo konfigurisati swagger i
+        dodati zavisnosti tako da backend sa svojim pokretanjem pokreće i Swagger.
+        Swagger je softver otvorenog koda zasnovan na velikom izboru alata koji
+        pomažu programerima da organizuju, naprave, dokumentuju i koriste RESTful
+        servise. Iako većina ljudi Swagger identifikuje sa Swagger UI alatkom, Swagger je
+        mnogo više od toga. Njegov set alata uključuje podršku za automatizovanu
+        dokumentaciju, generisanje koda i generisanje testova.
+        4.1.8 KEYCLOAK
+        Keycloak je moderan alat otvorenog koda za upravljanje identitetima i
+        pristupom sistemu. U pitanju je alat novijeg datuma koji je pogodan za sve tipove
+        projekata: od manjih početničkih projekata do velikih koje koriste mnoge poznate
+        firme.
+        Keycloak dolazi sa mnoštvom gotovih funkcionalnosti koje se šesto traže od
+        modernih aplikacija kao što su kreiranje prilagodljivih stranica za prijavu, ponovno
+        dobijanje lozinki, prihvatanje uslova korišćenja i tako dalje. Sve ove funkcionalnosti
+        su deo Keycloak-a i nije potrebno pisati kod kako bi on bio integrisan. Keycloak služi
+        da preuzme odgovornost kada je u pitanju autentifikacija sa korisnikom po pitanju
+        autentifikacije, autorizacije i čuvanje lozinke. Takođe podržava dvofaktorsku
+        autentifikaciju što postaje sve češće obavezna u današnje vreme. Obzirom da se
+        Keycloak bavi kredencijalima, aplikacija koja koristi Keycloak dobija samo token od
+        strane Keycloaka i nema pristup korisničkim podacima što poboljšava nivo
+        bezbednosti ali i količinu posla koju razvojni tim mora da posveti implementaciji
+        bezbednostnih mera. Pored dvofaktorske autentifikacije, Keycloak podržava i SSO
+        (single sign-on) koji omogućava korisnicima da pristupaju na više različitih aplikacija,
+        20
+        iako su se prijavili na samo jednu. Podržava mnoge protokole za autentifikaciju
+        uključujući OAuth 2.0, OpenID Connect i SAML 2.0.
+        Konfiguracija Keycloak-a od strane razvojnog tima ili administratora sistema
+        moguća je putem administratorske konzole koja sadrži mnoštvo funkcionalnosti kao
+        što se upravljanje korisnicima, klijentima (što predstavljaju same aplikacije), rolama,
+        sesijama itd.
+        4.1.9 DOCKER
+        Kada je za razvoj softvera uključen veći broj ljudi koji rade na različitim
+        računarima, kada se softver postavlja na različitim tipovima servera ili kada je
+        nemoguće pokrenuti neki softver zbog zauzetog porta, nedostatka biblioteka ili drugih
+        konflikata, univerzalno prihvaćeno rešenje je upakovati takav softver u Docker
+        kontejner. Docker predstavlja alat koji dozvoljava razvojnom timu da pokreće
+        aplikacije unutar kontejnera koji su slični virtuelnim mašinama, koje se često koriste
+        kao operativni sistem unutar operativnog sistema kako bi se osiguralo da svi koriste
+        identičan operativni sistem, ali su poprilično lakši što se tiče računarskih resursa koje
+        zauzimaju iz prostog razloga jer su striktno kreirani da direktno upravljaju kernelom
+        operativnog sistema i stoga su lakši od virtuelnih mašina.
+        Kontejneri predstavljaju mehanizam pakovanja aplikacija u kome aplikacije
+        mogu da se izvršavaju izolovane jedna od druge dok komuniciraju putem definisanih
+        kanala. Docker kontejneri se prave iz Docker slika koje sadrže sve potrebne
+        zavisnosti, alate i biblioteke koje su potrebne da bi aplikacija mogla da se izvrši.
+        Moguće je kreirati slike ručno, ali je jednostavnije preuzeti gotove slike. Moguće je
+        kreirati više instanci slika iz jedne preuzete slike.
+    </h4>
+</div>

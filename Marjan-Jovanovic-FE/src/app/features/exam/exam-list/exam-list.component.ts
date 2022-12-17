@@ -90,8 +90,10 @@ export class ExamListComponent implements AfterViewInit {
       .afterClosed()
       .subscribe((res) => {
         if (res) {
+          console.log('Res', res);
+
           this.examService
-            .update(res.exam)
+            .update(res.subject)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
               this.fetchTableElements();
@@ -131,7 +133,7 @@ export class ExamListComponent implements AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         if (res) {
-          this.examService.save(res.exam).subscribe(() => {
+          this.examService.save(res.subject).subscribe(() => {
             this.fetchTableElements();
           });
         }

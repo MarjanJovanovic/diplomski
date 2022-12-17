@@ -1,5 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -33,7 +40,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-exam-add',
   templateUrl: './exam-add.component.html',
-  styleUrls: ['./exam-add.component.css']
+  styleUrls: ['./exam-add.component.css'],
 })
 export class ExamAddComponent implements OnInit {
   public examPeriod = new UntypedFormControl('', [Validators.required]);
@@ -72,22 +79,17 @@ export class ExamAddComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ExamModalData,
     private readonly examPeriodService: ExamPeriodService,
     private readonly subjectService: SubjectService,
-    private readonly professorService: ProfessorService,
+    private readonly professorService: ProfessorService
   ) {}
 
   ngOnInit(): void {
     console.log(this.data);
- 
+
     this.title = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
     this.examAddForm = this.formBuilder.group({
       id: this.data.exam.id,
-      examPeriod: [
-        this.data.exam.examPeriod,
-        [
-          Validators.required,
-        ],
-      ],
-      subject: [this.data.exam.subject,[Validators.required]],
+      examPeriod: [this.data.exam.examPeriod, [Validators.required]],
+      subject: [this.data.exam.subject, [Validators.required]],
       professor: [this.data.exam.professor, [Validators.required]],
       date: [this.data.exam.date, [Validators.required]],
     });
@@ -127,9 +129,8 @@ export class ExamAddComponent implements OnInit {
       subject: this.examAddForm.value,
     });
   }
-  
+
   public closePopup() {
-    this.dialogRef.close({
-    }); 
+    this.dialogRef.close({});
   }
 }

@@ -1,4 +1,4 @@
 export interface CityDto {
-  postCode: number;
+  postalCode: number;
   name: string;
 }

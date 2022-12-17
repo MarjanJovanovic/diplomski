@@ -5,7 +5,7 @@ import { CityDto } from '../models/city.model';
 import { Page } from '../models/page.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CityService {
   controllerPrefix = 'city';
@@ -28,7 +28,7 @@ export class CityService {
     console.log(city);
 
     const params = {
-      postCode: city.postCode,
+      postalCode: city.postalCode,
       name: city.name,
     };
 
@@ -47,13 +47,11 @@ export class CityService {
 
   delete(city: CityDto) {
     console.log(
-      `${environment.baseHttpURL}/${this.controllerPrefix}/${city.postCode}`
+      `${environment.baseHttpURL}/${this.controllerPrefix}/${city.postalCode}`
     );
     return this.httpClient.delete(
-      `${environment.baseHttpURL}/${this.controllerPrefix}/${city.postCode}`,
+      `${environment.baseHttpURL}/${this.controllerPrefix}/${city.postalCode}`,
       { responseType: 'text' }
     );
   }
 }
-
-

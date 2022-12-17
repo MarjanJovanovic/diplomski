@@ -60,6 +60,7 @@ public class ProfessorController {
     @PostMapping("/save")
     public @ResponseBody
     ResponseEntity<Object> save(@Valid @RequestBody ProfessorDto professorDto) {
+        System.out.println("Trying to save: " + professorDto);
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professorService.save(professorDto));
         } catch (MyEntityAlreadyExistsException e) {

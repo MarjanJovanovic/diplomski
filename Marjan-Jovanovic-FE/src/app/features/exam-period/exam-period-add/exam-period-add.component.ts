@@ -1,5 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -29,7 +36,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-exam-period-add',
   templateUrl: './exam-period-add.component.html',
-  styleUrls: ['./exam-period-add.component.css']
+  styleUrls: ['./exam-period-add.component.css'],
 })
 export class ExamPeriodAddComponent implements OnInit {
   public semester = new UntypedFormControl('', [Validators.required]);
@@ -58,12 +65,12 @@ export class ExamPeriodAddComponent implements OnInit {
   constructor(
     private readonly formBuilder: UntypedFormBuilder,
     private readonly dialogRef: MatDialogRef<ExamPeriodAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ExamPeriodModalData,
+    @Inject(MAT_DIALOG_DATA) public data: ExamPeriodModalData
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
- 
+    console.log('this.data', this.data);
+
     this.title = this.data.isEditMode ? EDIT_TITLE : CREATE_TITLE;
     this.examPeriodAddForm = this.formBuilder.group({
       id: this.data.examPeriod.id,
@@ -80,7 +87,7 @@ export class ExamPeriodAddComponent implements OnInit {
       isActive: [this.data.examPeriod.isActive, [Validators.required]],
     });
 
-    console.log(this.name);
+    console.log('this.name', this.name);
   }
 
   get name() {
@@ -92,12 +99,13 @@ export class ExamPeriodAddComponent implements OnInit {
   }
 
   public saveExamPeriod() {
+    console.log('Saving exam period', this.examPeriodAddForm.value);
+
     this.dialogRef.close({
       subject: this.examPeriodAddForm.value,
     });
   }
   public closePopup() {
-    this.dialogRef.close({
-    }); 
+    this.dialogRef.close({});
   }
 }

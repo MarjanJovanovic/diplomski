@@ -25,19 +25,19 @@ export class ExamService {
   }
 
   save(exam: ExamDto) {
-    console.log(exam);
+    console.log('Saving examDto', exam);
 
     const params = {
-      // id: exam.id,
+      id: exam.id,
       date: exam.date,
-      examPeriod: exam.examPeriod,
+      examPeriodDto: exam.examPeriod,
       professor: exam.professor,
       subject: exam.subject,
     };
 
     return this.httpClient.post<ExamDto>(
       `${environment.baseHttpURL}/${this.controllerPrefix}/save`,
-      exam
+      params
     );
   }
 

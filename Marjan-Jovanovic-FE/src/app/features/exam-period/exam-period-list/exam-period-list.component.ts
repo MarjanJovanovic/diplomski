@@ -57,6 +57,8 @@ export class ExamPeriodListComponent implements AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         this.totalItems = res.totalElements;
+        console.log('Total content: ', res.content);
+
         this.dataSource = new MatTableDataSource(res.content);
       });
   }
@@ -129,7 +131,8 @@ export class ExamPeriodListComponent implements AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         if (res) {
-          this.examPeriodService.save(res.examPeriod).subscribe(() => {
+          console.log('Trying to save', res.subject);
+          this.examPeriodService.save(res.subject).subscribe(() => {
             this.fetchTableElements();
           });
         }

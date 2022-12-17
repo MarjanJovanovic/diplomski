@@ -56,16 +56,28 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public ExamDto save(ExamDtoSimple examDto) throws MyEntityAlreadyExistsException, MyEntityInvalidParamException {
-        Optional<ExamEntity> entity = examRepository.findById(examDto.getId());
-        if (entity.isPresent() || examPeriodRepository.findById(examDto.getExamPeriodDto().getId()).isPresent() ) { //TODO: check if exam already exists within examPeriod
-            throw new MyEntityAlreadyExistsException("Exam already exists: ", examMapper.toDto(entity.get()));
+        System.out.println("Checking for null to save" + examDto);
+        if (examDto.getId()!=null){
+            System.out.println("It's not null");
+            Optional<ExamEntity> entity = examRepository.findById(examDto.getId());
+            if (entity.isPresent() || examPeriodRepository.findById(examDto.getExamPeriodDto().getId()).isPresent() ) { //TODO: check if exam already exists within examPeriod
+                throw new MyEntityAlreadyExistsException("Exam already exists: ", examMapper.toDto(entity.get()));
+            }
         }
+        System.out.println("Trying to validate");
         if (!(validateExam(examDto))) {
             throw new MyEntityInvalidParamException("Exam period must have a exam period, subject and professor params that already exist, and date that is within the given exam period.");
         }
+        System.out.println("try1");
         ExamEntity examEntityToBeSaved = examMapperSimple.toEntity(examDto);
+        System.out.println("try1");
+
         examEntityToBeSaved.setExamPeriod(examPeriodRepository.findById(examDto.getExamPeriodDto().getId()).orElse(null));
+        System.out.println("try1");
+
         ExamEntity examEntitySaved = examRepository.save(examEntityToBeSaved);
+        System.out.println("try1");
+
         return examMapper.toDto(examEntitySaved);
     }
 
@@ -118,6 +130,7 @@ public class ExamServiceImpl implements ExamService {
     }
 
     public boolean validateExam(ExamDtoSimple examDtoSimple) {
+        System.out.println("Validating examDtoSimple: " + examDtoSimple);
         System.out.println(examPeriodRepository.findById(examDtoSimple.getExamPeriodDto().getId()).isPresent());
         System.out.println(subjectRepository.findById(examDtoSimple.getSubject().getId()).isPresent());
         System.out.println(professorRepository.findById(examDtoSimple.getProfessor().getId()).isPresent());
