@@ -1,21 +1,21 @@
-version: '3.8'
+version: "3.8"
 
 networks:
   diplomski:
     driver: bridge
 
 services:
-  sqldb:
+  mysqldb:
     image: mysql:8.0
-    container_name: sqldb
+    container_name: mysqldb
     restart: "no"
     environment:
-      MYSQL_DATABASE: 'diplomski'
-      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: "diplomski"
+      MYSQL_ROOT_PASSWORD: "root"
     ports:
-      - '3308:3306'
+      - "3308:3306"
     expose:
-      - '3306'
+      - "3306"
     volumes:
       - ./my-db:/var/lib/mysql
     networks:
@@ -23,17 +23,17 @@ services:
   marjan-jovanovic-be:
     container_name: marjan-jovanovic-be
     depends_on:
-      - sqldb
+      - mysqldb
     build: .
     environment:
-      - SERVER_PORT=8080
+      - SERVER_PORT=8090
       - SERVER_CONTEXT_PATH=/marjan-jovanovic-be/api
-      - DB_HOST=sqldb
+      - DB_HOST=mysqldb
       - DB_PORT=3306
       - DB_USERNAME=root
       - DB_PASSWORD=root
     restart: "no"
     ports:
-      - 8080:8080
+      - 8090:8090
     networks:
       - diplomski
