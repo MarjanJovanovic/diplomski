@@ -10,6 +10,9 @@ import { ExamDto } from 'src/app/core/models/exam.model';
 import { ExamService } from 'src/app/core/service/exam.service';
 import { ExamDetailsComponent } from '../exam-details/exam-details.component';
 import { ExamAddComponent } from '../exam-add/exam-add.component';
+import { KeycloakProfile } from 'keycloak-js';
+import { KeycloakService } from 'keycloak-angular';
+import { Roles } from 'src/app/core/enums/roles';
 
 const DISPLAYED_COLUMNS = [
   'id',
@@ -39,13 +42,30 @@ export class ExamListComponent implements AfterViewInit {
 
   public destroy$: Subject<boolean> = new Subject();
 
+  isLoggedIn: boolean;
+  isAdmin: boolean = false;
+  isProfessor: boolean = false;
+  isStudent: boolean = false;
+  userProfile: KeycloakProfile | null = null;
+
   constructor(
     private readonly examService: ExamService,
-    public readonly dialog: MatDialog
+    public readonly dialog: MatDialog,
+    private keycloakService: KeycloakService
   ) {}
 
-  ngAfterViewInit() {
+  public async ngAfterViewInit() {
     this.fetchTableElements();
+
+    this.isLoggedIn = await this.keycloakService.isLoggedIn();
+
+    // type userRoles = Array<{id: number, text: string}>;
+    if (this.isLoggedIn) {
+      this.userProfile = await this.keycloakService.loadUserProfile();
+      this.isAdmin = this.keycloakService.isUserInRole(Roles.ADMIN);
+      this.isProfessor = this.keycloakService.isUserInRole(Roles.PROFESSOR);
+      this.isStudent = this.keycloakService.isUserInRole(Roles.STUDENT);
+    }
   }
 
   ngOnDestroy() {
@@ -114,6 +134,8 @@ export class ExamListComponent implements AfterViewInit {
         );
       });
   }
+
+  public showSuccess(): void {}
 
   public addExam(): void {
     this.dialog

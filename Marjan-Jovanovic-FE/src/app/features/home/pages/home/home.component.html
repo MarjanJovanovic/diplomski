@@ -74,7 +74,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="example-card" *ngIf="isAdmin || isStudent">
+  <mat-card class="example-card" *ngIf="isAdmin || isStudent || isProfessor">
     <mat-card-header>
       <div mat-card-avatar class="exam-header-image"></div>
       <mat-card-title>Exams</mat-card-title>
@@ -100,7 +100,7 @@
     </mat-card-header>
     <mat-card-content>
       <p>
-        For any questions you can have with using the Student Portal App \n
+        For any questions you can have with using the Student Portal App refer to this manual.
       </p>
     </mat-card-content>
     <mat-card-actions>

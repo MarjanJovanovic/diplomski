@@ -44,11 +44,17 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public ProfessorDto save(ProfessorDto professorDto) throws MyEntityAlreadyExistsException {
-        Optional<ProfessorEntity> entity = professorRepository.findById(professorDto.getId());
-        if (entity.isPresent()) {
-            throw new MyEntityAlreadyExistsException("Professor already exists: ", professorMapper.toDto(entity.get()));
+        System.out.println("Service saving " + professorDto);
+        if (professorDto.getId()!= null){
+            Optional<ProfessorEntity> entity = professorRepository.findById(professorDto.getId());
+            if (entity.isPresent()) {
+                throw new MyEntityAlreadyExistsException("Professor already exists: ", professorMapper.toDto(entity.get()));
+            }
         }
+//        professorDto.setTitle();
+        System.out.println("Title of the professor: " + professorDto.getTitle());
         ProfessorEntity professorEntity = professorRepository.save(professorMapper.toEntity(professorDto));
+        System.out.println("Service saved to entity " + professorEntity);
         return professorMapper.toDto(professorEntity);
     }
 

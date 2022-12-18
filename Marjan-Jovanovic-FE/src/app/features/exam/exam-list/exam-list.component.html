@@ -7,7 +7,8 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Letters and numbers..." #input>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="list-container__btn-add" (click)="this.addExam()">+Add
+    <button *ngIf="!isStudent" mat-raised-button color="primary" class="list-container__btn-add"
+      (click)="this.addExam()">+Add
       Exam</button>
   </div>
 
@@ -51,7 +52,7 @@
       <ng-container matColumnDef="editButton">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary" (click)='this.openEditModel(row)'>
+          <button *ngIf="!isStudent" mat-icon-button color="primary" (click)='this.openEditModel(row)'>
             <mat-icon>edit</mat-icon>
           </button>
         </td>
@@ -60,8 +61,11 @@
       <ng-container matColumnDef="deleteButton">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary" (click)='this.deleteExam(row)'>
+          <button *ngIf="!isStudent" mat-icon-button color="primary" (click)='this.deleteExam(row)'>
             <mat-icon>delete</mat-icon>
+          </button>
+          <button *ngIf="isStudent" mat-icon-button color="primary" (click)='this.showSuccess()'>
+            <mat-icon>add</mat-icon>
           </button>
         </td>
       </ng-container>
